@@ -39,6 +39,7 @@
 				<li>Développer le JQuery</li>
 				<li>Charte Graphique</li>
 				<li>Mettre en ligne</li>
+				<li>BlabBla</li>
 			</ul>
 			<h3>Pourquoi cela fonctionnera ?</h3>
 			<ul>
