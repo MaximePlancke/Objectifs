@@ -1,4 +1,4 @@
-<?php require 'bbd_connexion.php'; 
+<?php require '../connexion/bbd_connexion.php'; 
 
 if (($_SESSION['id'] != 0)) {        
     $ajout_obj = $bdd->prepare('INSERT INTO objectifs(id_membres, name_obj, nb_steps, date_creation) VALUES(:id_mem, :name_obj, :nb_steps, NOW())');

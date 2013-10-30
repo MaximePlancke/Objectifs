@@ -1,4 +1,4 @@
-<?php require 'bbd_connexion.php'; ?>
+<?php require 'connexion/bbd_connexion.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,18 +6,18 @@
 	<title>Motivation</title>
 	<!-- On ouvre la fenêtre à la largeur de l'écran -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="Ressources/style.css">
 	<!-- Intégration du CSS Bootstrap, Font-Awesome et Polices-->
-	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
-	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link href="Ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+	<link href="Ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
 </head>
   <body>
 	<div id="container-fluid">
-	<?php include("menu_top.php"); ?>
+	<?php include("menus/menu_top.php"); ?>
 	<section id="main_page" class="row-fluid">
-	<?php include("menu_left.php"); ?>
+	<?php include("menus/menu_left.php"); ?>
 		<div id="page_right">
 			<?php
 				if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])) {
@@ -26,7 +26,7 @@
 			?>
 			<h1>Bienvenue sur ObjectiveShare.com</h1>
 			<h4>ObjectiveShare.com est un site de partage d'objectifs. Ainsi grâce à votre volonté et à un réseau de personnes motivé, aidez et faites vous aider pour réaliser vos rêves</h4>
-			<img src="images/bubble.png">
+			<img src="Ressources/images/bubble.png">
 			<li>
 				<h4>Finir ce site internet</h4>
 			</li>
@@ -50,9 +50,9 @@
 			</ul>
 		</div>
 	</section>
-	<?php include("footer.php"); ?>
+	<?php include("menus/footer.php"); ?>
 	</div>
 	<!-- Intégration de la libraire de composants du Bootstrap -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="Ressources/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

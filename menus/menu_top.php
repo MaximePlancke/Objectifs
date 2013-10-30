@@ -9,19 +9,19 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 			<li>
 				<div class="span1 img_menu_top">
 					<a href="index.php">
-						<p><img src="images/home.png"></p>
+						<p><img src="../Ressources/images/home.png"></p>
 					</a>
 				</div>
 			</li>
 			<li>
 				<div class="span6 text_menu_top">
-					<a href="index.php">
+					<a href="../index.php">
 						<p>
 							<?php				
 								if ($user_id) {
 								    echo ($_SESSION['pseudo']);
 								} else {
-									echo "<a href='connexion.php'>Connexion</a>";
+									echo "<a href='../connexion/connexion.php'>Connexion</a>";
 								}
 							?>
 						</p>
@@ -37,7 +37,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 				</div>
 			</li>
 			<li>
-				<div class="span1 img_menu_top"><a href="envoi_deconnexion.php"><p><img src="images/logout.png"></p></a></div>
+				<div class="span1 img_menu_top"><a href="../connexion/envoi_deconnexion.php"><p><img src="../Ressources/images/logout.png"></p></a></div>
 			</li>
 			<?php 	endif  ?>
 		</ul>
