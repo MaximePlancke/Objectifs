@@ -6,11 +6,11 @@
     <title>Motivation</title>
     <!-- On ouvre la fenêtre à la largeur de l'écran -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../Ressources/style.css">
+    <link rel="stylesheet" type="text/css" href="/Ressources/style.css">
     <!-- Intégration du CSS Bootstrap, Font-Awesome et Polices-->
-	<link href="../Ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
-	<link href="../Ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="../Ressources/font-awesome/css/font-awesome.min.css">
+	<link href="/Ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+	<link href="/Ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/Ressources/font-awesome/css/font-awesome.min.css">
 
 </head>
   <body>
@@ -20,7 +20,7 @@
 		<?php include("../menus/menu_left.php"); ?>
 			<div id="page_right">			
 				<h4>Nouvel Objectif</h4>
-				<form method="post" class="well form-inline" action="envoi_obj.php">
+				<form method="post" class="well form-inline" action="/objectifs/envoi_obj.php">
 					<br/>
 					<p><label for="name_obj"/>Votre objectif</label><br/>
 					<input type="text" id="name_obj" name="name_obj" class=autofocus required/>

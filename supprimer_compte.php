@@ -8,7 +8,7 @@
     	$delete_friends->closeCursor();
     	$_SESSION = array();
 		session_destroy();
-    	header('Location:connexion/connexion.php');
+    	header('Location:/connexion/connexion.php');
     	exit();
     }
     echo "Vous n'êtes pas connecté";

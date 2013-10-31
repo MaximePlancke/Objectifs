@@ -6,10 +6,10 @@
 	<title>Motivation</title>
 	<!-- On ouvre la fenêtre à la largeur de l'écran -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="Ressources/style.css">
+	<link rel="stylesheet" type="text/css" href="ressources/style.css">
 	<!-- Intégration du CSS Bootstrap, Font-Awesome et Polices-->
-	<link href="Ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
-	<link href="Ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link href="ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+	<link href="ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
 </head>
@@ -26,7 +26,7 @@
 			?>
 			<h1>Bienvenue sur ObjectiveShare.com</h1>
 			<h4>ObjectiveShare.com est un site de partage d'objectifs. Ainsi grâce à votre volonté et à un réseau de personnes motivé, aidez et faites vous aider pour réaliser vos rêves</h4>
-			<img src="Ressources/images/bubble.png">
+			<img src="/ressources/images/bubble.png">
 			<li>
 				<h4>Finir ce site internet</h4>
 			</li>
@@ -53,6 +53,6 @@
 	<?php include("menus/footer.php"); ?>
 	</div>
 	<!-- Intégration de la libraire de composants du Bootstrap -->
-	<script src="Ressources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

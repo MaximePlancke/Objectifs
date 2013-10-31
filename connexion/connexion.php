@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	} else {
 	    $_SESSION['id'] = $user['id'];
 	    $_SESSION['pseudo'] = $pseudo;
-		header('Location:../index.php');
+		header('Location:/index.php');
 	}
 }
 ?>
@@ -32,11 +32,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <title>Motivation</title>
     <!-- On ouvre la fenêtre à la largeur de l'écran -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../Ressources/style.css">
+    <link rel="stylesheet" type="text/css" href="/ressources/style.css">
     <!-- Intégration du CSS Bootstrap, Font-Awesome et Polices-->
-	<link href="../Ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
-	<link href="../Ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="../Ressources/font-awesome/css/font-awesome.min.css">
+	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/ressources/font-awesome/css/font-awesome.min.css">
 
 </head>
   <body>
@@ -71,6 +71,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		<?php include("menus/footer.php"); ?>
 	</div>
 	<!-- Intégration de la libraire de composants du Bootstrap -->
-	<script src="../Ressources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../ressources/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

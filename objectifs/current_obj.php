@@ -1,4 +1,4 @@
-<?php require '../connexion/bbd_connexion.php';
+<?php require '/connexion/bbd_connexion.php';
 
 	$id_member = $_GET["id"];
 
@@ -15,10 +15,10 @@
 	    <meta charset="UTF-8">
 	    <title>Motivation</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <link rel="stylesheet" type="text/css" href="../Ressources/style.css">
-		<link rel="stylesheet" href="../Ressources/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../Ressources/bootstrap/css/bootstrap.css" media="screen"> 
-		<link rel="stylesheet" href="../Ressources/bootstrap/css/bootstrap-responsive.min.css" type="text/css">
+	    <link rel="stylesheet" type="text/css" href="/ressources/style.css">
+		<link rel="stylesheet" href="/ressources/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/ressources/bootstrap/css/bootstrap.css" media="screen"> 
+		<link rel="stylesheet" href="/ressources/bootstrap/css/bootstrap-responsive.min.css" type="text/css">
 	</head>
   	<body>
 	<div id="container-fluid">
@@ -47,6 +47,6 @@
 		<?php include("../menus/footer.php"); ?>
 
 	</div>
-	<script src="../Ressources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
