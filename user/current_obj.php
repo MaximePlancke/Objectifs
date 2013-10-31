@@ -1,4 +1,4 @@
-<?php require '/connexion/bbd_connexion.php';
+<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
 	$id_member = $_GET["id"];
 
@@ -23,11 +23,11 @@
   	<body>
 	<div id="container-fluid">
 
-		<?php include("../menus/menu_top.php"); ?>
+		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
 
 		<section id="main_page" class="row-fluid">
 
-			<?php include("../menus/menu_left.php"); ?>
+			<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 
 			<div id="page_right">
 				<h3>Objectifs en cours</h3>
@@ -44,7 +44,7 @@
 			</div>
 		</section>
 
-		<?php include("../menus/footer.php"); ?>
+		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 
 	</div>
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>

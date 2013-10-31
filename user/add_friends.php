@@ -1,4 +1,4 @@
-<?php require 'connexion/bbd_connexion.php'; 
+<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; 
 
 // On recupère la requete dans menu_left pour afficher la liste des utilisateurs. 
 
@@ -71,9 +71,9 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset
 </head>
   <body>
 	<div id="container-fluid">
-	<?php include("menus/menu_top.php"); ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
 	<section id="main_page" class="row-fluid">
-	<?php include("menus/menu_left.php"); ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 		<div id="page_right">
 			<h2>Qui voulez vous ajouter?</h2>
 				<ul>
@@ -91,7 +91,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset
 				<?php endforeach ?>
 		</div>
 	</section>
-	<?php include("menus/footer.php"); ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 	</div>
 	<!-- Intégration de la libraire de composants du Bootstrap -->
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>

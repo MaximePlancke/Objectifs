@@ -1,4 +1,4 @@
-<?php require 'connexion/bbd_connexion.php'; 
+<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; 
 
     if (isset($_SESSION['id']) AND $_SESSION['id'] != 0) {
     	$delete_friends = $bdd->query ('DELETE FROM membres WHERE id ='.$_SESSION['id']);
@@ -8,7 +8,7 @@
     	$delete_friends->closeCursor();
     	$_SESSION = array();
 		session_destroy();
-    	header('Location:/connexion/connexion.php');
+    	header('Location:/account/log_in.php');
     	exit();
     }
     echo "Vous n'êtes pas connecté";

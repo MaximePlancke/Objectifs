@@ -1,4 +1,4 @@
-<?php require 'connexion/bbd_connexion.php'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,9 +15,9 @@
 </head>
   <body>
 	<div id="container-fluid">
-	<?php include("menus/menu_top.php"); ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
 	<section id="main_page" class="row-fluid">
-	<?php include("menus/menu_left.php"); ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 		<div id="page_right">
 			<?php
 				if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])) {
@@ -50,7 +50,7 @@
 			</ul>
 		</div>
 	</section>
-	<?php include("menus/footer.php"); ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 	</div>
 	<!-- Intégration de la libraire de composants du Bootstrap -->
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>

@@ -21,7 +21,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 								if ($user_id) {
 								    echo ($_SESSION['pseudo']);
 								} else {
-									echo "<a href='/connexion/connexion.php'>Connexion</a>";
+									echo "<a href='/account/log_in.php'>Connexion</a>";
 								}
 							?>
 						</p>
@@ -37,7 +37,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 				</div>
 			</li>
 			<li>
-				<div class="span1 img_menu_top"><a href="/connexion/envoi_deconnexion.php"><p><img src="/ressources/images/logout.png"></p></a></div>
+				<div class="span1 img_menu_top"><a href="/account/log_out.php"><p><img src="/ressources/images/logout.png"></p></a></div>
 			</li>
 			<?php 	endif  ?>
 		</ul>

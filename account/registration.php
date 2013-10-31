@@ -1,6 +1,4 @@
-<?php 
-
-require '../connexion/bbd_connexion.php'; 
+<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; 
 
 $errors = array();
 
@@ -20,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			    'password' => $password_hache,
 			    'email' => $email));
 	        $request->closeCursor();
-	        header('Location:/connexion/connexion.php');
+	        header('Location:/account/log_in.php');
 		} else {
 			array_push($errors, 'Les mots de passe doivent etre identiques');
 		}
@@ -43,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	</head>
  	<body>
 		<div id="container-fluid">
-			<?php include("../menus/menu_top.php"); ?>
+			<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
 			<section id="main_page" class="row-fluid">
-				<?php include("../menus/menu_left.php"); ?>
+				<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 				<div id="page_right">	
 					<h4>Inscription</h4>
-					<form method="post" class="well form-inline" action="inscription.php">
+					<form method="post" class="well form-inline" action="/account/registration.php">
 						<ul>
 							<?php foreach ($errors as $value): ?>
 								<li>
@@ -73,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	       			</form>
 				</div>
 			</section>
-			<?php include("../menus/footer.php"); ?>
+			<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 		</div>
 	<!-- Intégration de la libraire de composants du Bootstrap -->
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>
