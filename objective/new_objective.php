@@ -20,7 +20,7 @@
 		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 			<div id="page_right">			
 				<h4>Nouvel Objectif</h4>
-				<form method="post" class="well form-inline" action="/objective/envoi_obj.php">
+				<form method="post" class="well form-inline" action="/objective/add_objective.php">
 					<br/>
 					<p><label for="name_obj"/>Votre objectif</label><br/>
 					<input type="text" id="name_obj" name="name_obj" class=autofocus required/>

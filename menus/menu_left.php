@@ -26,7 +26,7 @@
 	</ul>
 	<h4>Objectifs</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="/objective/new_obj.php"><p>Nouveau Objectif</p></a></li>
+		<li class="menu_responsive"><a href="/objective/new_objective.php"><p>Nouveau Objectif</p></a></li>
 		<li class="menu_responsive"><a href="/user/current_obj.php?id=<?php echo $user_id?>"><p>Objectif en cours</p></a></li>
 		<li class="menu_responsive"><a href="/user/current_obj.php?id=<?php echo $user_id?>"><p>Objectif terminé</p></a></li>
 	</ul>

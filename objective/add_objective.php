@@ -7,6 +7,6 @@ if (($_SESSION['id'] != 0)) {
         'name_obj' => $_POST['name_obj'],
         'nb_steps' => $_POST['nb_steps'],
         ));
-    header('Location:/objective/new_obj.php');
+    header('Location:/objective/new_objective.php');
 }
 ?>
