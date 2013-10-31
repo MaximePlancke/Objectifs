@@ -52,7 +52,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset
 	$request->closeCursor();
 	} 
 }
-
 ?>
 
 <!DOCTYPE html>
