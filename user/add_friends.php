@@ -4,7 +4,7 @@
 
 $errors = array();
 
-if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset($_GET['id_friends_2'])){
+if($_SERVER['REQUEST_METHOD'] === 'GET' AND isset($_GET['id_friends_1']) AND isset($_GET['id_friends_2'])){
 
 	$id_friends_1 = (int)$_GET['id_friends_1'];
 	$id_friends_2 = (int)$_GET['id_friends_2'];
@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset
 		$count = $request->rowCount(); 
 		$request->closeCursor();
 
-		//Vérification (ajout yourself)
+		//Vérification (add yourself)
 		if ($id_friends_1 == $id_friends_2) {
 			array_push($errors, "Vous ne pouvez pas être ami avec vous même");
 		} elseif($count >= 1) {
@@ -27,28 +27,17 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset
 			array_push($errors, "Vous êtes déjà ami"); 
 		} else {
 			//Ajout du lien d'amitié
-			$request = $bdd->prepare('INSERT INTO friends(id_friends_1, id_friends_2, accepted, date_friends) VALUES (:id_friends_1, :id_friends_2, 0, NOW())');
+			$request = $bdd->prepare('INSERT INTO friends(id_friends_1, id_friends_2, accepted, date_friends) VALUES (:id_friends_1, :id_friends_2, 0, NOW()), (:id_friends_2, :id_friends_1, 0, NOW())');
 			$request->execute(array(
 			    'id_friends_1' => $id_friends_1,
 			    'id_friends_2' => $id_friends_2));
-			//Ajout du lien d'amitié dans l'autre sens 
-			$request = $bdd->prepare('INSERT INTO friends(id_friends_1, id_friends_2, accepted, date_friends) VALUES (:id_friends_1, :id_friends_2, 0, NOW())');
-			$request->execute(array(
-			    'id_friends_1' => $id_friends_2,
-			    'id_friends_2' => $id_friends_1));
-				array_push($errors, "Vous êtes maintenant ami avec le membre d'id: $id_friends_2");
 			$request->closeCursor();
 			}
 	} elseif ($_GET['fonction']=="delete") {
-	$request = $bdd->prepare('DELETE FROM friends WHERE id_friends_1 = :id_friends_1 AND id_friends_2 = :id_friends_2');
+	$request = $bdd->prepare('DELETE FROM friends WHERE id_friends_1 = :id_friends_1 AND id_friends_2 = :id_friends_2 OR (id_friends_1 = :id_friends_2 AND id_friends_2 = :id_friends_1)');
 	$request->execute(array(
 		'id_friends_1' => $id_friends_1,
 	    'id_friends_2' => $id_friends_2));
-	$request->closeCursor();
-	$request = $bdd->prepare('DELETE FROM friends WHERE id_friends_1 = :id_friends_1 AND id_friends_2 = :id_friends_2');
-	$request->execute(array(
-		'id_friends_1' => $id_friends_2,
-	    'id_friends_2' => $id_friends_1));
 	$request->closeCursor();
 	} 
 }
@@ -84,8 +73,8 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_friends_1']) && isset
 				</ul>
 				<?php foreach ($list_users as $datas) : ?>
 				<h4><?php echo $datas['pseudo'];?>
-					<a href="/add_friends.php?id_friends_1=<?php echo $_SESSION['id']; ?>&amp;id_friends_2=<?php echo $datas['id']; ?>&amp;fonction=add">  Ajouter</a>
-					<a href="/add_friends.php?id_friends_1=<?php echo $_SESSION['id']; ?>&amp;id_friends_2=<?php echo $datas['id']; ?>&amp;fonction=delete">  Supprimer</a>
+					<a href="/user/add_friends.php?id_friends_1=<?php echo $_SESSION['id']; ?>&amp;id_friends_2=<?php echo $datas['id']; ?>&amp;fonction=add">  Ajouter</a>
+					<a href="/user/add_friends.php?id_friends_1=<?php echo $_SESSION['id']; ?>&amp;id_friends_2=<?php echo $datas['id']; ?>&amp;fonction=delete">  Supprimer</a>
 				</h4>
 				<?php endforeach ?>
 		</div>
