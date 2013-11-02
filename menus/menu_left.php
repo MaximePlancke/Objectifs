@@ -27,7 +27,7 @@
 	<?php if ($user_id): ?>
 	<h4>Fonctionnalités</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="/user/add_friends.php?id=<?php echo $user_id;?>">Gestion des amis</a></li>
+		<li class="menu_responsive"><a href="/user/add_friends.php">Gestion des amis</a></li>
 	</ul>
 	<h4>Objectifs</h4>
 	<ul class="nav">

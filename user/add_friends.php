@@ -1,7 +1,5 @@
 <?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; 
 
-// On recupère la requete dans menu_left pour afficher la liste des utilisateurs. 
-
 $errors = array();
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' AND isset($_GET['id_friends_1']) AND isset($_GET['id_friends_2'])){
@@ -62,10 +60,11 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' AND isset($_GET['id_friends_1']) AND iss
 	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
 	<section id="main_page" class="row-fluid">
 	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
+	<!-- On recupère la requete dans menu_left pour afficher la liste des utilisateurs.  -->
 		<div id="page_right">
 			<h2>Qui voulez vous ajouter?</h2>
 				<ul>
-					<?php foreach ($errors as $value): ?>
+					<?php foreach ($errors as $value): ?> 
 						<li>
 							<?php echo $value; ?>
 						</li>
