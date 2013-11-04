@@ -30,10 +30,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   <head>
     <meta charset="UTF-8">
     <title>Motivation</title>
-    <!-- On ouvre la fenêtre à la largeur de l'écran -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/ressources/style.css">
-    <!-- Intégration du CSS Bootstrap, Font-Awesome et Polices-->
 	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="/ressources/font-awesome/css/font-awesome.min.css">
@@ -65,12 +63,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		       		<input type="submit" value="Connection" class="btn btn-primary"/></p>
 		       		<h6><a href="">Mot de passe oublié?</a></h6>
 	   			</form>
-	   			<h4><a href="">Nouvelle inscription</a></h4>
+	   			<h4><a href="/account/registration.php">Nouvelle inscription</a></h4>
 			</div>
 		</section>
-		<?php include($_SERVER['DOCUMENT_ROOT']."menus/footer.php"); ?>
+		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 	</div>
-	<!-- Intégration de la libraire de composants du Bootstrap -->
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

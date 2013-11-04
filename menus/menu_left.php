@@ -5,8 +5,14 @@
 
 	$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
-	$request = $bdd->prepare('SELECT friends.id, membres.id, friends.id_friends_1, friends.id_friends_2, membres.pseudo, membres.id FROM friends, membres WHERE friends.id_friends_1 = ? AND friends.id_friends_2 = membres.id ORDER BY friends.id DESC');
-	$request->execute(array($user_id));
+	$request = $bdd->prepare
+		('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, m.pseudo, m.id 
+		FROM friends AS f, membres AS m 
+		WHERE f.id_friends_2 = m.id 
+		AND f.id_friends_1 = :user_id
+		OR (f.id_friends_1 = m.id AND f.id_friends_2 = :user_id)
+		ORDER BY f.id DESC');
+	$request->execute(array('user_id' => $user_id));
     $list_friends = $request->fetchAll();
 	$request->closeCursor();
 ?>
@@ -22,7 +28,7 @@
 	<?php if ($user_id): ?>
 	<h4>Fonctionnalités</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="/user/add_friends.php?id=<?php echo $user_id;?>">Gestion des amis</a></li>
+		<li class="menu_responsive"><a href="/user/add_friends.php">Gestion des amis</a></li>
 	</ul>
 	<h4>Objectifs</h4>
 	<ul class="nav">

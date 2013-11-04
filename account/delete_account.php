@@ -1,11 +1,10 @@
 <?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; 
 
-    if (isset($_SESSION['id']) AND $_SESSION['id'] != 0) {
-    	$delete_friends = $bdd->query ('DELETE FROM membres WHERE id ='.$_SESSION['id']);
-    	$delete_friends = $bdd->query ('DELETE FROM objectifs WHERE id_membres ='.$_SESSION['id']);
-        $delete_friends = $bdd->query ('DELETE FROM friends WHERE id_friends_1 ='.$_SESSION['id']);
-        $delete_friends = $bdd->query ('DELETE FROM friends WHERE id_friends_2 ='.$_SESSION['id']);
-    	$delete_friends->closeCursor();
+$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
+
+    if ($user_id) {
+    	$delete_user = $bdd->query ('DELETE FROM membres WHERE id ='.$user_id);
+        $delete_user->closeCursor();
     	$_SESSION = array();
 		session_destroy();
     	header('Location:/account/log_in.php');
