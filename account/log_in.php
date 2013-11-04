@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		       		<input type="submit" value="Connection" class="btn btn-primary"/></p>
 		       		<h6><a href="">Mot de passe oublié?</a></h6>
 	   			</form>
-	   			<h4><a href="">Nouvelle inscription</a></h4>
+	   			<h4><a href="/account/registration.php">Nouvelle inscription</a></h4>
 			</div>
 		</section>
 		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
