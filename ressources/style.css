@@ -10,6 +10,10 @@
     src: url('fonts/Numans/Numans-Regular.ttf') format('truetype');
 }
 
+textarea {
+	resize : none;
+}
+
 /*General*/
 
 #container-fluid {
@@ -50,12 +54,9 @@
 #main_page {
 	height: 650px;
 	width: 100%;
-/*	border: 2px solid grey;*/
 }
 
 #menu_left {
-/*	border: 2px solid yellow;*/
-/*	border-right: 1px solid black;*/
 	padding: 20px 0px 10px 0px;
 	height: 100%;
 	width: 200px;
@@ -67,8 +68,7 @@
 }
 
 #page_right {
-/*	border: 2px solid black;	*/
-	padding: 20px 10px 10px 30px;
+	padding: 20px 20px 10px 30px;
 	height: 100%;
 	margin-left: 200px;
 	overflow: auto;
