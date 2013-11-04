@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	   			<h4><a href="">Nouvelle inscription</a></h4>
 			</div>
 		</section>
-		<?php include($_SERVER['DOCUMENT_ROOT']."menus/footer.php"); ?>
+		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 	</div>
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>
   </body>
