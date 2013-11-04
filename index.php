@@ -4,10 +4,10 @@
   <head>
 	<meta charset="UTF-8">
 	<title>Motivation</title>
-	<?php //On ouvre la fenêtre à la largeur de l'écran ?>
+	<?php //Open the window to the screen size?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="ressources/style.css">
-	<?php //Intégration du CSS Bootstrap, Font-Awesome et Polices ?>
+	<?php //Integration CSS Bootstrap, Font-Awesome and Polices ?>
 	<link href="ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">

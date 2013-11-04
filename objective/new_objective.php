@@ -1,4 +1,26 @@
-<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
+
+$errors = array();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$id_mem = isset($_SESSION['id']) ? $_SESSION['id'] : null;
+	$name_obj = isset($_POST['name_obj']) ? $_POST['name_obj'] : null;
+	$nb_steps = isset($_POST['nb_steps']) ? $_POST['nb_steps'] : null;
+
+	if (($id_mem AND $name_obj AND $nb_steps)) {        
+	    $request = $bdd->prepare('INSERT INTO objectifs(id_membres, name_obj, nb_steps, date_creation) VALUES(:id_mem, :name_obj, :nb_steps, NOW())');
+	    $request->execute(array(
+	        'id_mem' => $id_mem,
+	        'name_obj' => $name_obj,
+	        'nb_steps' => $nb_steps,
+	        ));
+	    $request->closeCursor();
+	} else {
+		array_push($errors, "Veuillez vous connecter");
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +40,14 @@
 		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 			<div id="page_right">			
 				<h4>Nouvel Objectif</h4>
-				<form method="post" class="well form-inline" action="/objective/add_objective.php">
+				<form method="post" class="well form-inline" action="/objective/new_objective.php">
+					<ul>
+						<?php foreach ($errors as $value): ?>
+							<li>
+								<?php echo $value;?>
+							</li>
+						<?php endforeach ?>
+					</ul>
 					<br/>
 					<p><label for="name_obj"/>Votre objectif</label><br/>
 					<input type="text" id="name_obj" name="name_obj" autofocus required/>
