@@ -3,14 +3,14 @@ require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
 require($_SERVER['DOCUMENT_ROOT'].'/routing.php');
 
-	// $URi = $_SERVER["REQUEST_URI"]; 
-	// $motif = "'/index\.php'"; 
-	// if (preg_match($motif,$URi)) 
-	// { 
-	// header("Status: 301 Moved Permanently"); 
-	// header("Location: /index.html"); 
-	// exit; 
-	// } 
+	$URi = $_SERVER["REQUEST_URI"]; 
+	$motif = "'/index\.php'"; 
+	if (preg_match($motif,$URi)) 
+	{ 
+	header("Status: 301 Moved Permanently"); 
+	header("Location: /index.html"); 
+	exit; 
+	} 
 ?>
 
 <!DOCTYPE html>
