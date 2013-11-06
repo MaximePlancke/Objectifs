@@ -7,11 +7,12 @@
 
 	$request = $bdd->prepare
 		('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, m.pseudo, m.id 
-		FROM friends AS f INNER JOIN membres AS m 
-		ON f.id_friends_2 = m.id 
-		WHERE f.id_friends_1 = ? 
+		FROM friends AS f, membres AS m 
+		WHERE f.id_friends_2 = m.id 
+		AND f.id_friends_1 = :user_id
+		OR (f.id_friends_1 = m.id AND f.id_friends_2 = :user_id)
 		ORDER BY f.id DESC');
-	$request->execute(array($user_id));
+	$request->execute(array('user_id' => $user_id));
     $list_friends = $request->fetchAll();
 	$request->closeCursor();
 ?>

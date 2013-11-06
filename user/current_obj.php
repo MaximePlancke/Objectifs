@@ -7,12 +7,12 @@
 	//delete objetive
 	if ($id_objective AND $_GET['action'] == "delete") {
 		if ($id_member != $_SESSION['id']) {
-			array_push($errors, "Vous n'avez pas le droit de supprimer les objectifs des autres");
+			array_push($errors, "Vous n'avez pas les droits pour cette action");
 		}else{
 			$request = $bdd->prepare('DELETE FROM objectifs WHERE id = ?');
 			$request->execute(array($id_objective));
 			$delete_objective = $request->fetchAll();
-			array_push($errors, "l'objectif ". $id_objective ." a été supprimé");
+			array_push($errors, "l'objectif a été supprimé");
 			$request->closeCursor();
 		}
 	}
@@ -54,7 +54,7 @@
 						<?php foreach ($objectives as $datas): ?>
 							<li>
 								<h4><?php echo $datas['name_obj']; ?></h4>
-								<!-- <h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5> -->
+								<h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5> 
 								<h6><a href="/user/add_advice.php?id=<?php echo $id_member;?>&amp;id_objective=<?php echo $datas['id'];?>">Donner un conseil</a></h6>
 								<h6><a href="/user/current_obj_advices.php?id=<?php echo $id_member;?>&amp;id_objective=<?php echo $datas['id'];?>">Voir les conseils</a></h6>
 								<h6><a href="/user/current_obj.php?id=<?php echo $id_member;?>&amp;id_objective=<?php echo $datas['id'];?>&amp;action=delete">Supprimer</a></h6>
