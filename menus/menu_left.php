@@ -5,8 +5,14 @@
 
 	$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
-	$request = $bdd->prepare('SELECT friends.id, membres.id, friends.id_friends_1, friends.id_friends_2, membres.pseudo, membres.id FROM friends, membres WHERE friends.id_friends_1 = ? AND friends.id_friends_2 = membres.id ORDER BY friends.id DESC');
-	$request->execute(array($user_id));
+	$request = $bdd->prepare
+		('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, m.pseudo, m.id 
+		FROM friends AS f, membres AS m 
+		WHERE f.id_friends_2 = m.id 
+		AND f.id_friends_1 = :user_id
+		OR (f.id_friends_1 = m.id AND f.id_friends_2 = :user_id)
+		ORDER BY f.id DESC');
+	$request->execute(array('user_id' => $user_id));
     $list_friends = $request->fetchAll();
 	$request->closeCursor();
 ?>
@@ -14,21 +20,21 @@
 <div id="menu_left">
 	<h4>Mon Compte</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="/account/log_in.php"><p>Connexion</p></a></li>
-		<li class="menu_responsive"><a href="/account/registration.php"><p>Inscription</p></a></li>
-		<li class="menu_responsive"><a href="/account/delete_account.php"><p>Supprimer son compte</p></a></li>
+		<li class="menu_responsive"><a href="/index.php?page=log_in"><p>Connexion</p></a></li>
+		<li class="menu_responsive"><a href="/index.php?page=registration"><p>Inscription</p></a></li>
+		<li class="menu_responsive"><a href="/index.php?page=delete_account"><p>Supprimer son compte</p></a></li>
 	</ul>
 
 	<?php if ($user_id): ?>
 	<h4>Fonctionnalités</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="/user/add_friends.php?id=<?php echo $user_id;?>">Gestion des amis</a></li>
+		<li class="menu_responsive"><a href="/index.php?page=add_friends">Gestion des amis</a></li>
 	</ul>
 	<h4>Objectifs</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="/objective/new_objective.php"><p>Nouveau Objectif</p></a></li>
-		<li class="menu_responsive"><a href="/user/current_obj.php?id=<?php echo $user_id?>"><p>Objectif en cours</p></a></li>
-		<li class="menu_responsive"><a href="/user/current_obj.php?id=<?php echo $user_id?>"><p>Objectif terminé</p></a></li>
+		<li class="menu_responsive"><a href="/index.php?page=new_objective"><p>Nouveau Objectif</p></a></li>
+		<li class="menu_responsive"><a href="/index.php?id=<?php echo $user_id?>&amp;page=current_obj"><p>Objectif en cours</p></a></li>
+		<li class="menu_responsive"><a href="/index.php?id=<?php echo $user_id?>&amp;page=current_obj"><p>Objectif terminé</p></a></li>
 	</ul>
 	<h4>Amis</h4>
 	<ul class="nav">
@@ -40,7 +46,7 @@
 	<h4>Utilisateurs</h4>
 	<ul class="nav">
 		<?php foreach ($list_users as $datas): ?>
-			<li><a href="/user/current_obj.php?id=<?php echo $datas['id'];?>"><?php echo $datas['pseudo'];?></a></li>
+			<li><a href="/index.php?id=<?php echo $datas['id'];?>&amp;page=current_obj"><?php echo $datas['pseudo'];?></a></li>
 		<?php endforeach;?>
 	</ul>
 </div>
