@@ -1,7 +1,7 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
-require($_SERVER['DOCUMENT_ROOT'].'/rooting.php');
+require($_SERVER['DOCUMENT_ROOT'].'/routing.php');
 
 	// $URi = $_SERVER["REQUEST_URI"]; 
 	// $motif = "'/index\.php'"; 

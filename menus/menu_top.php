@@ -8,7 +8,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 		<ul class="nav nav_top">
 			<li>
 				<div class="span1 img_menu_top">
-					<a href="/index.php">
+					<a href="/index.html">
 						<p><img src="/ressources/images/home.png"></p>
 					</a>
 				</div>
@@ -20,7 +20,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 								if ($user_id) {
 								    echo ($_SESSION['pseudo']);
 								} else {
-									echo "<a href='?page=log_in'>Connexion</a>";
+									echo "<a href='log_in.html'>Connexion</a>";
 								}
 							?>
 						</p>
@@ -35,7 +35,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 				</div>
 			</li>
 			<li>
-				<div class="span1 img_menu_top"><a href="?page=log_out"><p><img src="/ressources/images/logout.png"></p></a></div>
+				<div class="span1 img_menu_top"><a href="log_out.html"><p><img src="/ressources/images/logout.png"></p></a></div>
 			</li>
 			<?php 	endif  ?>
 		</ul>

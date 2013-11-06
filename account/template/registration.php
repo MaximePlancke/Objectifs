@@ -1,5 +1,5 @@
 <h4>Inscription</h4>
-<form method="post" class="well form-inline" action="?page=registration">
+<br/>
 	<ul>
 		<?php foreach ($errors as $value): ?>
 			<li>
@@ -7,7 +7,7 @@
 			</li>
 		<?php endforeach ?>
 	</ul>
-	<br/>
+<form method="post" class="well form-inline" action="registration.html">
 	<p><label for="name_utilisateur"/>Nom utilisateur</label><br/>
 	<input type="text" id="name_utilisateur" name="name_utilisateur" class=autofocus/>
 	<br/><br/>

@@ -26,5 +26,4 @@ switch ($page) {
 		$template = ($_SERVER['DOCUMENT_ROOT']."/home.php");
 		break;
 }
-
 ?>

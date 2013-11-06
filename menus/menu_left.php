@@ -20,21 +20,21 @@
 <div id="menu_left">
 	<h4>Mon Compte</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="?page=log_in"><p>Connexion</p></a></li>
-		<li class="menu_responsive"><a href="?page=registration"><p>Inscription</p></a></li>
-		<li class="menu_responsive"><a href="?page=delete_account"><p>Supprimer son compte</p></a></li>
+		<li class="menu_responsive"><a href="log_in.html"><p>Connexion</p></a></li>
+		<li class="menu_responsive"><a href="registration.html"><p>Inscription</p></a></li>
+		<li class="menu_responsive"><a href="delete_account.html"><p>Supprimer son compte</p></a></li>
 	</ul>
 
 	<?php if ($user_id): ?>
 	<h4>Fonctionnalités</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="?page=add_friends">Gestion des amis</a></li>
+		<li class="menu_responsive"><a href="add_friends.html">Gestion des amis</a></li>
 	</ul>
 	<h4>Objectifs</h4>
 	<ul class="nav">
-		<li class="menu_responsive"><a href="?page=new_objective"><p>Nouveau Objectif</p></a></li>
-		<li class="menu_responsive"><a href="?id=<?php echo $user_id?>&amp;page=current_obj"><p>Objectif en cours</p></a></li>
-		<li class="menu_responsive"><a href="?id=<?php echo $user_id?>&amp;page=current_obj"><p>Objectif terminé</p></a></li>
+		<li class="menu_responsive"><a href="new_objective.html"><p>Nouveau Objectif</p></a></li>
+		<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif en cours</p></a></li>
+		<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif terminé</p></a></li>
 	</ul>
 	<h4>Amis</h4>
 	<ul class="nav">
@@ -46,7 +46,7 @@
 	<h4>Utilisateurs</h4>
 	<ul class="nav">
 		<?php foreach ($list_users as $datas): ?>
-			<li><a href="?id=<?php echo $datas['id'];?>&amp;page=current_obj"><?php echo $datas['pseudo'];?></a></li>
+			<li><a href="current_obj-<?php echo $datas['id']?>.html"><?php echo $datas['pseudo'];?></a></li>
 		<?php endforeach;?>
 	</ul>
 </div>

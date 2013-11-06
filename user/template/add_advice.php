@@ -1,5 +1,5 @@
 <h3>Ajouter un conseil</h3>
-<form method="post" class="well form-inline" action="?id=<?php echo $id_member;?>&amp;id_objective=<?php echo $id_objective;?>&amp;page=add_advice">
+<form method="post" class="well form-inline" action="add_advice-<?php echo $id_member;?>-<?php echo $id_objective;?>.html">
 		<ul>
 			<?php foreach ($errors as $value): ?>
 				<li>
@@ -10,7 +10,7 @@
 	<p><label for="name_advice"/>Votre Conseil</label><br/>
 	<textarea id="name_advice" name="name_advice" rows=4 class="span5" required autofocus></textarea>
 	<br/><br/>
-		<input type="submit" value="Valider le conseil" class="btn btn-primary"/></p>
-	</form>
-	<a href="?id=<?php echo $id_member;?>&amp;page=current_obj">Revenir aux objectifs</a>
+	<input type="submit" value="Valider le conseil" class="btn btn-primary"/></p>
+</form>
+<a href="current_obj-<?php echo $id_member?>.html">Revenir aux objectifs</a>
 			

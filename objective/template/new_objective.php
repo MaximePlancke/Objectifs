@@ -1,5 +1,5 @@
 <h4>Nouvel Objectif</h4>
-<form method="post" class="well form-inline" action="?page=new_objective">
+<form method="post" class="well form-inline" action="new_objective.html">
 	<ul>
 		<?php foreach ($errors as $value): ?>
 			<li>

@@ -1,0 +1,29 @@
+#--------------------------------------------------
+# Répertoire : /
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+# Index :
+RewriteRule ^index\.html$   /index.php [L]
+
+# Page avec 1 paramètre :
+RewriteRule ^([a-z_]*)\.html$   ?page=$1 [L]
+
+
+# Page avec 2 paramètres (page / id_du_membre) :
+RewriteRule ^([a-z_]*)-([0-9]*)\.html$   ?page=$1&id=$2 [L]
+
+# Page avec 3 paramètres (page / id_du_membre / id_de_lobjectif) :
+RewriteRule ^([a-z_]*)-([0-9]*)-([0-9]*)\.html$   ?page=$1&id=$2&id_objective=$3 [L]
+
+# Page avec 4 paramètres (page / id_du_membre / id_de_lobjectif / action) :
+RewriteRule ^([a-z_]*)-([0-9]*)-([0-9]*)-([a-z_]*)\.html$   ?page=$1&id=$2&id_objective=$3&action=$4 [L]
