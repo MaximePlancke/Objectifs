@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			    'password' => $password_hache,
 			    'email' => $email));
 	        $request->closeCursor();
-	        header('Location:/index.php?page=log_in');
+	        header('Location:?page=log_in');
 	        exit();
 		} else {
 			array_push($errors, 'Les mots de passe doivent etre identiques');

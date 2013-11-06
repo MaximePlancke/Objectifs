@@ -6,7 +6,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
         $delete_user->closeCursor();
     	$_SESSION = array();
 		session_destroy();
-    	header('Location:/index.php?page=registration');
+    	header('Location:?page=registration');
     	exit();
     }
     echo "Vous n'êtes pas connecté";

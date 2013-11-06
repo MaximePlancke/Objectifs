@@ -10,7 +10,7 @@
 		<?php foreach ($list_users as $datas) : ?>
 		<li>
 			<?php echo $datas['pseudo'];?>
-			<form method="post" action="/index.php?page=add_friends">
+			<form method="post" action="?page=add_friends">
 				<input type="hidden" name="id_friend" value="<?php echo $datas['id'];?>" />
 				<input name="add" id="add" type="submit" value="Ajouter" class="btn btn-primary"/>
 				<input name="delete" id="delete" type="submit" value="Supprimer" class="btn btn-primary"/>

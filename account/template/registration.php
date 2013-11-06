@@ -1,5 +1,5 @@
 <h4>Inscription</h4>
-<form method="post" class="well form-inline" action="/index.php?page=registration">
+<form method="post" class="well form-inline" action="?page=registration">
 	<ul>
 		<?php foreach ($errors as $value): ?>
 			<li>

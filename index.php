@@ -1,6 +1,7 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
-require$_SERVER['DOCUMENT_ROOT'].'/controlleur_php.php';
+
+require($_SERVER['DOCUMENT_ROOT'].'/rooting.php');
 
 	// $URi = $_SERVER["REQUEST_URI"]; 
 	// $motif = "'/index\.php'"; 
@@ -32,9 +33,7 @@ require$_SERVER['DOCUMENT_ROOT'].'/controlleur_php.php';
 	<section id="main_page" class="row-fluid">
 	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
 		<div id="page_right">
-
- 		<?php require($_SERVER['DOCUMENT_ROOT']."/controlleur.php"); ?>
-
+ 		<?php  include($template); ?>
 		</div>
 	</section>
 	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
