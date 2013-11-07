@@ -39,5 +39,6 @@ require($_SERVER['DOCUMENT_ROOT'].'/routing.php');
 	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 	</div>
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/ressources/javascript.js"></script>
   </body>
 </html>
