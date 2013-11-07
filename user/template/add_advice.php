@@ -1,12 +1,13 @@
 <h3>Ajouter un conseil</h3>
-<form method="post" class="well form-inline" action="add_advice-<?php echo $id_member;?>-<?php echo $id_objective;?>.html">
-		<ul>
-			<?php foreach ($errors as $value): ?>
-				<li>
-					<h5><?php echo $value; ?></h5>
-				</li>
-			<?php endforeach ?>
-		</ul>
+<ul>
+	<?php foreach ($errors as $value): ?>
+		<li>
+			<h5><?php echo $value; ?></h5>
+		</li>
+	<?php endforeach ?>
+</ul>
+<form method="post" class="well form-inline" action="add_advice-<?php echo $id_member;?>.html">
+	<input type="hidden" name="id_objective" value="<?php echo $id_objective;?>" />
 	<p><label for="name_advice"/>Votre Conseil</label><br/>
 	<textarea id="name_advice" name="name_advice" rows=4 class="span5" required autofocus></textarea>
 	<br/><br/>

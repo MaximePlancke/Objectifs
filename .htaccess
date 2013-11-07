@@ -18,7 +18,6 @@ RewriteRule ^index\.html$   /index.php [L]
 # Page avec 1 paramètre :
 RewriteRule ^([a-z_]*)\.html$   ?page=$1 [L]
 
-
 # Page avec 2 paramètres (page / id_du_membre) :
 RewriteRule ^([a-z_]*)-([0-9]*)\.html$   ?page=$1&id=$2 [L]
 
