@@ -48,10 +48,10 @@ $config_routing = array(
 );
 
 $param_routing = $config_routing[$page];
-$module = $param_routing['module'];
-$action = $param_routing['action'];
+$module = $_SERVER['DOCUMENT_ROOT']."/".$param_routing['module'];
+$action = $param_routing['action'].".php";
 
-include ($_SERVER['DOCUMENT_ROOT']."/".$module."/controlleur/".$action.".php");
-$template = $_SERVER['DOCUMENT_ROOT']."/".$module."/template/".$action.".php";
+include ($module."/controlleur/".$action);
+$template = $module."/template/".$action;
 
 ?>
