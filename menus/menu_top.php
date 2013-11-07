@@ -8,7 +8,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 		<ul class="nav nav_top">
 			<li>
 				<div class="span1 img_menu_top">
-					<a href="/index.html">
+					<a href="index.html">
 						<p><img src="/ressources/images/home.png"></p>
 					</a>
 				</div>

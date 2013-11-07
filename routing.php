@@ -49,7 +49,7 @@ $config_routing = array(
     	'action' => 'new_objective',
     	'url' => 'new_objective.html'
   	),
-  	'' => array(
+  	'home' => array(
     	'module' => 'home',
     	'action' => 'home',
     	'url' => 'index.html'

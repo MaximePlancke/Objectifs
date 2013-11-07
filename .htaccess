@@ -13,7 +13,7 @@ RewriteEngine on
 #--------------------------------------------------
 
 # Index :
-RewriteRule ^index\.html$   /index.php [L]
+RewriteRule ^index\.html$   ?page=home [L]
 
 # Page avec 1 paramètre :
 RewriteRule ^([a-z_]*)\.html$   ?page=$1 [L]

@@ -11,7 +11,8 @@ $motif = "'/index\.php'";
 if (preg_match($motif,$URi)) { 
 	header("Status: 301 Moved Permanently"); 
 	header("Location: /index.html"); 
-	exit; } 
+	exit; 
+} 
 ?>
 
 <!DOCTYPE html>
