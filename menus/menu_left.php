@@ -26,22 +26,22 @@
 	</ul>
 
 	<?php if ($user_id): ?>
-	<h4>Fonctionnalités</h4>
-	<ul class="nav">
-		<li class="menu_responsive"><a href="add_friends.html">Gestion des amis</a></li>
-	</ul>
-	<h4>Objectifs</h4>
-	<ul class="nav">
-		<li class="menu_responsive"><a href="new_objective.html"><p>Nouveau Objectif</p></a></li>
-		<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif en cours</p></a></li>
-		<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif terminé</p></a></li>
-	</ul>
-	<h4>Amis</h4>
-	<ul class="nav">
-		<?php foreach ($list_friends as $datass): ?>
-			<li><?php echo $datass['pseudo'];?></li>
-		<?php endforeach; ?>
-	</ul>
+		<h4>Fonctionnalités</h4>
+		<ul class="nav">
+			<li class="menu_responsive"><a href="add_friends.html">Gestion des amis</a></li>
+		</ul>
+		<h4>Objectifs</h4>
+		<ul class="nav">
+			<li class="menu_responsive"><a href="new_objective.html"><p>Nouveau Objectif</p></a></li>
+			<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif en cours</p></a></li>
+			<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif terminé</p></a></li>
+		</ul>
+		<h4>Amis</h4>
+		<ul class="nav">
+			<?php foreach ($list_friends as $datass): ?>
+				<li><?php echo $datass['pseudo'];?></li>
+			<?php endforeach; ?>
+		</ul>
 	<?php endif ?>
 	<h4>Utilisateurs</h4>
 	<ul class="nav">

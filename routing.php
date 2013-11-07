@@ -1,7 +1,6 @@
 <?php 
 
-$page = isset($_GET['page']) ? $_GET['page'] : 'home' ; 
-$module = '/home';
+$page = isset($_GET['page']) ? $_GET['page'] : null ; 
 $template = null;
 
 $config_routing = array(
@@ -50,7 +49,7 @@ $config_routing = array(
     	'action' => 'new_objective',
     	'url' => 'new_objective.html'
   	),
-  	'home' => array(
+  	'' => array(
     	'module' => 'home',
     	'action' => 'home',
     	'url' => 'index.html'
