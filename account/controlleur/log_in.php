@@ -1,7 +1,5 @@
 <?php 
 
-$errors = array();
-
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$pseudo = $_POST['name_utilisateur'];
 	$password_hache = sha1($_POST['password_utilisateur']);

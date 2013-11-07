@@ -3,6 +3,9 @@
 	<?php foreach ($errors as $value): ?>
 	<h5><?php echo $value; ?></h5><br/>
 	<?php endforeach ?>
+	<?php foreach ($success as $value): ?>
+	<h5><?php echo $value; ?></h5><br/>
+	<?php endforeach ?>
 	<ul>
 		<?php foreach ($objectives as $datas): ?>
 			<li>

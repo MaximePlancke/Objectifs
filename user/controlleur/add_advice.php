@@ -1,6 +1,6 @@
 <?php
+
 $id_member = isset($_GET['id']) ? $_GET['id'] : null;
-$errors = array();
 $id_objective = isset($_GET['id_objective']) ? $_GET['id_objective'] : null;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){

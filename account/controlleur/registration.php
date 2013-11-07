@@ -1,7 +1,5 @@
 <?php
 
-$errors = array();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$name 		= isset($_POST['name_utilisateur']) ? $_POST['name_utilisateur'] : null;
 	$password 	= isset($_POST['password_utilisateur']) ? $_POST['password_utilisateur'] : null;

@@ -1,7 +1,5 @@
 <?php
 
-$errors = array();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$id_mem = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 	$name_obj = isset($_POST['name_obj']) ? $_POST['name_obj'] : null;

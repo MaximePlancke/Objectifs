@@ -1,5 +1,4 @@
 <?php
-$errors = array();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -20,10 +19,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		if ($id_friends_1 == $id_friends_2) {
 			array_push($errors, "Vous ne pouvez pas être ami avec vous même");
 		} elseif($count >= 1) {
-			// Pseudo déjà utilisé 
+			// name already used 
 			array_push($errors, "Vous êtes déjà ami"); 
 		} else {
-			//Ajout du lien d'amitié
+			//add friend link
 			$request = $bdd->prepare('INSERT INTO friends(id_friends_1, id_friends_2, accepted, date_friends) VALUES (:id_friends_1, :id_friends_2, 0, NOW())');
 			$request->execute(array(
 			    'id_friends_1' => $id_friends_1,
