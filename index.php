@@ -10,7 +10,7 @@ $URi = $_SERVER["REQUEST_URI"];
 $motif = "'/index\.php'"; 
 if (preg_match($motif,$URi)) { 
 	header("Status: 301 Moved Permanently"); 
-	header("Location: /index.html"); 
+	header("Location: /"); 
 	exit; 
 } 
 ?>

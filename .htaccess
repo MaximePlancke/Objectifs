@@ -26,3 +26,5 @@ RewriteRule ^([a-z_]*)-([0-9]*)-([0-9]*)\.html$   ?page=$1&id=$2&id_objective=$3
 
 # Page avec 4 paramètres (page / id_du_membre / id_de_lobjectif / action) :
 RewriteRule ^([a-z_]*)-([0-9]*)-([0-9]*)-([a-z_]*)\.html$   ?page=$1&id=$2&id_objective=$3&action=$4 [L]
+
+ErrorDocument 404 /erreur404.php
