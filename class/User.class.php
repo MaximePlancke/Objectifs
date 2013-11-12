@@ -31,8 +31,8 @@ class User
 
 	//SET
 	public function setId($id){
-
-		if (!is_int($id) OR $id < 0) {
+		$id = (int)($id);
+		if ($id < 0) {
 			trigger_error("ID non valide");
 		}
 		$this->_id = $id;

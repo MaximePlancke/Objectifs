@@ -8,15 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if ($name && $password && $password2 && $email){
 		if ($password == $password2) {
-			$password_hache = sha1($password);
-		 
-			$request = $bdd->prepare('INSERT INTO membres(pseudo, password, email, date_inscription) VALUES(:pseudo, :password, :email, NOW())');
-			$request->execute(array(
-			    'pseudo' => $name,
-			    'password' => $password_hache,
-			    'email' => $email));
-	        $request->closeCursor();
-	        header('Location:log_in.html');
+
+			$user = new User(array());
+			$user->setPseudo($name);
+			$user->setPassword($password);
+			$user->setEmail($email);
+
+			$manager = new UserManager($bdd);
+			$manager->add($user);
+	        header('Location:/account/login');
 	        exit();
 		} else {
 			array_push($errors, 'Les mots de passe doivent etre identiques');
