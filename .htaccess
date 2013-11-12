@@ -16,33 +16,36 @@ RewriteEngine on
 RewriteRule ^index\.html$   ?page=home [L]
 
 # Page connexion :
-RewriteRule ^account-login$   ?page=log_in [L]
+RewriteRule ^account/login$   ?page=log_in [L]
 
 # Page inscription :
-RewriteRule ^account-registration$   ?page=registration [L]
-
-# Page nouvel objectif :
-RewriteRule ^objective-new$   ?page=new_objective [L]
+RewriteRule ^account/registration$   ?page=registration [L]
 
 # Page logout :
-RewriteRule ^account-logout$   ?page=log_out [L]
+RewriteRule ^account/logout$   ?page=log_out [L]
+
+# Page delete_account :
+RewriteRule ^account/delete$   ?page=delete_account [L]
 
 # Page amis :
 RewriteRule ^users$   ?page=add_friends [L]
 
+# Page nouvel objectif :
+RewriteRule ^objective/new$   ?page=new_objective [L]
+
 # Page objectif actuel (page / id_du_membre) :
-RewriteRule ^objective-current-([0-9]*)$   ?page=current_obj&id=$1 [L]
+RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]
 
 # Page ajout conseil (page / id_du_membre) :
-RewriteRule ^add-advice-([0-9]*)$   ?page=add_advice&id=$1 [L]
+RewriteRule ^add/advice/([0-9]*)$   ?page=add_advice&id=$1 [L]
 
 # Page ajout conseil (page / id_du_membre) :
-RewriteRule ^add-advice-([0-9]*)-([0-9]*)$   ?page=add_advice&id=$1&id_objective=$2 [L]
+RewriteRule ^add/advice/([0-9]*)/([0-9]*)$   ?page=add_advice&id=$1&id_objective=$2 [L]
 
 # Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
-RewriteRule ^objective-current-([0-9]*)-([0-9]*)-([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
+RewriteRule ^current/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
 
 # Page direction vers page ajout conseil (page / id_du_membre / id_de_lobjectif) :
-RewriteRule ^current-obj-advices-([0-9]*)-([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
+RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
 
 # ErrorDocument 404 /erreur404.php

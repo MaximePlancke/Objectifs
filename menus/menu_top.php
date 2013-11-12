@@ -15,11 +15,11 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 			</li>
 			<li>
 				<div class="span2 text_menu_top">
-					<?php if ($user_id) {
+					<?php if ($user_id) :
 						echo ($_SESSION['pseudo']);
-					} else { ?>
-						<a class="" href='account-login'>Connexion</a>
-					<?php } ?>
+					else : ?>
+						<a class="" href='/account/login'>Connexion</a>
+					<?php endif ?>
 				</div>
 				<div class="span4 img_menu_top">
 					<form id="search" method="post" class="navbar-search pull-left" action="/">
@@ -36,7 +36,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 				</div>
 			</li>
 			<li>
-				<div class="span1"><a href="account-logout"><img class="img_menu_top" src="/ressources/images/logout.png"></a></div>
+				<div class="span1"><a href="/account/logout"><img class="img_menu_top" src="/ressources/images/logout.png"></a></div>
 			</li>
 			<?php 	endif  ?>
 		</ul>
