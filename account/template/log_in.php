@@ -1,5 +1,5 @@
 <h4>Connection</h4>
-<form method="post" class="well form-inline" action="log_in.html">
+<form method="post" class="well form-inline" action="account-login">
 	<?php if(count($errors) > 0): ?>
 	<ul>
 		<?php foreach ($errors as $value): ?>
@@ -18,5 +18,5 @@
 		<input type="submit" value="Connection" class="btn btn-primary"/></p>
 		<h6><a href="">Mot de passe oublié?</a></h6>
 	</form>
-	<h4><a href="registration.html">Nouvelle inscription</a></h4>
+	<h4><a href="account-registration">Nouvelle inscription</a></h4>
 			
