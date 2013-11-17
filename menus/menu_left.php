@@ -24,9 +24,9 @@
 		</ul>
 		<h4>Objectifs</h4>
 		<ul class="nav">
-			<li class="menu_responsive"><a href="/objective/new">Nouveau Objectif</a></li>
-			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectif en cours</a></li>
-			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectif terminé</a></li>
+			<li class="menu_responsive"><a href="/objective/new">Nouvel Objectif</a></li>
+			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectifs en cours</a></li>
+			<li class="menu_responsive"><a href="/done/objective/<?php echo $user_id?>">Objectifs terminés</a></li>
 		</ul>
 		<h4>Amis</h4>
 		<ul class="nav">

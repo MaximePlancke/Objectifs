@@ -7,18 +7,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$email 		= isset($_POST['email_utilisateur']) ? $_POST['email_utilisateur'] : null;
 
 	if ($name && $password && $password2 && $email){
-		if ($password == $password2) {
-			$user = new User(array());
-			$user->setPseudo($name);
-			$user->setPassword($password);
-			$user->setEmail($email);
+		//check same name
+		$request = $bdd->prepare('SELECT id, pseudo FROM membres WHERE pseudo = :pseudo');
+		$request->execute(array(
+	    	'pseudo' => $name));
+		$count_pseudo = $request->rowCount();
+		$request->closeCursor();
+		//check same email
+		$request = $bdd->prepare('SELECT id, email FROM membres WHERE email = :email');
+		$request->execute(array(
+	    	'email' => $email));
+		$count_email = $request->rowCount();
+		$request->closeCursor();
 
-			$manager = new UserManager($bdd);
-			$manager->add($user);
-	        header('Location:/account/login');
-	        exit();
-		} else {
-			array_push($errors, 'Les mots de passe doivent etre identiques');
+		if($count_pseudo >= 1){
+			array_push($errors, 'Le pseudo est déjà utilisé');
+		}elseif ($count_email >= 1) {
+			array_push($errors, 'L\'email est déjà utilisé');
+		}else{
+			if ($password == $password2) {
+				$user = new User(array());
+				$user->setPseudo($name);
+				$user->setPassword($password);
+				$user->setEmail($email);
+
+				$manager = new UserManager($bdd);
+				$manager->add($user);
+		        header('Location:/account/login');
+		        exit();
+			} else {
+				array_push($errors, 'Les mots de passe doivent etre identiques');
+			}
 		}
 	}
 }

@@ -14,5 +14,5 @@
 		<br/><br/>
 		<input type="submit" value="Valider le conseil" class="btn btn-primary"/></p>
 	</form>
-	<a href="/current/objective/<?php echo $id_member?>">Revenir aux objectifs</a>
+	<a href="/current/advices/<?php echo $id_member;?>/<?php echo $id_objective;?>">Voir les conseils</a>
 </div>
