@@ -18,35 +18,30 @@
 ?>
 
 <div id="menu_left">
-	<h4>Mon Compte</h4>
-	<ul class="nav">
-		<li class="menu_responsive"><a href="log_in.html"><p>Connexion</p></a></li>
-		<li class="menu_responsive"><a href="registration.html"><p>Inscription</p></a></li>
-		<li class="menu_responsive"><a href="delete_account.html"><p>Supprimer son compte</p></a></li>
-	</ul>
-
-	<?php if ($user_id): ?>
 		<h4>Fonctionnalités</h4>
 		<ul class="nav">
-			<li class="menu_responsive"><a href="add_friends.html">Gestion des amis</a></li>
+			<li class="menu_responsive"><a href="/users">Gestion des amis</a></li>
 		</ul>
 		<h4>Objectifs</h4>
 		<ul class="nav">
-			<li class="menu_responsive"><a href="new_objective.html"><p>Nouveau Objectif</p></a></li>
-			<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif en cours</p></a></li>
-			<li class="menu_responsive"><a href="current_obj-<?php echo $user_id?>.html"><p>Objectif terminé</p></a></li>
+			<li class="menu_responsive"><a href="/objective/new">Nouvel Objectif</a></li>
+			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectifs en cours</a></li>
+			<li class="menu_responsive"><a href="/done/objective/<?php echo $user_id?>">Objectifs terminés</a></li>
 		</ul>
 		<h4>Amis</h4>
 		<ul class="nav">
-			<?php foreach ($list_friends as $datass): ?>
-				<li><?php echo $datass['pseudo'];?></li>
+			<?php foreach ($list_friends as $datas): ?>
+				<li><a href="/current/objective/<?php echo $datas['id_friends_2']?>"><?php echo $datas['pseudo'];?></a></li>
 			<?php endforeach; ?>
 		</ul>
-	<?php endif ?>
+		<h4>Mon Compte</h4>
+		<ul class="nav">
+			<li id="action_delete_account" class="menu_responsive"><a href="/account/delete">Supprimer son compte</a></li>
+		</ul>
 	<h4>Utilisateurs</h4>
 	<ul class="nav">
 		<?php foreach ($list_users as $datas): ?>
-			<li><a href="current_obj-<?php echo $datas['id']?>.html"><?php echo $datas['pseudo'];?></a></li>
+			<li><?php echo $datas['pseudo'];?></li>
 		<?php endforeach;?>
 	</ul>
 </div>
