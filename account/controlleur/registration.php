@@ -7,21 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$email 		= isset($_POST['email_utilisateur']) ? $_POST['email_utilisateur'] : null;
 
 	if ($name && $password && $password2 && $email){
-<<<<<<< HEAD
-		if ($password == $password2) {
-			$password_hache = sha1($password);
-		 
-			$request = $bdd->prepare('INSERT INTO membres(pseudo, password, email, date_inscription) VALUES(:pseudo, :password, :email, NOW())');
-			$request->execute(array(
-			    'pseudo' => $name,
-			    'password' => $password_hache,
-			    'email' => $email));
-	        $request->closeCursor();
-	        header('Location:/account/login'); 
-	        exit();
-		} else {
-			array_push($errors, 'Les mots de passe doivent être identiques');
-=======
 		//check same name
 		$request = $bdd->prepare('SELECT id, pseudo FROM membres WHERE pseudo = :pseudo');
 		$request->execute(array(
@@ -53,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			} else {
 				array_push($errors, 'Les mots de passe doivent etre identiques');
 			}
->>>>>>> opti/css-structure-du-site
 		}
 	}
 }
