@@ -1,6 +1,11 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
+function loadClass($class) {
+  require $_SERVER['DOCUMENT_ROOT'].'/class/' . $class . '.class.php';
+}
+spl_autoload_register('loadClass');
+
 $errors = array();
 $success = array();
 
@@ -22,11 +27,11 @@ if (preg_match($motif,$URi)) {
 	<title>Motivation</title>
 	<?php //Open the window to the screen size?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="ressources/style.css">
+	<link rel="stylesheet" type="text/css" href="/ressources/style.css">
 	<?php //Integration CSS Bootstrap, Font-Awesome and Polices ?>
-	<link href="ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
-	<link href="ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
 </head>
   <body>

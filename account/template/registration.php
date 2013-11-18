@@ -7,7 +7,7 @@
 			</li>
 		<?php endforeach ?>
 	</ul>
-<form method="post" class="well form-inline" action="registration.html">
+<form method="post" class="well form-inline" action="/account/registration">
 	<p><label for="name_utilisateur"/>Nom utilisateur</label><br/>
 	<input type="text" id="name_utilisateur" name="name_utilisateur" class=autofocus/>
 	<br/><br/>

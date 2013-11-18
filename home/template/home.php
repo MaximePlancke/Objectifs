@@ -1,6 +1,5 @@
 <h1>Bienvenue sur ObjectiveShare.com</h1>
 <h4>ObjectiveShare.com est un site de partage d'objectifs. Ainsi grâce à votre volonté et à un réseau de personnes motivé, aidez et faites vous aider pour réaliser vos rêves</h4>
-<img src="/ressources/images/bubble.png">
 <li>
 	<h4>Finir ce site internet</h4>
 </li>

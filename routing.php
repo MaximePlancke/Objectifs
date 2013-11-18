@@ -7,47 +7,47 @@ $config_routing = array(
   	'log_in' => array(
     	'module' => 'account',
     	'action' => 'log_in',
-    	'url' => 'log_in.html'
+    	'url' => 'account/login'
   	),
   	'registration' => array(
     	'module' => 'account',
     	'action' => 'registration',
-    	'url' => 'registration.html'
+    	'url' => 'account/registration'
   	),
   	'log_out' => array(
     	'module' => 'account',
     	'action' => 'log_out',
-    	'url' => 'log_out.html'
+    	'url' => 'account/logout'
   	),
   	'delete_account' => array(
     	'module' => 'account',
     	'action' => 'delete_account',
-    	'url' => 'delete_account.html'
+    	'url' => 'account/delete_account'
   	),
   	'current_obj' => array(
     	'module' => 'user',
     	'action' => 'current_obj',
-    	'url' => '^current_obj-([0-9]*)\.html$'
+    	'url' => 'user/current_obj-([0-9]*)'
   	),
   	'current_obj_advices' => array(
     	'module' => 'user',
     	'action' => 'current_obj_advices',
-    	'url' => 'current_obj_advices.html'
+    	'url' => 'user/current_obj_advices'
   	),
     'add_advice' => array(
     	'module' => 'user',
     	'action' => 'add_advice',
-    	'url' => 'add_advice.html'
+    	'url' => 'user/add_advice'
   	),
   	'add_friends' => array(
     	'module' => 'user',
     	'action' => 'add_friends',
-    	'url' => 'add_friends.html'
+    	'url' => 'user/add_friends'
   	),
   	'new_objective' => array(
     	'module' => 'objective',
     	'action' => 'new_objective',
-    	'url' => 'new_objective.html'
+    	'url' => 'objective/new_objective'
   	),
   	'home' => array(
     	'module' => 'home',

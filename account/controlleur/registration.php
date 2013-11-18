@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			    'password' => $password_hache,
 			    'email' => $email));
 	        $request->closeCursor();
-	        header('Location:log_in.html');
+	        header('Location:/account/login'); 
 	        exit();
 		} else {
-			array_push($errors, 'Les mots de passe doivent etre identiques');
+			array_push($errors, 'Les mots de passe doivent être identiques');
 		}
 	}
 }
