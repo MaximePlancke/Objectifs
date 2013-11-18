@@ -18,6 +18,7 @@
 ?>
 
 <div id="menu_left">
+<<<<<<< HEAD
 	<h4>Mon Compte</h4>
 	<ul class="nav">
 		<li class="menu_responsive"><a href="/account/login">Connexion</a></li>
@@ -26,15 +27,23 @@
 	</ul>
 
 	<?php if ($user_id): ?>
+=======
+>>>>>>> opti/css-structure-du-site
 		<h4>Fonctionnalités</h4>
 		<ul class="nav">
 			<li class="menu_responsive"><a href="/users">Gestion des amis</a></li>
 		</ul>
 		<h4>Objectifs</h4>
 		<ul class="nav">
+<<<<<<< HEAD
 			<li class="menu_responsive"><a href="/objective/new">Nouveau Objectif</a></li>
 			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectif en cours</a></li>
 			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectif terminé</a></li>
+=======
+			<li class="menu_responsive"><a href="/objective/new">Nouvel Objectif</a></li>
+			<li class="menu_responsive"><a href="/current/objective/<?php echo $user_id?>">Objectifs en cours</a></li>
+			<li class="menu_responsive"><a href="/done/objective/<?php echo $user_id?>">Objectifs terminés</a></li>
+>>>>>>> opti/css-structure-du-site
 		</ul>
 		<h4>Amis</h4>
 		<ul class="nav">
@@ -42,7 +51,10 @@
 				<li><a href="/current/objective/<?php echo $datas['id_friends_2']?>"><?php echo $datas['pseudo'];?></a></li>
 			<?php endforeach; ?>
 		</ul>
-	<?php endif ?>
+		<h4>Mon Compte</h4>
+		<ul class="nav">
+			<li id="action_delete_account" class="menu_responsive"><a href="/account/delete">Supprimer son compte</a></li>
+		</ul>
 	<h4>Utilisateurs</h4>
 	<ul class="nav">
 		<?php foreach ($list_users as $datas): ?>

@@ -1,4 +1,5 @@
-<h2>Qui voulez vous ajouter?</h2>
+<div class="page_right_padding">
+	<h2>Qui voulez vous ajouter?</h2>
 	<ul>
 		<?php foreach ($errors as $value): ?> 
 			<li>
@@ -18,3 +19,4 @@
 		</li>
 		<?php endforeach ?>					
 	</ul>
+</div>

@@ -29,6 +29,11 @@ $config_routing = array(
     	'action' => 'current_obj',
     	'url' => 'user/current_obj-([0-9]*)'
   	),
+    'done_obj' => array(
+      'module' => 'user',
+      'action' => 'done_obj',
+      'url' => 'user/done_obj-([0-9]*)'
+    ),
   	'current_obj_advices' => array(
     	'module' => 'user',
     	'action' => 'current_obj_advices',
@@ -39,10 +44,15 @@ $config_routing = array(
     	'action' => 'add_advice',
     	'url' => 'user/add_advice'
   	),
-  	'add_friends' => array(
+  	'list_users' => array(
     	'module' => 'user',
+<<<<<<< HEAD
     	'action' => 'add_friends',
     	'url' => 'user/add_friends'
+=======
+    	'action' => 'list_users',
+    	'url' => 'user/list_users'
+>>>>>>> opti/css-structure-du-site
   	),
   	'new_objective' => array(
     	'module' => 'objective',

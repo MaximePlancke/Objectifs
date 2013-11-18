@@ -14,6 +14,16 @@ textarea {
 	resize : none;
 }
 
+.big_title {
+	margin: center;
+	text-align: center;
+	font-size: 60px;
+	padding: 20px 0px 30px 0px;
+}
+
+#test {
+	visibility: hidden;
+}
 /*General*/
 
 #container-fluid {
@@ -59,7 +69,6 @@ textarea {
 
 #main_page {
 	height: 650px;
-	width: 100%;
 }
 
 #menu_left {
@@ -75,15 +84,32 @@ textarea {
 }
 
 #page_right {
-	padding: 20px 20px 10px 30px;
 	height: 100%;
-	margin-left: 200px;
 	overflow: auto;
+}
+
+.page_right_padding {
+	padding: 20px 20px 10px 30px;
+}
+
+.login_registration_form {
+	background-color: #E35C4A;
+	color: black;
+	text-align: center;
+	margin: 0px 100px 0px 100px;
+}
+
+#page_connexion_color {
+	padding: 20px 20px 10px 30px;
+	background-color: #DF5A49;
+	color : white;
+	height: 100%;
+	padding-top: 50px;
 }
 
 footer {
 	box-shadow: 1px 1px 12px #555;
-	background: #073A59;
+	background: black;
 	color: white;
 	padding: 10px 10px 10px 10px;
 	margin-top: 30px;
