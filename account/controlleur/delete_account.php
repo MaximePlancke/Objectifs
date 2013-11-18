@@ -8,7 +8,7 @@ if ($user_id) {
 
 	$manager = new UserManager($bdd);
 	$manager->delete($user);
-
+	
 	$_SESSION = array();
 	session_destroy();
 	header('Location:/account/registration');

@@ -15,16 +15,43 @@ RewriteEngine on
 # Index :
 RewriteRule ^index\.html$   ?page=home [L]
 
-# Page avec 1 paramètre :
-RewriteRule ^([a-z_]*)\.html$   ?page=$1 [L]
+# Page connexion :
+RewriteRule ^account/login$   ?page=log_in [L]
 
-# Page avec 2 paramètres (page / id_du_membre) :
-RewriteRule ^([a-z_]*)-([0-9]*)\.html$   ?page=$1&id=$2 [L]
+# Page inscription :
+RewriteRule ^account/registration$   ?page=registration [L]
 
-# Page avec 3 paramètres (page / id_du_membre / id_de_lobjectif) :
-RewriteRule ^([a-z_]*)-([0-9]*)-([0-9]*)\.html$   ?page=$1&id=$2&id_objective=$3 [L]
+# Page logout :
+RewriteRule ^account/logout$   ?page=log_out [L]
 
-# Page avec 4 paramètres (page / id_du_membre / id_de_lobjectif / action) :
-RewriteRule ^([a-z_]*)-([0-9]*)-([0-9]*)-([a-z_]*)\.html$   ?page=$1&id=$2&id_objective=$3&action=$4 [L]
+# Page delete_account :
+RewriteRule ^account/delete$   ?page=delete_account [L]
 
-ErrorDocument 404 /erreur404.php
+# Page amis :
+RewriteRule ^users$   /?page=list_users [L]
+
+# Page nouvel objectif :
+RewriteRule ^objective/new$   ?page=new_objective [L]
+
+# Page objectif actuel (page / id_du_membre) :
+RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]
+
+# Page objectif fini (page / id_du_membre) :
+RewriteRule ^done/objective/([0-9]*)$   ?page=done_obj&id=$1 [L]
+
+# Page ajout conseil (page / id_du_membre) :
+RewriteRule ^add/advice/([0-9]*)$   ?page=add_advice&id=$1 [L]
+
+# Page ajout conseil (page / id_du_membre) :
+RewriteRule ^add/advice/([0-9]*)/([0-9]*)$   ?page=add_advice&id=$1&id_objective=$2 [L]
+
+# Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
+RewriteRule ^current/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
+
+# Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
+RewriteRule ^done/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=done_obj&id=$1&id_objective=$2&action=$3 [L]
+
+# Page direction vers page ajout conseil (page / id_du_membre / id_de_lobjectif) :
+RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
+
+# ErrorDocument 404 /erreur404.php
