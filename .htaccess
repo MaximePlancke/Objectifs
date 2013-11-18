@@ -28,7 +28,7 @@ RewriteRule ^account/logout$   ?page=log_out [L]
 RewriteRule ^account/delete$   ?page=delete_account [L]
 
 # Page amis :
-RewriteRule ^users$   /?page=add_friends [L]
+RewriteRule ^users$   /?page=list_users [L]
 
 # Page nouvel objectif :
 RewriteRule ^objective/new$   ?page=new_objective [L]

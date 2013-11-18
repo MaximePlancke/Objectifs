@@ -44,10 +44,10 @@ $config_routing = array(
     	'action' => 'add_advice',
     	'url' => 'user/add_advice'
   	),
-  	'add_friends' => array(
+  	'list_users' => array(
     	'module' => 'user',
-    	'action' => 'add_friends',
-    	'url' => 'user/add_friends'
+    	'action' => 'list_users',
+    	'url' => 'user/list_users'
   	),
   	'new_objective' => array(
     	'module' => 'objective',
