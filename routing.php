@@ -46,8 +46,13 @@ $config_routing = array(
   	),
   	'list_users' => array(
     	'module' => 'user',
+<<<<<<< HEAD
+    	'action' => 'add_friends',
+    	'url' => 'user/add_friends'
+=======
     	'action' => 'list_users',
     	'url' => 'user/list_users'
+>>>>>>> opti/css-structure-du-site
   	),
   	'new_objective' => array(
     	'module' => 'objective',

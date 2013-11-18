@@ -18,11 +18,23 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 			<?php if ($user_id) : ?>
 			<li>
 				<div class="span2 text_menu_top">
+<<<<<<< HEAD
+					<?php if ($user_id) :
+						echo ($_SESSION['pseudo']);
+					else : ?>
+						<a class="" href='/account/login'>Connexion</a>
+					<?php endif ?>
+				</div>
+				<div class="span4 img_menu_top">
+					<form id="search" method="post" class="navbar-search pull-left" action="/">
+						<input class="search_data search-query" name="search" type="text" placeholder="Rechercher" />
+=======
 					<?php echo ($_SESSION['pseudo']); ?>
 				</div>
 				<div class="span4 img_menu_top">
 					<form id="search" method="post" class="form-search navbar-search pull-left" action="/users">
 						<input class="search_data search-query" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
+>>>>>>> opti/css-structure-du-site
 					</form>	
 				</div>
 			</li>

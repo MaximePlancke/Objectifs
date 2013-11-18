@@ -28,7 +28,11 @@ RewriteRule ^account/logout$   ?page=log_out [L]
 RewriteRule ^account/delete$   ?page=delete_account [L]
 
 # Page amis :
+<<<<<<< HEAD
+RewriteRule ^users$   ?page=add_friends [L]
+=======
 RewriteRule ^users$   /?page=list_users [L]
+>>>>>>> opti/css-structure-du-site
 
 # Page nouvel objectif :
 RewriteRule ^objective/new$   ?page=new_objective [L]
@@ -36,9 +40,12 @@ RewriteRule ^objective/new$   ?page=new_objective [L]
 # Page objectif actuel (page / id_du_membre) :
 RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]
 
+<<<<<<< HEAD
+=======
 # Page objectif fini (page / id_du_membre) :
 RewriteRule ^done/objective/([0-9]*)$   ?page=done_obj&id=$1 [L]
 
+>>>>>>> opti/css-structure-du-site
 # Page ajout conseil (page / id_du_membre) :
 RewriteRule ^add/advice/([0-9]*)$   ?page=add_advice&id=$1 [L]
 
@@ -48,9 +55,12 @@ RewriteRule ^add/advice/([0-9]*)/([0-9]*)$   ?page=add_advice&id=$1&id_objective
 # Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
 RewriteRule ^current/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
 
+<<<<<<< HEAD
+=======
 # Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
 RewriteRule ^done/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=done_obj&id=$1&id_objective=$2&action=$3 [L]
 
+>>>>>>> opti/css-structure-du-site
 # Page direction vers page ajout conseil (page / id_du_membre / id_de_lobjectif) :
 RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
 

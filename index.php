@@ -1,10 +1,17 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
+<<<<<<< HEAD
+function loadClass($class) {
+  require $_SERVER['DOCUMENT_ROOT'].'/class/' . $class . '.class.php';
+}
+spl_autoload_register('loadClass');
+=======
 function chargerClasse($classe) {
   require $_SERVER['DOCUMENT_ROOT'].'/class/' . $classe . '.class.php';
 }
 spl_autoload_register('chargerClasse');
+>>>>>>> opti/css-structure-du-site
 
 $errors = array();
 $success = array();
