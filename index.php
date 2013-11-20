@@ -1,10 +1,10 @@
 <?php 
 require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
-function chargerClasse($classe) {
-  require $_SERVER['DOCUMENT_ROOT'].'/class/' . $classe . '.class.php';
+function loadClass($class) {
+  require $_SERVER['DOCUMENT_ROOT'].'/class/' . $class . '.class.php';
 }
-spl_autoload_register('chargerClasse');
+spl_autoload_register('loadClass');
 
 $errors = array();
 $success = array();

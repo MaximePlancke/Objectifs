@@ -14,7 +14,7 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 				</div>
 			</li>
 
-			<?php //Menu when the user is online ?>
+			<?php //Display menu when the user is online ?>
 			<?php if ($user_id) : ?>
 			<li>
 				<div class="span2 text_menu_top">

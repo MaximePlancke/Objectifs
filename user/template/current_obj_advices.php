@@ -1,7 +1,7 @@
 <div class="page_right_padding">
-	<?php foreach ($name_objective as $datas) { ?>
+	<?php foreach ($objective_name as $datas): ?>
 		<h3><?php echo $datas['name_obj'];?></h3>
-	<?php } ?>
+	<?php endforeach; ?>
 	<div>
 		<ul>
 			<?php foreach ($advices as $datas): ?>

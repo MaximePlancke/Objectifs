@@ -9,10 +9,10 @@
 			<?php endforeach; ?>
 		</ul>
 		<?php endif; ?>
-			<label for="name_utilisateur"/>Nom utilisateur</label><br/>
-			<input type="text" id="name_utilisateur" name="name_utilisateur" class=autofocus required/><br/><br/>
-			<label for="password_utilisateur">Mot de passe</label><br/>
-			<input type="password" id="password_utilisateur" name="password_utilisateur" class=autofocus required/><br/><br/>
+			<label for="username"/>Nom utilisateur</label><br/>
+			<input type="text" id="username" name="username" class=autofocus required/><br/><br/>
+			<label for="password_user">Mot de passe</label><br/>
+			<input type="password" id="password_user" name="password_user" class=autofocus required/><br/><br/>
 			<input type="submit" value="Connection" class="btn btn-primary"/>
 			<h6><a href="">Mot de passe oublié?</a></h6>
 			<h4><a href="/account/registration">Nouvelle inscription</a></h4>
