@@ -14,6 +14,6 @@ $advices = $request->fetchAll();
 $request->closeCursor();
 $request = $bdd->prepare('SELECT name_obj FROM objectifs WHERE id = ?');
 $request->execute(array($id_objective));
-$name_objective = $request->fetchAll();
+$objective_name = $request->fetchAll();
 $request->closeCursor();
 ?>

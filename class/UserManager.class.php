@@ -37,7 +37,7 @@ class UserManager
 		echo "blablaba".$user->getId();
 	}
 
-	public function modify(User $user) {
+	public function update(User $user) {
 		
 	}
 

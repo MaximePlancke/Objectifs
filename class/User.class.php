@@ -1,6 +1,6 @@
 <?php 
 
-class User
+class User extends UserManager
 {
 
 	private $_id;
@@ -9,12 +9,12 @@ class User
 	private $_email;
 	private $_dateInscription;
 	
-	public function __construct(array $donnees) {	
-		$this->hydrate($donnees);
+	public function __construct(array $datas = array()) {	
+		$this->hydrate($datas);
 	}
 
-	public function hydrate(array $donnees) {
-		foreach ($donnees as $key => $value) {
+	public function hydrate(array $datas = array()) {
+		foreach ($datas as $key => $value) {
     		$method = 'set'.ucfirst($key);
          	if (method_exists($this, $method)) {
      			$this->$method($value);
@@ -48,8 +48,8 @@ class User
 
 	public function setEmail($email){
 
-		$Syntaxe='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';  
-	   	if(!preg_match($Syntaxe,$email)) {  
+		$regex = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';  
+	   	if(!preg_match($regex,$email)) {  
 	    	trigger_error("Email non valide"); 
 	    } else {
 	    	$this->_email = $email;

@@ -18,7 +18,7 @@ RewriteRule ^index\.html$   ?page=home [L]
 # Page connexion :
 RewriteRule ^account/login$   ?page=log_in [L]
 
-# Page inscription :
+# Page registration :
 RewriteRule ^account/registration$   ?page=registration [L]
 
 # Page logout :
@@ -27,31 +27,31 @@ RewriteRule ^account/logout$   ?page=log_out [L]
 # Page delete_account :
 RewriteRule ^account/delete$   ?page=delete_account [L]
 
-# Page amis :
+# Page users :
 RewriteRule ^users$   /?page=list_users [L]
 
-# Page nouvel objectif :
+# Page new objective :
 RewriteRule ^objective/new$   ?page=new_objective [L]
 
-# Page objectif actuel (page / id_du_membre) :
+# Page current objective (page / id_member) :
 RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]
 
-# Page objectif fini (page / id_du_membre) :
+# Page done objective (page / id_member) :
 RewriteRule ^done/objective/([0-9]*)$   ?page=done_obj&id=$1 [L]
 
-# Page ajout conseil (page / id_du_membre) :
+# Page add advice (page / id_member) :
 RewriteRule ^add/advice/([0-9]*)$   ?page=add_advice&id=$1 [L]
 
-# Page ajout conseil (page / id_du_membre) :
+# Page add advice (page / id_member) :
 RewriteRule ^add/advice/([0-9]*)/([0-9]*)$   ?page=add_advice&id=$1&id_objective=$2 [L]
 
-# Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
+# Page modif objective (page / id_member / id_objective / action) :
 RewriteRule ^current/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
 
-# Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
+# Page modif objective (page / id_member / id_objective / action) :
 RewriteRule ^done/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=done_obj&id=$1&id_objective=$2&action=$3 [L]
 
-# Page direction vers page ajout conseil (page / id_du_membre / id_de_lobjectif) :
+# Page current advice (page / id_member / id_objective) :
 RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
 
 # ErrorDocument 404 /erreur404.php
