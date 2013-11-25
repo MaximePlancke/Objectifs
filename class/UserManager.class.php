@@ -26,15 +26,13 @@ class UserManager
     	$request->closeCursor();
 	}
 
-	public function read(User $user) {
+	public function read() {
 		$request = $this->_bdd->prepare('SELECT id FROM membres WHERE pseudo = :pseudo AND password = :password');
 		$request->execute(array(
-	    	'pseudo' => $user->getPseudo(),
-	    	'password' => $user->getPassword()));
+	    	'pseudo' => $this->getPseudo(),
+	    	'password' => $this->getPassword()));
 		$donnees = $request->fetch();
-		// return new User($donnees);
-		// var_dump($user);
-		// echo "blablaba".$user->getId();
+		return $donnees['id'];
 	}
 
 	public function update(User $user) {
