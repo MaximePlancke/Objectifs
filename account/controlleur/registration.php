@@ -6,33 +6,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$password2 	= isset($_POST['password_utilisateur2']) ? $_POST['password_utilisateur2'] : null;
 	$email 		= isset($_POST['email_utilisateur']) ? $_POST['email_utilisateur'] : null;
 
+	$user = new User();
+	$user->setPseudo($name);
+	$user->setPassword($password);
+	$user->setEmail($email);
+	$user->setDb($bdd);
+
 	if ($name && $password && $password2 && $email){
-		//check same name
-		$request = $bdd->prepare('SELECT id, pseudo, email FROM membres WHERE pseudo = :pseudo OR email = :email');
-		$request->execute(array(
-	    	'pseudo' => $name,
-			'email' => $email));
-		$check_unique = $request->fetchAll();
-		$count = $request->rowCount();
-		$request->closeCursor();
-
-		if($count >= 1){
-			foreach ($check_unique as $key => $value) {
-				if ($value['email'] == $email) {
-					array_push($errors, 'L\'email est déjà utilisé');
-				}
-				if ($value['pseudo'] == $name) {
-					array_push($errors, 'Le pseudo est déjà utilisé');
-				}
-			}
-		}else {
+		$check_unique = $user->checkUniqueRegistration($user);
+		if ($check_unique) {
+			array_push($errors, $check_unique);
+		} else {
 			if ($password == $password2) {
-				$user = new User();
-				$user->setPseudo($name);
-				$user->setPassword($password);
-				$user->setEmail($email);
-
-				$user->setDb($bdd);
 				$user->add($user);
 		    	header('Location:/account/login');
 		    	exit();

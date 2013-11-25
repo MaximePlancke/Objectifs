@@ -32,13 +32,33 @@ class UserManager
 	    	'pseudo' => $user->getPseudo(),
 	    	'password' => $user->getPassword()));
 		$donnees = $request->fetch();
-		return new User($donnees);
-		var_dump($user);
-		echo "blablaba".$user->getId();
+		// return new User($donnees);
+		// var_dump($user);
+		// echo "blablaba".$user->getId();
 	}
 
 	public function update(User $user) {
 		
+	}
+
+	public function checkUniqueRegistration(User $user) {
+		$request = $this->_bdd->prepare('SELECT id, pseudo, email FROM membres WHERE pseudo = :pseudo OR email = :email');
+		$request->execute(array(
+	    	'pseudo' => $user->getPseudo(),
+			'email' => $user->getEmail()));
+		$check_unique = $request->fetchAll();
+		$count = $request->rowCount();
+		$request->closeCursor();
+		if($count >= 1){
+			foreach ($check_unique as $value) {
+				if ($value['email'] == $user->getEmail()) {
+					return 'L\'email est déjà utilisé';
+				}
+				if ($value['pseudo'] == $user->getPseudo()) {
+					return 'Le pseudo est déjà utilisé';
+				}
+			}
+		}
 	}
 
 }
