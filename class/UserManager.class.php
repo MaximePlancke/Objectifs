@@ -42,6 +42,7 @@ class UserManager
 	}
 
 	public function checkUniqueRegistration(User $user) {
+		$errors = NULL;
 		$request = $this->_bdd->prepare('SELECT id, pseudo, email FROM membres WHERE pseudo = :pseudo OR email = :email');
 		$request->execute(array(
 	    	'pseudo' => $user->getPseudo(),
@@ -52,12 +53,13 @@ class UserManager
 		if($count >= 1){
 			foreach ($check_unique as $value) {
 				if ($value['email'] == $user->getEmail()) {
-					return 'L\'email est déjà utilisé';
+					$errors = $errors . 'L\'email est déjà utilisé </br>';
 				}
 				if ($value['pseudo'] == $user->getPseudo()) {
-					return 'Le pseudo est déjà utilisé';
+					$errors = $errors . 'Le pseudo est déjà utilisé';
 				}
 			}
+			return $errors;
 		}
 	}
 
