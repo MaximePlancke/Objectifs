@@ -6,8 +6,8 @@ if ($user_id) {
 	$user = new User();
 	$user->setId($user_id);
 
-	$manager = new UserManager($bdd);
-	$manager->delete($user);
+	$user->setDb($bdd);
+	$user->delete($user);
 	
 	$_SESSION = array();
 	session_destroy();

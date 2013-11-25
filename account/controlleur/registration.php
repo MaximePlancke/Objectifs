@@ -12,20 +12,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$request->execute(array(
 	    	'pseudo' => $name,
 			'email' => $email));
+		$check_unique = $request->fetchAll();
 		$count = $request->rowCount();
 		$request->closeCursor();
 
 		if($count >= 1){
-			array_push($errors, 'Le pseudo ou l\'email est déjà utilisé');
-		}else{
+			foreach ($check_unique as $key => $value) {
+				if ($value['email'] == $email) {
+					array_push($errors, 'L\'email est déjà utilisé');
+				}
+				if ($value['pseudo'] == $name) {
+					array_push($errors, 'Le pseudo est déjà utilisé');
+				}
+			}
+		}else {
 			if ($password == $password2) {
 				$user = new User();
 				$user->setPseudo($name);
 				$user->setPassword($password);
 				$user->setEmail($email);
 
-				$manager = new UserManager($bdd);
-				$manager->add($user);
+				$user->setDb($bdd);
+				$user->add($user);
 		    	header('Location:/account/login');
 		    	exit();
 			} else {
