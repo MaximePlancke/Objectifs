@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$user->setDb($bdd);
 
 	if ($name && $password && $password2 && $email){
-		$check_unique = $user->checkUniqueRegistration($user);
+		$check_unique = $user->checkUniqueRegistration();
 		if ($check_unique) {
 			array_push($errors, $check_unique);
 		} else {
 			if ($password == $password2) {
-				$user->add($user);
+				$user->add();
 		    	header('Location:/account/login');
 		    	exit();
 			} else {

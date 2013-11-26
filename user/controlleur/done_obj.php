@@ -3,22 +3,30 @@
 $id_member = $_GET["id"];
 $id_objective = isset($_GET['id_objective']) ? $_GET['id_objective'] : null;
 
+$objective = new Objective();
+$objective->setIdMember($id_member);
+$objective->setId($id_objective);
+$objective->setDb($bdd);
+
 //delete objetive
 if ($id_objective AND $_GET['action'] == "delete") {
 	if ($id_member != $_SESSION['id']) {
 		array_push($errors, "Vous n'avez pas les droits pour cette action");
 	}else{
-		$request = $bdd->prepare('DELETE FROM objectifs WHERE id = ?');
-		$request->execute(array($id_objective));
-		$delete_objective = $request->fetchAll();
+		$objective->delete();
 		array_push($success, "l'objectif a été supprimé");
-		$request->closeCursor();
+	}
+}
+
+if ($id_objective AND $_GET['action'] == "obj_modif") {
+	if ($id_member != $_SESSION['id']) {
+			array_push($errors, "Vous n'avez pas les droits pour cette action");
+		}else{
+			$objective->updateStatus(0);
+			array_push($success, "Votre objectif a été déplacé dans la section objectifs en cours");
 	}
 }
 // Get objective.
-$request = $bdd->prepare('SELECT id, id_membres, name_obj, nb_steps FROM objectifs WHERE id_membres = ? AND done = 1 ORDER BY id DESC');
-$request->execute(array($id_member));
-$objectives = $request->fetchAll();
-$request->closeCursor();
+$objectives = $objective->read(1);
 
 ?>

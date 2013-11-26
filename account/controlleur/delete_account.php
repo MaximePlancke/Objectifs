@@ -7,7 +7,7 @@ if ($user_id) {
 	$user->setId($user_id);
 
 	$user->setDb($bdd);
-	$user->delete($user);
+	$user->delete();
 	
 	$_SESSION = array();
 	session_destroy();

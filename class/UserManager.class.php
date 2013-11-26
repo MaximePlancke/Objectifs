@@ -12,17 +12,17 @@ class UserManager
 		$this->_bdd = $bdd;
 	}
 
-	public function add(User $user) {
+	public function add() {
 		$request = $this->_bdd->prepare('INSERT INTO membres(pseudo, password, email, date_inscription) VALUES(:pseudo, :password, :email, NOW())');
 		$request->execute(array(
-			'pseudo' => $user->getPseudo(),
-			'password' => sha1($user->getPassword()),
-			'email' => $user->getEmail()));
+			'pseudo' => $this->getPseudo(),
+			'password' => sha1($this->getPassword()),
+			'email' => $this->getEmail()));
 	    $request->closeCursor();
 	}
 
-	public function delete(User $user) {
-		$request = $this->_bdd->query('DELETE FROM membres WHERE id ='.$user->getId());
+	public function delete() {
+		$request = $this->_bdd->query('DELETE FROM membres WHERE id ='.$this->getId());
     	$request->closeCursor();
 	}
 
@@ -35,25 +35,25 @@ class UserManager
 		return $donnees['id'];
 	}
 
-	public function update(User $user) {
+	public function update() {
 		
 	}
 
-	public function checkUniqueRegistration(User $user) {
+	public function checkUniqueRegistration() {
 		$errors = NULL;
 		$request = $this->_bdd->prepare('SELECT id, pseudo, email FROM membres WHERE pseudo = :pseudo OR email = :email');
 		$request->execute(array(
-	    	'pseudo' => $user->getPseudo(),
-			'email' => $user->getEmail()));
+	    	'pseudo' => $this->getPseudo(),
+			'email' => $this->getEmail()));
 		$check_unique = $request->fetchAll();
 		$count = $request->rowCount();
 		$request->closeCursor();
 		if($count >= 1){
 			foreach ($check_unique as $value) {
-				if ($value['email'] == $user->getEmail()) {
+				if ($value['email'] == $this->getEmail()) {
 					$errors = $errors . 'L\'email est déjà utilisé </br>';
 				}
-				if ($value['pseudo'] == $user->getPseudo()) {
+				if ($value['pseudo'] == $this->getPseudo()) {
 					$errors = $errors . 'Le pseudo est déjà utilisé';
 				}
 			}

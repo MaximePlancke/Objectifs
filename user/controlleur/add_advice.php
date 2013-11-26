@@ -9,14 +9,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$id_member_give_advice = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 	$id_objective = isset($_POST['id_objective']) ? $_POST['id_objective'] : null;
 
+	$advice = new Advice();
+	$advice->setIdMemberGiveAdvice($id_member_give_advice);
+	$advice->setAdviceContent($advice_content);
+	$advice->setIdObjective($id_objective);
+	$advice->setDb($bdd);
+
 	if ($id_member_give_advice AND $id_objective AND $advice_content) {
-		$request = $bdd->prepare('INSERT INTO advices(id_member_give_advice, id_objective, advice_content, date_creation) VALUES(:id_member_give_advice, :id_objective, :advice_content, NOW())');
-		$request->execute(array(
-			'id_member_give_advice' => $id_member_give_advice,
-			'id_objective' => $id_objective,
-			'advice_content' => $advice_content
-			));
-		$request->closeCursor();
+		$advice->add();
 		array_push($errors, "Votre conseil a bien été ajouté");
 	} else {
 		array_push($errors, "Vous n'êtes pas connecté, Veuillez vous connecter.");
