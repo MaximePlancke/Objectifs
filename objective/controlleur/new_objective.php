@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$objective->setDb($bdd);
 
 	if (($id_mem AND $name_obj AND $nb_steps)) {  
-
-		$objective->add();      
+		$objective->add(); 
+		array_push($errors, "Objectif ajouté!");     
 	} else {
 		array_push($errors, "Veuillez vous connecter");
 	}

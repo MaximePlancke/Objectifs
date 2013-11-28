@@ -2,6 +2,10 @@
 
 $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
+$objective = new Objective();
+$objective->setIdMember($user_id);  
+$objective->setDb($bdd);
+$count = (int)($objective->countDone());
 ?>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
@@ -29,8 +33,8 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 			<li>
 				<div id="progress" class="span4 text_menu_top">
 					<span>Objectifs Atteints</span>
-					<meter value="00" min="0" max="100"></meter>
-					<span>0%</span>
+					<meter value="<?php echo $count;?>" min="0" max="100"></meter>
+					<span><?php echo $count;?>%</span>
 				</div>
 			</li>
 			<li>

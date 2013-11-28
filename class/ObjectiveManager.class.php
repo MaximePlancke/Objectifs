@@ -48,9 +48,9 @@ class ObjectiveManager
 	}
 
 	public function updateStatus($done) {
-		$request = $this->_bdd->prepare('UPDATE objectifs SET done = :done WHERE id = :id_membres');
+		$request = $this->_bdd->prepare('UPDATE objectifs SET done = :done WHERE id = :id');
 		$request->execute(array(
-			'id_membres' => $this->getId(),
+			'id' => $this->getId(),
 			'done' => $done,
 			));
 		$request->closeCursor();
@@ -66,6 +66,27 @@ class ObjectiveManager
 		$advices = $request->fetchAll();
 		$request->closeCursor();
 		return $advices;
+	}
+
+	public function countDone() {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM objectifs WHERE id_membres = :id_membres');
+		$request->execute(
+			array(
+			'id_membres' => $this->getIdMember(),
+			));
+		$countTotal = $request->fetch()[0];
+		$request->closeCursor(); 
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM objectifs WHERE done = :done AND id_membres = :id_membres');
+		$request->execute(array(
+			'id_membres' => $this->getIdMember(),
+			'done' => 1,
+			));
+		$countDone = $request->fetch()[0]; 
+		$request->closeCursor();
+		if ($countTotal != 0) {
+			$count = ($countDone/$countTotal)*100;
+			return $count;	
+		}
 	}
 }
 ?>

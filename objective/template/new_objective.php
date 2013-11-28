@@ -1,6 +1,6 @@
 <div class="page_right_padding">
-<h4>Nouvel Objectif</h4>
-	<form method="post" class="well form-inline" action="/objective/new">
+<h4 class="big_title">Nouvel Objectif</h4>
+	<form method="post" class="login_registration_form well form-inline" action="/objective/new">
 		<ul>
 			<?php foreach ($errors as $value): ?>
 				<li>
@@ -8,7 +8,6 @@
 				</li>
 			<?php endforeach ?>
 		</ul>
-		<br/>
 		<p><label for="name_obj"/>Votre objectif</label><br/>
 		<input type="text" id="name_obj" name="name_obj" autofocus required/>
 		<br/><br/>
