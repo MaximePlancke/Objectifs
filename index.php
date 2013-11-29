@@ -32,6 +32,7 @@ if (preg_match($motif,$URi)) {
 	<?php //Integration CSS Bootstrap, Font-Awesome and Polices ?>
 	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
 
 </head>
   <body>
@@ -48,8 +49,9 @@ if (preg_match($motif,$URi)) {
 	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
 	</div>
 	<!-- jQuery -->
-	<script src="/jQuery/jquery-1.10.2.js"></script>
-	<script src="/jQuery/mon-script.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+	<script src="/ressources/jQuery/mon-script.js"></script>
 
 	<script src="/ressources/javascript.js"></script>
 	<script src="/ressources/bootstrap/js/bootstrap.min.js"></script>

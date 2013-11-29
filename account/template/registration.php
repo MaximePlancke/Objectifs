@@ -1,4 +1,4 @@
-<div id="page_connexion_color">
+<div class="page_connexion_color">
 	<h1 class="big_title"><span style="color:black;">OB</span>Share</h1>
 	<h1 class="big_title">Inscription</h1>
 	<br/>

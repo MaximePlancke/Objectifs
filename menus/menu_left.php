@@ -25,7 +25,7 @@
 		<h4>Amis</h4>
 		<ul class="nav">
 			<?php foreach ($list_friends as $datas): ?>
-				<li><a href="/current/objective/<?php echo $datas['id_friends_2']?>"><?php echo $datas['pseudo'];?></a></li>
+				<li><a href="/current/objective/<?php echo $datas['id']?>"><?php echo $datas['pseudo'];?></a></li>
 			<?php endforeach; ?>
 		</ul>
 		<h4>Mon Compte</h4>

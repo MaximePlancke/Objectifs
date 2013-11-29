@@ -25,8 +25,8 @@ $count = (int)($objective->countDone());
 					<?php echo ($_SESSION['pseudo']); ?>
 				</div>
 				<div class="span4 img_menu_top">
-					<form id="search" method="post" class="form-search navbar-search pull-left" action="/users">
-						<input class="search_data search-query" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
+					<form method="post" class="form-search navbar-search pull-left">
+						<input id="search" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
 					</form>	
 				</div>
 			</li>

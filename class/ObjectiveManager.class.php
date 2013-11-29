@@ -74,14 +74,16 @@ class ObjectiveManager
 			array(
 			'id_membres' => $this->getIdMember(),
 			));
-		$countTotal = $request->fetch()[0];
+		$countTotal = $request->fetch();
+		$countTotal = $countTotal[0];
 		$request->closeCursor(); 
 		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM objectifs WHERE done = :done AND id_membres = :id_membres');
 		$request->execute(array(
 			'id_membres' => $this->getIdMember(),
 			'done' => 1,
 			));
-		$countDone = $request->fetch()[0]; 
+		$countDone = $request->fetch(); 
+		$countDone = $countDone[0];
 		$request->closeCursor();
 		if ($countTotal != 0) {
 			$count = ($countDone/$countTotal)*100;

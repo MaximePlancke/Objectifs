@@ -55,3 +55,4 @@ RewriteRule ^done/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=done_obj&id=$1&
 RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
 
 # ErrorDocument 404 /erreur404.php
+
