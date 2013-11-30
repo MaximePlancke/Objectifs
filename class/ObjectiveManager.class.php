@@ -58,7 +58,7 @@ class ObjectiveManager
 
 	public function showAdvices() {
 		$request = $this->_bdd->prepare(
-			'SELECT a.*, m.pseudo, m.id FROM advices AS a INNER JOIN membres AS m 
+			'SELECT a.*, m.pseudo, m.id, a.id AS id_advice FROM advices AS a INNER JOIN membres AS m 
 			ON m.id = a.id_member_give_advice
 			AND a.id_objective = ? 
 			ORDER BY a.id DESC');

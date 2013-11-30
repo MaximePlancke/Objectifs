@@ -24,6 +24,11 @@ $config_routing = array(
     	'action' => 'delete_account',
     	'url' => 'account/delete_account'
   	),
+    'profile' => array(
+      'module' => 'user',
+      'action' => 'profile',
+      'url' => 'user/profile'
+    ),
   	'current_obj' => array(
     	'module' => 'user',
     	'action' => 'current_obj',

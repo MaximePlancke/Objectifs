@@ -21,6 +21,12 @@ class AdviceManager
 			));
 		$request->closeCursor();
 	}
-}
 
- ?>
+	public function delete() {
+	$request = $this->_bdd->prepare('DELETE FROM advices WHERE id = ?');
+	$request->execute(array($this->getId()));
+	$request->closeCursor();
+	}
+
+}
+?>

@@ -2,10 +2,10 @@
 	<h3>Objectifs en cours</h3>
 	<div>
 		<?php foreach ($errors as $value): ?>
-		<h5><?php echo $value; ?></h5><br/>
+			<h5><?php echo $value; ?></h5><br/>
 		<?php endforeach ?>
 		<?php foreach ($success as $value): ?>
-		<h5><?php echo $value; ?></h5><br/>
+			<h5><?php echo $value; ?></h5><br/>
 		<?php endforeach ?>
 		<ul>
 			<?php foreach ($objectives as $datas): ?>

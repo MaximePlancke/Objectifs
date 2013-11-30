@@ -22,7 +22,7 @@ $count = (int)($objective->countDone());
 			<?php if ($user_id) : ?>
 			<li>
 				<div class="span2 text_menu_top">
-					<?php echo ($_SESSION['pseudo']); ?>
+				<a href="/user/profile/<?php echo $user_id?>"><?php echo ($_SESSION['pseudo']); ?></a>
 				</div>
 				<div class="span4 img_menu_top">
 					<form method="post" class="form-search navbar-search pull-left">
