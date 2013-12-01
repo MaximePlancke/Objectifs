@@ -26,13 +26,21 @@ class UserManager
     	$request->closeCursor();
 	}
 
-	public function read() {
+	public function readLogIn() {
 		$request = $this->_bdd->prepare('SELECT id FROM membres WHERE pseudo = :pseudo AND password = :password');
 		$request->execute(array(
 	    	'pseudo' => $this->getPseudo(),
 	    	'password' => $this->getPassword()));
 		$donnees = $request->fetch();
-		return $donnees['id'];
+		return $donnees;
+	}
+
+	public function read() {
+		$request = $this->_bdd->prepare('SELECT * FROM membres WHERE id = :id');
+		$request->execute(array(
+	    	'id' => $this->getId()));
+		$donnees = $request->fetch();
+		return $donnees;
 	}
 
 	public function update() {

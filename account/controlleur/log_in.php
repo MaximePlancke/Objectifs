@@ -8,11 +8,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$user->setPseudo($username);
 	$user->setPassword($password_hache);
 	$user->setDb($bdd);
-	$user_id = $user->read();
-	if (!$user_id) {
+	$user_id = $user->readLogIn();
+	if (!$user_id['id']) {
 	    array_push($errors, 'Mauvais identifiant ou mot de passe !');
 	} else {
-	    $_SESSION['id'] = $user_id;
+	    $_SESSION['id'] = $user_id['id'];
 	    $_SESSION['pseudo'] = $username;
 		header('Location: /');
 		exit();
