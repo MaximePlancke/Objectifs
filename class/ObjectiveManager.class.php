@@ -43,7 +43,7 @@ class ObjectiveManager
 					$value['category'] = "Personnel";
 					break;
 				case 2:
-					$value['category'] = "Professionel";
+					$value['category'] = "Professionnel";
 					break;
 				case 3:
 					$value['category'] = "Sportif";

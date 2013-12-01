@@ -14,7 +14,7 @@
 		<label for="category"/>Catégorie</label><br/>
 		<select name="category">
 			<option value="1">Personnel</option> 
-			<option value="2">Professionel</option>
+			<option value="2">Professionnel</option>
 			<option value="3">Sportif</option>
 			<option value="4">Fun</option>
 		</select>
