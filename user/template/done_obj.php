@@ -20,6 +20,7 @@
 					<h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5>
 					<div class="hidden_part">
 						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir les conseils</a>
+						<h6>Catégorie : <?php echo $datas['category'] ?></h6>
 					</div> 
 				</li>
 			<?php endforeach; ?>
