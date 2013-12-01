@@ -16,7 +16,7 @@ if ($id_advice AND $_GET['action'] == "delete") {
 		$advice->setId($id_advice);
 		$advice->setDb($bdd);
 		$advice->delete();
-		array_push($success, "l'objectif a été supprimé");
+		array_push($success, "le conseil a été supprimé");
 	} else {
 		array_push($errors, "Vous n'avez pas les droits pour cette action");
 	}

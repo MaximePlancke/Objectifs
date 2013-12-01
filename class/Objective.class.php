@@ -5,6 +5,7 @@ class Objective extends ObjectiveManager
 	private $_id;
 	private $_idMember;
 	private $_nameObjective;
+	private $_category;
 	private $_dateCreation;
 	private $_nbSteps;
 	private $_done;
@@ -26,6 +27,7 @@ class Objective extends ObjectiveManager
 	public function getId(){ return $this->_id; }
 	public function getIdMember(){ return $this->_idMember; }
 	public function getNameObjective(){ return $this->_nameObjective; }
+	public function getCategory(){ return $this->_category; }
 	public function getDateCreation(){ return $this->_dateCreation; }
 	public function getNbSteps(){ return $this->_nbSteps; }
 	public function getDone(){ return $this->_done; }
@@ -57,6 +59,14 @@ class Objective extends ObjectiveManager
 		}else {
 			$this->_dateCreation = $date_creation;
 		}
+	}
+
+	public function setCategory($category) {
+		$category = (int)($category);
+		if ($category < 0) {
+			trigger_error("Catégorie non valide");
+		}
+		$this->_category = $category;
 	}
 
 	public function setNbSteps($nb_steps){

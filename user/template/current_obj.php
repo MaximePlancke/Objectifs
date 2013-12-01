@@ -21,6 +21,7 @@
 					<div class="hidden_part">
 						<a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Ajouter un conseil</a>
 						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir les conseils</a>
+						<h6>Catégorie : <?php echo $datas['category'] ?></h6>
 					</div>
 				</li>
 			<?php endforeach; ?>

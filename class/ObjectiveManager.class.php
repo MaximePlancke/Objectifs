@@ -13,10 +13,11 @@ class ObjectiveManager
 	}
 
 	public function add() {
-	    $request = $this->_bdd->prepare('INSERT INTO objectifs(id_membres, name_obj, nb_steps, date_creation) VALUES(:id_mem, :name_obj, :nb_steps, NOW())');
+	    $request = $this->_bdd->prepare('INSERT INTO objectifs(id_membres, name_obj, category, nb_steps, date_creation) VALUES(:id_mem, :name_obj, :category, :nb_steps, NOW())');
 	    $request->execute(array(
 	        'id_mem' => $this->getIdMember(),
 	        'name_obj' => $this->getNameObjective(),
+	        'category' => $this->getCategory(),
 	        'nb_steps' => $this->getNbSteps(),
 	        ));
 	    $request->closeCursor();
@@ -29,13 +30,32 @@ class ObjectiveManager
 	}
 
 	public function read($done) {
-		$request = $this->_bdd->prepare('SELECT id, id_membres, name_obj, nb_steps FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
+		$request = $this->_bdd->prepare('SELECT id, id_membres, name_obj, category ,nb_steps FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
 		$request->execute(array(
 			'id_membres' => $this->getIdMember(),
 			'done' => $done,
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
+		foreach ($objectives as &$value) {
+			switch ($value['category']) {
+				case 1:
+					$value['category'] = "Personnel";
+					break;
+				case 2:
+					$value['category'] = "Professionel";
+					break;
+				case 3:
+					$value['category'] = "Sportif";
+					break;
+				case 4:
+					$value['category'] = "Fun";
+					break;
+				default:
+					$value['category'] = "Aucune";
+					break;
+			}
+		}
 		return $objectives;
 	}
 
