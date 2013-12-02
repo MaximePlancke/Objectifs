@@ -1,6 +1,6 @@
 <?php 
 
-class StepsObjective extends stepsObjectiveManager
+class StepsObjective extends StepsObjectiveManager
 {
 	private $_id;
 	private $_idObjective;

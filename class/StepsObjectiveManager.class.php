@@ -13,11 +13,12 @@ class StepsObjectiveManager
 	}
 
 	public function add($nb_steps) {
+		$get_steps_content = $this->getStepsContent();
 		for ($i=0; $i < $nb_steps; $i++) {
 		    $request = $this->_bdd->prepare('INSERT INTO steps_objective(id_objective, steps_content, date_creation) VALUES(:id_objective, :steps_content, NOW())');
 		    $request->execute(array(
 		        'id_objective' => $this->getIdObjective(),
-		        'steps_content' => $this->getStepsContent()[$i],
+		        'steps_content' => $get_steps_content[$i],
 		        ));
 		    $request->closeCursor();
 	    }
