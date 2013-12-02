@@ -8,6 +8,9 @@ $objective->setIdMember($id_member);
 $objective->setId($id_objective);
 $objective->setDb($bdd);
 
+$steps_objective = new StepsObjective();
+$steps_objective->setDb($bdd);
+
 //delete objetive
 if ($id_objective AND $_GET['action'] == "delete") {
 	if ($id_member != $_SESSION['id']) {
@@ -28,5 +31,7 @@ if ($id_objective AND $_GET['action'] == "obj_modif") {
 }
 // Get objective.
 $objectives = $objective->read(1);
+
+$steps_objectives = $steps_objective->read();
 
 ?>
