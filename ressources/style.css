@@ -34,6 +34,25 @@ textarea {
 	transition: background-color 0.2s linear;
 }
 
+.box_step {
+	padding : 5px 2px 5px 5px;
+	margin : 0px 30px 0px 0px;
+	list-style-type:none;
+}
+
+.box_step:hover {
+	background-color: white;
+	border: 1px solid #e3e3e3;
+	-webkit-transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
+}
+
+.box_content_steps {
+	padding : 5px 2px 5px 5px;
+}
+
 .big_title {
 	margin: center;
 	text-align: center;
