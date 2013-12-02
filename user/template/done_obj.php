@@ -15,7 +15,7 @@
 						<?php if ($id_member == $_SESSION['id']) : ?>
 						<form class="form_inline" method="post" action="/done/objective/<?php echo $id_member;?>">
 							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
-							<input type="image" name="obj_modif" title="Déplacer vers Objectifs en cours" value="obj_modif" src="/ressources/images/obj_done.png"/>
+							<input type="image" name="obj_modif" title="Déplacer vers Objectifs en cours" value="obj_modif" src="/ressources/images/obj_modif.png"/>
 							<input type="image" name="delete" title="Supprimer" value="delete" src="/ressources/images/obj_delete.png"/>
 						</form>
 						<?php endif ?>
