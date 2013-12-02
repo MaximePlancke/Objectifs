@@ -33,6 +33,8 @@ if (preg_match($motif,$URi)) {
 	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
+	<?php //include my PHP fonctions ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/ressources/my_php_fonctions.php"); ?>
 
 </head>
   <body>
