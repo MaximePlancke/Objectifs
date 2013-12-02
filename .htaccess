@@ -42,23 +42,11 @@ RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]
 # Page done objective (page / id_member) :
 RewriteRule ^done/objective/([0-9]*)$   ?page=done_obj&id=$1 [L]
 
-# Page add advice (page / id_member) :
-RewriteRule ^add/advice/([0-9]*)$   ?page=add_advice&id=$1 [L]
-
-# Page add advice (page / id_member) :
+# Page add advice (page / id_member / id_objective) :
 RewriteRule ^add/advice/([0-9]*)/([0-9]*)$   ?page=add_advice&id=$1&id_objective=$2 [L]
-
-# Page modif objective current (page / id_member / id_objective / action) :
-RewriteRule ^current/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
-
-# Page modif objective done (page / id_member / id_objective / action) :
-RewriteRule ^done/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=done_obj&id=$1&id_objective=$2&action=$3 [L]
 
 # Page current advice (page / id_member / id_objective) :
 RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
-
-# Page modif current advice (page / id_member / id_objective / id_advice / id_member_give_advice / action) :
-RewriteRule ^current/advices/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj_advices&id=$1&id_objective=$2&id_advice=$3&id_member_give_advice=$4&action=$5 [L]
 
 # ErrorDocument 404 /erreur404.php
 

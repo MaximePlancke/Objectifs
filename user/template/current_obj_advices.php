@@ -15,7 +15,11 @@
 					<h4>
 						<?php echo UrlToShortLink(htmlspecialchars($datas['advice_content'])); ?>
 						<?php if ($id_member == $_SESSION['id'] OR $datas['id_member_give_advice'] == $_SESSION['id']) : ?>
-							<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id_objective'];?>/<?php echo $datas['id_advice'];?>/<?php echo $datas['id_member_give_advice'] ?>/delete"><img title="Supprimer" src="/ressources/images/obj_delete.png"></a>
+						<form class="form_inline" method="post" action="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id_objective'];?>">
+							<input type="hidden" name="id_advice" value="<?php echo $datas['id_advice'];?>"/>
+							<input type="hidden" name="id_member_give_advice" value="<?php echo $datas['id_member_give_advice'] ?>"/>
+							<input type="image" name="delete" title="Supprimer" value="delete" src="/ressources/images/obj_delete.png"/>
+						</form>
 						<?php endif ?>
 					</h4>
 					<h5>Ajouté par : <a href="/current/objective/<?php echo $datas['id']?>"><?php echo $datas['pseudo'];?></a> le <?php echo $datas['date_creation'];?></h5>

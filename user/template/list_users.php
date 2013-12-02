@@ -6,11 +6,16 @@
 				<?php echo $value; ?>
 			</li>
 		<?php endforeach ?>
+		<?php foreach ($success as $value): ?> 
+			<li>
+				<?php echo $value; ?>
+			</li>
+		<?php endforeach ?>
 	</ul>
 	<ul>
 		<?php foreach ($list_users as $datas) : ?>
 		<li>
-			<?php echo $datas['pseudo'];?>
+			<?php echo htmlspecialchars($datas['pseudo']);?>
 			<form method="post" action="/users">
 				<input type="hidden" name="id_friend" value="<?php echo $datas['id'];?>" />
 				<input name="add" id="add" type="submit" value="Ajouter" class="btn btn-primary"/>

@@ -11,7 +11,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$friend->setDb($bdd);
 
 	if (isset($_POST['add'])) {
-
 		//Control (already friends)
 		$count = $friend->checkAlreadyFriend();
 		//Control (add yourself)
@@ -23,10 +22,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		} else {
 			//add friend link
 			$friend->add();
+			array_push($success, "Vous venez d'ajouter un ami");
 			}
 	} elseif (isset($_POST['delete'])) {
 		//delete friend link
 		$friend->delete();
+		array_push($success, "Vous venez de supprimer un ami");
 	} 
 }
 ?>

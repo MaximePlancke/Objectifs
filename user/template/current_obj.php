@@ -13,8 +13,11 @@
 					<h4>
 						<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
 						<?php if ($id_member == $_SESSION['id']) : ?>
-							<a href="/current/objective/<?php echo $id_member;?>/<?php echo $datas['id'];?>/obj_done"><img title="Objectif terminé" src="/ressources/images/obj_done.png"></a>
-							<a href="/current/objective/<?php echo $id_member;?>/<?php echo $datas['id'];?>/delete"><img title="Supprimer" src="/ressources/images/obj_delete.png"></a>
+						<form class="form_inline" method="post" action="/current/objective/<?php echo $id_member;?>">
+							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
+							<input type="image" name="done" title="Objectif terminé" value="done" src="/ressources/images/obj_done.png"/>
+							<input type="image" name="delete" title="Supprimer" value="delete" src="/ressources/images/obj_delete.png"/>
+						</form>
 						<?php endif ?>
 					</h4>
 					<h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5> 
