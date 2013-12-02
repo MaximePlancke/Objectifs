@@ -19,6 +19,16 @@
 					</h4>
 					<h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5> 
 					<div class="hidden_part">
+						<?php foreach ($steps_objectives as $value) : ?>
+							<ul>
+								<?php if ($value['id_objective'] == $datas['id']) : ?>
+									<li>
+										<?php echo $value['steps_content']; ?>
+									</li>
+								<?php endif ?>
+							</ul>
+						<?php endforeach ?>
+						<br/>
 						<a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Ajouter un conseil</a>
 						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir les conseils</a>
 						<h6>Catégorie : <?php echo $datas['category'] ?></h6>

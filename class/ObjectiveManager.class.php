@@ -21,6 +21,13 @@ class ObjectiveManager
 	        'nb_steps' => $this->getNbSteps(),
 	        ));
 	    $request->closeCursor();
+	    $request = $this->_bdd->prepare('SELECT id FROM objectifs WHERE id = LAST_INSERT_ID()');
+	    $request->execute(array());
+	    $id_objective_for_steps = $request->fetch();
+	    $request->closeCursor();
+
+	    //return id_objective for step table
+	    return $id_objective_for_steps['id'];
 	}
 
 	public function delete() {
@@ -88,6 +95,7 @@ class ObjectiveManager
 		return $advices;
 	}
 
+	//for the counter menu_top
 	public function countDone() {
 		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM objectifs WHERE id_membres = :id_membres');
 		$request->execute(
