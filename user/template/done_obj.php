@@ -27,14 +27,27 @@
 								<ul>
 									<?php if ($value['id_objective'] == $datas['id']) : ?>
 										<li class="box_step">
-											<?php echo UrlToShortLink(htmlspecialchars($value['steps_content'])); ?>
+											<?php switch ($value['done']) {
+												case 0:
+													echo '<img src="/ressources/images/current_step.png">';
+													break;
+												case 1:
+													echo '<img src="/ressources/images/done_step.png">';
+													break;
+												
+												default:
+													echo '<img src="/ressources/images/current_step.png">';
+													break;
+											} ?>
+										<?php echo UrlToShortLink(htmlspecialchars($value['steps_content'])); ?>
 										</li>
 									<?php endif ?>
 								</ul>
 							<?php endforeach ?>
 						</div>
-						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir les conseils</a>
-						<h6>Catégorie : <?php echo $datas['category'] ?></h6>
+						<h5 class ="form_inline">Conseil : </h5>
+						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir</a>
+						<h6>Catégorie : <?php echo $datas['category'] ?> | Ajouté le : <?php echo $datas['date_creation'] ?></h6>
 					</div> 
 				</li>
 			<?php endforeach; ?>

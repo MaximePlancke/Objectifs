@@ -25,11 +25,20 @@ class StepsObjectiveManager
 	}
 
 	public function read() {
-			$request = $this->_bdd->prepare('SELECT * FROM steps_objective');
-			$request->execute(array());
-			$steps_objective = $request->fetchAll();
-			$request->closeCursor();
+		$request = $this->_bdd->prepare('SELECT * FROM steps_objective');
+		$request->execute(array());
+		$steps_objective = $request->fetchAll();
+		$request->closeCursor();
 		return $steps_objective;
+	}
+
+	public function updateStatus($done) {
+		$request = $this->_bdd->prepare('UPDATE steps_objective SET done = :done WHERE id = :id');
+		$request->execute(array(
+			'id' => $this->getId(),
+			'done' => $done,
+			));
+		$request->closeCursor();
 	}
 
 }

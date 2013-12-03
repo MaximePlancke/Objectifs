@@ -26,7 +26,7 @@ $count = (int)($objective->countDone());
 				</div>
 				<div class="span4 img_menu_top">
 					<form method="post" class="form-search navbar-search pull-left">
-						<input id="search" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
+						<input id="search_bar" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
 					</form>	
 				</div>
 			</li>
@@ -43,10 +43,10 @@ $count = (int)($objective->countDone());
 			<?php else: ?>	
 				<li>
 					<div class="span2 text_menu_top">
-						<a class="" href='/account/login'>Connexion</a>
+						<a href='/account/login'>Connexion</a>
 					</div>
 					<div class="span2 text_menu_top">
-						<a class="" href='/account/registration'>Inscription</a>
+						<a href='/account/registration'>Inscription</a>
 					</div>
 				</li>
 			<?php endif ?>

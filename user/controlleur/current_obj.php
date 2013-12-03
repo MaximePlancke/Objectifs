@@ -25,10 +25,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	if ($id_objective AND isset($_POST['done'])) {
 		if ($id_member != $_SESSION['id']) {
-				array_push($errors, "Vous n'avez pas les droits pour cette action");
-			}else{
-				$objective->updateStatus(1);
-				array_push($success, "Votre objectif a été déplacé dans la section objectifs terminés");
+			array_push($errors, "Vous n'avez pas les droits pour cette action");
+		}else{
+			$objective->updateStatus(1);
+			array_push($success, "Votre objectif a été déplacé dans la section objectifs terminés");
 		}
 	}
 }

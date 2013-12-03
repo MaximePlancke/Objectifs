@@ -26,16 +26,37 @@
 							<?php foreach ($steps_objectives as $value) : ?>
 								<ul>
 									<?php if ($value['id_objective'] == $datas['id']) : ?>
-										<li class="box_step">
+										<li class="box_step" value="<?php echo $value['done'];?>">
+											<?php switch ($value['done']) {
+												case 0:
+													echo '<img src="/ressources/images/current_step.png">';
+													break;
+												case 1:
+													echo '<img src="/ressources/images/done_step.png">';
+													break;
+												
+												default:
+													echo '<img src="/ressources/images/current_step.png">';
+													break;
+											} ?>
 											<?php echo UrlToShortLink(htmlspecialchars($value['steps_content'])); ?>
+											<?php if ($id_member == $_SESSION['id']) : ?>
+												<form class="form_inline form_modif_steps" method="post" action="/current/objective/<?php echo $id_member;?>">
+													<input class="step_id" type="hidden" name="step_id" value="<?php echo $value['id'];?>" />
+													<input class="step_done step_done_done" type="image" name="done" title="Etape terminé" value="1" src="/ressources/images/obj_done.png"/>
+													<input class="step_done step_done_modif" type="image" name="done" title="Etape terminé" value="0" src="/ressources/images/obj_delete.png"/>
+												</form>
+											<?php endif ?>
 										</li>
 									<?php endif ?>
 								</ul>
 							<?php endforeach ?>
 						</div>
-						<a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Ajouter un conseil</a>
-						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir les conseils</a>
-						<h6>Catégorie : <?php echo $datas['category'] ?></h6>
+						<h5 class ="form_inline">Conseil : </h5>
+						<a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Ajouter</a>
+						<span> | </span>
+						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir</a>
+						<h6>Catégorie : <?php echo $datas['category'] ?> | Ajouté le : <?php echo $datas['date_creation'] ?></h6>
 					</div>
 				</li>
 			<?php endforeach; ?>

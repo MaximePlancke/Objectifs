@@ -37,7 +37,7 @@ class ObjectiveManager
 	}
 
 	public function read($done) {
-		$request = $this->_bdd->prepare('SELECT id, id_membres, name_obj, category ,nb_steps FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
+		$request = $this->_bdd->prepare('SELECT id, id_membres, name_obj, category ,nb_steps, date_creation FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
 		$request->execute(array(
 			'id_membres' => $this->getIdMember(),
 			'done' => $done,
