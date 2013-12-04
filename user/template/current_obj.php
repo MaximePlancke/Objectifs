@@ -85,6 +85,14 @@
 						<a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Ajouter</a>
 						<span> | </span>
 						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir</a>
+							<div class="hidden_part_add_advice">
+								<form method="post" class="well form-inline" action="/current/objective/<?php echo $id_member;?>">
+									<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
+									<textarea id="new_advice" name="new_advice" rows=4 class="span5" required></textarea>
+									<br/><br/>
+									<input type="submit" value="Valider le conseil" class="btn btn-primary"/></p>
+								</form>
+							</div>
 						<h6>Catégorie : <?php echo $datas['category'] ?> | Ajouté le : <?php echo $datas['date_creation'] ?></h6>
 					</div>
 				</li>

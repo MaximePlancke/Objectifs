@@ -33,6 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 
+	//obective done
 	if ($id_objective AND isset($_POST['done_objective'])) {
 		if ($id_member != $_SESSION['id']) {
 			array_push($errors, "Vous n'avez pas les droits pour cette action");
@@ -42,6 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 	
+	//delete advice
 	if ($id_advice AND isset($_POST['delete_advice'])) {
 		if ($id_member == $_SESSION['id'] OR $_POST['id_member_give_advice'] == $_SESSION['id']) {
 			$advices_objective->setId($id_advice);
@@ -50,6 +52,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 			array_push($success, "le conseil a été supprimé");
 		} else {
 			array_push($errors, "Vous n'avez pas les droits pour cette action");
+		}
+	}
+
+	//add new advice
+	if (isset($_POST['new_advice'])) {
+		$advice_content = isset($_POST['new_advice']) ? $_POST['new_advice'] : null;
+		$id_member_give_advice = isset($_SESSION['id']) ? $_SESSION['id'] : null;
+
+		$add_advice = new Advice();
+		$add_advice->setDb($bdd);
+		$add_advice->setIdMemberGiveAdvice($id_member_give_advice);
+		$add_advice->setAdviceContent($advice_content);
+		$add_advice->setIdObjective($id_objective);
+
+		if ($id_member_give_advice AND $id_objective AND $advice_content) {
+			$add_advice->add();
+			array_push($errors, "Votre conseil a bien été ajouté");
+		} else {
+			array_push($errors, "Vous n'êtes pas connecté, Veuillez vous connecter.");
 		}
 	}
 
