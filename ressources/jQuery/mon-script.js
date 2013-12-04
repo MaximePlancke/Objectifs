@@ -33,7 +33,7 @@ $(function() {
     source : '/ressources/widgets/auto_completion.php',
 
         select : function(event, ui){
-        	$(location).attr('href',"/current/objective/"+ui.item.id);
+        	$(location).attr('href',"/user/profile/"+ui.item.id);
    		}
 	});
 
