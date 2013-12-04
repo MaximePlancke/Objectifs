@@ -13,5 +13,7 @@ $objective->setIdMember($id_member);
 $objective->setDb($bdd);
 
 // Get objective.
-$objectives = $objective->read(0);
+$current_objectives = $objective->read5Last(0);
+$done_objectives = $objective->read5Last(1);
+
 ?>

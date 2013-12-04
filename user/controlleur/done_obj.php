@@ -3,6 +3,12 @@
 $id_member = $_GET["id"];
 $id_objective = isset($_POST['id_objective']) ? $_POST['id_objective'] : null;
 
+$user = new User();
+$user->setId($id_member);
+$user->setDb($bdd);
+// get User
+$user_name = $user->read();
+
 $objective = new Objective();
 $objective->setIdMember($id_member);
 $objective->setId($id_objective);
@@ -11,10 +17,13 @@ $objective->setDb($bdd);
 $steps_objective = new StepsObjective();
 $steps_objective->setDb($bdd);
 
+$advices_objective = new Advice();
+$advices_objective->setDb($bdd);
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	//delete objetive
-	if ($id_objective AND isset($_POST['delete'])) {
+	if ($id_objective AND isset($_POST['delete_objective'])) {
 		if ($id_member != $_SESSION['id']) {
 			array_push($errors, "Vous n'avez pas les droits pour cette action");
 		}else{
@@ -37,5 +46,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 $objectives = $objective->read(1);
 
 $steps_objectives = $steps_objective->read();
+
+// Get advices from objective selected.
+$advices = $objective->showAdvices();
+$advices_objectives = $advices_objective->read();
 
 ?>

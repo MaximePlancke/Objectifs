@@ -22,6 +22,16 @@ class AdviceManager
 		$request->closeCursor();
 	}
 
+	public function read() {
+		$request = $this->_bdd->prepare('SELECT a.*, m.pseudo  FROM advices AS a INNER JOIN membres AS m 
+			ON m.id = a.id_member_give_advice');
+		$request->execute(array());
+		$advices_objective = $request->fetchAll();
+		$request->closeCursor();
+		return $advices_objective;
+	}
+
+
 	public function delete() {
 	$request = $this->_bdd->prepare('DELETE FROM advices WHERE id = ?');
 	$request->execute(array($this->getId()));

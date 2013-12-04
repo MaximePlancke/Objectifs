@@ -18,6 +18,14 @@ textarea {
 	display : inline;
 }
 
+.center_text {
+	text-align:center;
+}
+
+.all_objectives_content {
+	margin-top: 10px;
+}
+
 .box_content {
 	border-bottom: 1px solid #e3e3e3;
 	padding : 5px 2px 5px 5px;
@@ -25,9 +33,27 @@ textarea {
 	list-style-type:none;
 }
 
-.box_content:hover {
+.box_content_profile {
 	background-color: #f5f5f5;
-	border: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+	padding : 10px 2px 5px 5px;
+	margin : 30px 30px 10px 0px;
+	list-style-type:none;
+}
+
+.box_content_objective_profile {
+	border-bottom: 1px solid #e3e3e3;
+	padding : 10px 2px 10px 5px;
+	margin : 0px 30px 0px 0px;
+	list-style-type:none;
+}
+
+.box_click_display_objective {
+	padding: 3px 0px 3px 0px;
+}
+
+.box_click_display_objective:hover {
+	background-color: #f5f5f5;
 	-webkit-transition: background-color 0.2s linear;
 	-moz-transition: background-color 0.2s linear;
 	-o-transition: background-color 0.2s linear;
@@ -35,23 +61,6 @@ textarea {
 }
 
 .box_step {
-	padding : 5px 2px 5px 5px;
-	margin : 0px 30px 0px -20px;
-	list-style-type:none;
-}
-
-.box_step_green:hover {
-	background-color: white;
-	border: 1px solid #e3e3e3;
-	-webkit-transition: background-color 0.2s linear;
-	-moz-transition: background-color 0.2s linear;
-	-o-transition: background-color 0.2s linear;
-	transition: background-color 0.2s linear;
-}
-
-.box_step_green {
-/*	background-color: #e0f0d5;
-	border: 1px solid #e3e3e3;*/
 	padding : 5px 2px 5px 5px;
 	margin : 0px 30px 0px -20px;
 	list-style-type:none;
@@ -68,6 +77,25 @@ textarea {
 
 .box_content_steps {
 	padding : 5px 2px 5px 5px;
+}
+
+.box_content_advices {
+	padding : 5px 2px 5px 5px;
+}
+
+.box_advice {
+	padding : 5px 2px 5px 5px;
+	margin : 0px 30px 0px -20px;
+	list-style-type:none;
+}
+
+.box_advice:hover {
+	background-color: white;
+	border: 1px solid #e3e3e3;
+	-webkit-transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
 }
 
 .big_title {
@@ -118,6 +146,16 @@ textarea {
 
 .img_menu_top {
 	padding-top: 5px;
+}
+
+.a_display_for_pseudo {
+	color: black;
+	text-decoration: none;
+}
+
+.a_display_for_pseudo:hover {
+	color: black;
+	text-decoration: underline;
 }
 
 #main_page {

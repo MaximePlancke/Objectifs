@@ -37,7 +37,37 @@ class ObjectiveManager
 	}
 
 	public function read($done) {
-		$request = $this->_bdd->prepare('SELECT id, id_membres, name_obj, category ,nb_steps, date_creation FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
+		$request = $this->_bdd->prepare('SELECT * FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
+		$request->execute(array(
+			'id_membres' => $this->getIdMember(),
+			'done' => $done,
+			));
+		$objectives = $request->fetchAll();
+		$request->closeCursor();
+		foreach ($objectives as &$value) {
+			switch ($value['category']) {
+				case 1:
+					$value['category'] = "Personnel";
+					break;
+				case 2:
+					$value['category'] = "Professionnel";
+					break;
+				case 3:
+					$value['category'] = "Sportif";
+					break;
+				case 4:
+					$value['category'] = "Fun";
+					break;
+				default:
+					$value['category'] = "Aucune";
+					break;
+			}
+		}
+		return $objectives;
+	}
+
+	public function read5Last($done) {
+		$request = $this->_bdd->prepare('SELECT * FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC LIMIT 5');
 		$request->execute(array(
 			'id_membres' => $this->getIdMember(),
 			'done' => $done,
