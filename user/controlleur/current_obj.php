@@ -11,9 +11,9 @@ $user->setDb($bdd);
 $user_name = $user->read();
 
 $objective = new Objective();
+$objective->setDb($bdd);
 $objective->setIdMember($id_member);
 $objective->setId($id_objective);
-$objective->setDb($bdd);
 
 $steps_objective = new StepsObjective();
 $steps_objective->setDb($bdd);
@@ -40,18 +40,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}else{
 			$objective->updateStatus(1);
 			array_push($success, "Votre objectif a été déplacé dans la section objectifs terminés");
-		}
-	}
-	
-	//delete advice
-	if ($id_advice AND isset($_POST['delete_advice'])) {
-		if ($id_member == $_SESSION['id'] OR $_POST['id_member_give_advice'] == $_SESSION['id']) {
-			$advices_objective->setId($id_advice);
-			$advices_objective->setDb($bdd);
-			$advices_objective->delete();
-			array_push($success, "le conseil a été supprimé");
-		} else {
-			array_push($errors, "Vous n'avez pas les droits pour cette action");
 		}
 	}
 
@@ -82,7 +70,6 @@ $objectives = $objective->read(0);
 $steps_objectives = $steps_objective->read();
 
 // Get advices from objective selected.
-$advices = $objective->showAdvices();
 $advices_objectives = $advices_objective->read();
 
 ?>

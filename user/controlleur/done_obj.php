@@ -48,7 +48,6 @@ $objectives = $objective->read(1);
 $steps_objectives = $steps_objective->read();
 
 // Get advices from objective selected.
-$advices = $objective->showAdvices();
 $advices_objectives = $advices_objective->read();
 
 ?>

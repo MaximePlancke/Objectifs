@@ -34,25 +34,37 @@ textarea {
 }
 
 .box_content_profile {
-	background-color: #f5f5f5;
+	background-color: #D7DADB;
 	border-bottom: 1px solid #e3e3e3;
 	padding : 10px 2px 5px 5px;
 	margin : 30px 30px 10px 0px;
 	list-style-type:none;
 }
 
-.box_content_objective_profile {
+/*.box_content_objective_profile {
 	border-bottom: 1px solid #e3e3e3;
 	padding : 10px 2px 10px 5px;
 	margin : 0px 30px 0px 0px;
 	list-style-type:none;
-}
+}*/
 
 .box_click_display_objective {
 	padding: 3px 0px 3px 0px;
 }
 
 .box_click_display_objective:hover {
+	background-color: #f5f5f5;
+	-webkit-transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
+}
+
+.box_click_display_objective_profile {
+	padding: 3px 0px 3px 0px;
+}
+
+.box_click_display_objective_profile:hover {
 	background-color: #f5f5f5;
 	-webkit-transition: background-color 0.2s linear;
 	-moz-transition: background-color 0.2s linear;
@@ -137,6 +149,10 @@ textarea {
 	color: white;
 }
 
+#menu_left .nav li a:hover {
+	color: black;
+}
+
 .nav_top li {
 	color: white;
 	text-shadow: none;
@@ -164,11 +180,11 @@ textarea {
 }
 
 #menu_left {
-	padding: 20px 0px 10px 0px;
+	padding: 20px 0px 10px 25px;
 	height: 100%;
 	width: 200px;
 	float: left;
-	text-align: center;
+	text-align: justify;
 	background: #DF5A49;
 	box-shadow: 1px 1px 12px #555;
 	overflow:auto;
@@ -189,6 +205,10 @@ textarea {
 	color: black;
 	text-align: center;
 	margin: 0px 100px 0px 100px;
+}
+
+.add_advice_form {
+	text-align: center;
 }
 
 .page_connexion_color {

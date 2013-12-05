@@ -48,7 +48,7 @@
 											} ?>
 											<?php echo UrlToShortLink(htmlspecialchars($value['steps_content'])); ?>
 											<?php if ($id_member == $_SESSION['id']) : ?>
-												<form class="form_inline form_modif_steps" method="post" action="/current/objective/<?php echo $id_member;?>">
+												<form class="form_inline form_modif_steps" method="post" action="#">
 													<input class="step_id" type="hidden" name="step_id" value="<?php echo $value['id'];?>" />
 													<input class="step_done step_done_done" type="image" name="done" title="Etape terminé" value="1" src="/ressources/images/obj_done.png"/>
 													<input class="step_done step_done_modif" type="image" name="done" title="Etape non terminé" value="0" src="/ressources/images/obj_delete.png"/>
@@ -69,11 +69,12 @@
 											<img src="/ressources/images/advice_obj.png">
 											<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
 											<?php if ($id_member == $_SESSION['id'] OR $value['id_member_give_advice'] == $_SESSION['id']) : ?>
-												<form class="form_inline form_modif_advices" method="post" action="/current/objective/<?php echo $id_member;?>">
-													<input type="hidden" name="id_advice" value="<?php echo $value['id'];?>" />
-													<input type="hidden" name="id_member_give_advice" value="<?php echo $value['id_member_give_advice'] ?>"/>
-													<input class="delete_advice" type="image" name="delete_advice" title="Supprimer" value="delete_advice" src="/ressources/images/obj_delete.png"/>
-												</form>
+												<div class="form_inline form_modif_advices form_modif_advices_<?php echo $value['id'];?>">
+													<img class="delete_advice" title="Supprimer" value="delete_advice" src="/ressources/images/obj_delete.png"/>
+													<div class="id_advice" type="hidden" value="<?php echo $value['id'];?>"></div>
+													<div class="id_member" type="hidden" value="<?php echo $id_member;?>"></div>
+													<div class="id_member_give_advice" type="hidden" value="<?php echo $value['id_member_give_advice'] ?>"></div>
+												</div>
 											<?php endif ?>
 											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['pseudo'];?></a> le <?php echo $value['date_creation'];?></h6>
 										</li>
@@ -81,18 +82,12 @@
 								<?php endforeach; ?>
 							</ul>
 						</div>
-						<h5 class ="form_inline">Conseil : </h5>
-						<a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Ajouter</a>
-						<span> | </span>
-						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir</a>
-							<div class="hidden_part_add_advice">
-								<form method="post" class="well form-inline" action="/current/objective/<?php echo $id_member;?>">
-									<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
-									<textarea id="new_advice" name="new_advice" rows=4 class="span5" required></textarea>
-									<br/><br/>
-									<input type="submit" value="Valider le conseil" class="btn btn-primary"/></p>
-								</form>
-							</div>
+						<?php //Add advice ?>
+						<form class="add_advice_form" method="post" action="/current/objective/<?php echo $id_member;?>">
+							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
+							<textarea id="new_advice" name="new_advice" rows=2 class="span12" onFocus="this.value=''" required>Ajouter un conseil</textarea>
+							<input type="submit" value="Valider le conseil" class="btn"/></p>
+						</form>
 						<h6>Catégorie : <?php echo $datas['category'] ?> | Ajouté le : <?php echo $datas['date_creation'] ?></h6>
 					</div>
 				</li>

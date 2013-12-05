@@ -24,7 +24,7 @@ class AdviceManager
 
 	public function read() {
 		$request = $this->_bdd->prepare('SELECT a.*, m.pseudo  FROM advices AS a INNER JOIN membres AS m 
-			ON m.id = a.id_member_give_advice');
+			ON m.id = a.id_member_give_advice ORDER BY id DESC');
 		$request->execute(array());
 		$advices_objective = $request->fetchAll();
 		$request->closeCursor();

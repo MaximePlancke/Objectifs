@@ -1,12 +1,5 @@
 <?php 
-try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=site_objectifs', 'root', 'root');
-    }
-    catch (Exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
+require $_SERVER['DOCUMENT_ROOT'].'/bbd_connexion.php';
 
 function loadClass($class) {
   require $_SERVER['DOCUMENT_ROOT'].'/class/' . $class . '.class.php';
@@ -20,4 +13,14 @@ $steps_objective = new StepsObjective();
 $steps_objective->setDb($bdd);
 $steps_objective->setId($id_step);
 $steps_objective->updateStatus($done);
+
+if (isset($done)) {
+	if ($id_member != $_SESSION['id']) {
+		array_push($errors, "Vous n'avez pas les droits pour cette action");
+	}else{
+		$objective->updateStatus(1);
+		array_push($success, "Votre objectif a été déplacé dans la section objectifs terminés");
+	}
+}
+
 ?>

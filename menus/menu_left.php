@@ -14,7 +14,7 @@
 <div id="menu_left">
 		<h4>Fonctionnalités</h4>
 		<ul class="nav">
-			<li class="menu_responsive"><a href="/users">Gestion des amis</a></li>
+			<li class="menu_responsive"><a href="/users">Utilisateurs</a></li>
 		</ul>
 		<h4>Objectifs</h4>
 		<ul class="nav">
@@ -32,10 +32,4 @@
 		<ul class="nav">
 			<li id="action_delete_account" class="menu_responsive"><a href="/account/delete">Supprimer son compte</a></li>
 		</ul>
-	<h4>Utilisateurs</h4>
-	<ul class="nav">
-		<?php foreach ($list_users as $datas): ?>
-			<li><?php echo htmlspecialchars($datas['pseudo']);?></li>
-		<?php endforeach;?>
-	</ul>
 </div>

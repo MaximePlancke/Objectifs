@@ -65,8 +65,6 @@
 								<?php endforeach; ?>
 							</ul>
 						</div>
-						<h5 class ="form_inline">Conseil : </h5>
-						<a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir</a>
 						<h6>Catégorie : <?php echo $datas['category'] ?> | Ajouté le : <?php echo $datas['date_creation'] ?></h6>
 					</div> 
 				</li>

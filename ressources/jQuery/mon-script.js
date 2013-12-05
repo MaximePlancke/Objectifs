@@ -28,6 +28,22 @@ $(function() {
             }
 		});
 
+        //hidden part of objective on profile page
+        $('.box_click_display_objective_profile').click(function(event) {
+            $(this).next().slideToggle();
+            if ($(this).parent('.box_content').css('background-color') =='rgba(0, 0, 0, 0)') {
+                $(this).parent('.box_content').css('background-color','#f5f5f5');
+                $(this).children('.center_img').attr('src' , '/ressources/images/hide_details.png');
+                $(this).css('border-bottom','1px solid #e3e3e3');
+            }else {
+                $(this).parent('.box_content').css('background-color','rgba(0, 0, 0, 0)');
+                $(this).children('.center_img').attr('src' , '/ressources/images/display_details.png');
+                $(this).css('border-bottom','0px');
+            }
+        });
+
+        
+
 	//auto complete search bar tor
     $('#search_bar').autocomplete({
     source : '/ressources/widgets/auto_completion.php',
@@ -74,6 +90,28 @@ $(function() {
     },
     function () {
         $(this).children('.form_modif_advices').children('.delete_advice').hide();
+    });
+
+    //delete advice
+    $('.form_modif_advices').click(function(event) {
+        var delete_advice = $(event.target);
+        var delete_advice = $(delete_advice).attr('value');
+        var id_member_give_advice = $(this).children('.id_member_give_advice').attr('value');
+        var id_member = $(this).children('.id_member').attr('value');
+        var id_advice = $(this).children('.id_advice').attr('value');
+        if (delete_advice) {
+            $.ajax({
+                type: 'POST',
+                url: '/ressources/request_ajax/modif_advices.php',
+                data: { id_member :id_member , id_advice :id_advice , id_member_give_advice :id_member_give_advice , delete_advice :delete_advice},
+                success: function(){
+                    $('.form_modif_advices_'+id_advice).parent().fadeOut();
+                },
+                error: function(){
+                    location.reload();
+                }
+            });
+        };
     });
 
 });
