@@ -1,7 +1,7 @@
 <div class="page_right_padding">
-	<h3 class="form_inline">Objectifs terminés de <a class="a_display_for_pseudo" href="/user/profile/<?php echo $id_member?>"><?php echo htmlspecialchars($user_name['pseudo']); ?></a></h3>
+	<h3 class="form_inline">Objectifs terminés de <a class="a_display_for_name" href="/user/profile/<?php echo $id_member?>"><?php echo htmlspecialchars($user_name['firstname']." ".$user_name['lastname']); ?></a></h3>
 	<span> | </span>
-	<h5 class="form_inline"><a href="/user/profile/<?php echo $id_member?>">Profil de <?php echo htmlspecialchars($user_name['pseudo']); ?></a></h5>
+	<h5 class="form_inline"><a href="/user/profile/<?php echo $id_member?>">Profil de <?php echo htmlspecialchars($user_name['firstname']); ?></a></h5>
 	<div class="all_objectives_content">
 		<?php foreach ($errors as $value): ?>
 			<h5><?php echo $value; ?></h5><br/>
@@ -15,7 +15,7 @@
 					<h4>
 						<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
 						<?php if ($id_member == $_SESSION['id']) : ?>
-						<form class="form_inline" method="post" action="/done/objective/<?php echo $id_member;?>">
+						<form class="form_inline" method="post" action="#">
 							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
 							<input type="image" name="obj_modif" title="Déplacer vers Objectifs en cours" value="obj_modif" src="/ressources/images/obj_modif.png"/>
 							<input type="image" name="delete_objective" title="Supprimer" value="delete_objective" src="/ressources/images/obj_delete.png"/>
@@ -23,8 +23,8 @@
 						<?php endif ?>
 					</h4>
 					<h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5>
-					<div class="box_click_display_objective">
-						<h5 class="center_text">Afficher les détails</h5>
+					<div class="box_click_display_objective_profile">
+						<img class="center_img offset6" src="/ressources/images/display_details.png">
 					</div>
 					<div class="hidden_part">
 						<div class="box_content_steps">
@@ -59,7 +59,7 @@
 										<li class="box_advice">
 											<img src="/ressources/images/advice_obj.png">
 											<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
-											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['pseudo'];?></a> le <?php echo $value['date_creation'];?></h6>
+											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['firstname']." ".$value['lastname'];?></a> le <?php echo $value['date_creation'];?></h6>
 										</li>
 									<?php endif ?>
 								<?php endforeach; ?>

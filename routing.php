@@ -24,6 +24,21 @@ $config_routing = array(
     	'action' => 'delete_account',
     	'url' => 'account/delete_account'
   	),
+    'friends' => array(
+      'module' => 'account',
+      'action' => 'friends',
+      'url' => 'account/friends'
+    ),
+    'messages' => array(
+      'module' => 'account',
+      'action' => 'messages',
+      'url' => 'account/messages'
+    ),
+    'advices_request' => array(
+      'module' => 'account',
+      'action' => 'advices_request',
+      'url' => 'account/advices_request'
+    ),
     'profile' => array(
       'module' => 'user',
       'action' => 'profile',

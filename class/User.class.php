@@ -4,7 +4,8 @@ class User extends UserManager
 {
 
 	private $_id;
-	private $_pseudo;
+	private $_firstname;
+	private $_lastname;
 	private $_password;
 	private $_email;
 	private $_dateInscription;
@@ -24,7 +25,8 @@ class User extends UserManager
 
 	//GET
 	public function getId(){ return $this->_id; }
-	public function getPseudo(){ return $this->_pseudo; }
+	public function getFirstname(){ return $this->_firstname; }
+	public function getLastname(){ return $this->_lastname; }
 	public function getPassword(){ return $this->_password; }
 	public function getEmail(){ return $this->_email; }
 	public function getDateInscription(){ return $this->_dateInscription; }
@@ -38,8 +40,12 @@ class User extends UserManager
 		$this->_id = $id;
 	}
 
-	public function setPseudo($pseudo){
-		$this->_pseudo = $pseudo;
+	public function setFirstname($firstname){
+		$this->_firstname = $firstname;
+	}
+
+	public function setLastname($lastname){
+		$this->_lastname = $lastname;
 	}
 
 	public function setPassword($password){

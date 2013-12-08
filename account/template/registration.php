@@ -10,8 +10,11 @@
 				</li>
 			<?php endforeach ?>
 		</ul>
-		<p><label for="name_utilisateur"/>Nom utilisateur</label><br/>
-		<input type="text" id="name_utilisateur" name="name_utilisateur" class=autofocus/>
+		<p><label for="firstname"/>Prénom</label><br/>
+		<input type="text" id="firstname" name="firstname" class=autofocus/>
+		<br/><br/>
+		<p><label for="lastname"/>Nom</label><br/>
+		<input type="text" id="lastname" name="lastname" class=autofocus/>
 		<br/><br/>
 		<label for="password_utilisateur">Mot de passe</label><br/>
 		<input type="password" id="password_utilisateur" name="password_utilisateur" class=autofocus required/>

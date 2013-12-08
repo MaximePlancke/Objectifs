@@ -9,8 +9,8 @@
 			<?php endforeach; ?>
 		</ul>
 		<?php endif; ?>
-			<label for="username"/>Nom utilisateur</label><br/>
-			<input type="text" id="username" name="username" class=autofocus required/><br/><br/>
+			<label for="email"/>Email</label><br/>
+			<input type="text" id="email" name="email" class=autofocus required/><br/><br/>
 			<label for="password_user">Mot de passe</label><br/>
 			<input type="password" id="password_user" name="password_user" class=autofocus required/><br/><br/>
 			<input type="submit" value="Connection" class="btn btn-primary"/>

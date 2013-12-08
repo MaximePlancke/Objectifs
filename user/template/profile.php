@@ -1,5 +1,5 @@
 <div class="page_right_padding">
-	<h2><?php echo htmlspecialchars($user_name['pseudo']); ?></h2>	
+	<h2><?php echo htmlspecialchars($user_name['firstname']." ".$user_name['lastname']); ?></h2>	
 	<?php foreach ($errors as $value): ?>
 		<h5><?php echo $value; ?></h5><br/>
 	<?php endforeach ?>
@@ -21,7 +21,7 @@
 					<h4>
 						<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
 						<?php if ($id_member == $_SESSION['id']) : ?>
-						<form class="form_inline" method="post">
+						<form class="form_inline" method="post" action="#">
 							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
 							<input type="image" name="done_objective" title="Objectif terminé" value="done_objective" src="/ressources/images/obj_done.png"/>
 							<input type="image" name="delete_objective" title="Supprimer" value="delete_objective" src="/ressources/images/obj_delete.png"/>
@@ -81,14 +81,14 @@
 													<div class="id_member_give_advice" type="hidden" value="<?php echo $value['id_member_give_advice'] ?>"></div>
 												</div>
 											<?php endif ?>
-											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['pseudo'];?></a> le <?php echo $value['date_creation'];?></h6>
+											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['firstname']." ".$value['lastname'];?></a> le <?php echo $value['date_creation'];?></h6>
 										</li>
 									<?php endif ?>
 								<?php endforeach; ?>
 							</ul>
 						</div>
 						<?php //Add advice ?>
-						<form class="add_advice_form" method="post" action="/user/profile/<?php echo $id_member;?>">
+						<form class="add_advice_form" method="post" action="#">
 							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
 							<textarea id="new_advice" name="new_advice" rows=2 class="span12" onFocus="this.value=''" required>Ajouter un conseil</textarea>
 							<input type="submit" value="Valider le conseil" class="btn"/></p>
@@ -114,7 +114,7 @@
 					<h4>
 						<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
 						<?php if ($id_member == $_SESSION['id']) : ?>
-						<form class="form_inline" method="post" action="/user/profile/<?php echo $id_member;?>">
+						<form class="form_inline" method="post" action="#">
 							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
 							<input type="image" name="obj_modif" title="Déplacer vers Objectifs en cours" value="obj_modif" src="/ressources/images/obj_modif.png"/>
 							<input type="image" name="delete_objective" title="Supprimer" value="delete_objective" src="/ressources/images/obj_delete.png"/>
@@ -157,7 +157,7 @@
 										<li class="box_advice">
 											<img src="/ressources/images/advice_obj.png">
 											<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
-											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['pseudo'];?></a> le <?php echo $value['date_creation'];?></h6>
+											<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['firstname']." ".$value['lastname'];?></a> le <?php echo $value['date_creation'];?></h6>
 										</li>
 									<?php endif ?>
 								<?php endforeach; ?>
@@ -167,6 +167,31 @@
 					</div> 
 				</li>
 			<?php endforeach; ?>
+		</ul>
+	</div>
+	<ul>
+		<li class="box_content_profile">
+			<h4 class="center_text">5 derniers conseils donnés</h4>
+			<div class="center_text">
+				<!-- <a href="/done/objective/<?php echo $id_member?>">Voir la liste compléte et les détails</a>	 -->
+			</div>
+		</li>
+	</ul>
+	<div class="all_objectives_content">
+		<ul>
+			<li class="box_content">
+				<ul>
+					<?php foreach ($last_advices_user as $value): ?>		
+						<?php if ($value['id_member_give_advice'] == $id_member) : ?>
+							<li class="box_advice">
+								<img src="/ressources/images/advice_obj.png">
+								<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
+								<h6>Pour l'objectif : <?php echo $value['name_obj'];?></h6>
+							</li>
+						<?php endif ?>
+					<?php endforeach; ?>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </div>

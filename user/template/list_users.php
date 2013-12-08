@@ -1,5 +1,5 @@
 <div class="page_right_padding">
-	<h2>Qui voulez vous ajouter?</h2>
+	<h3>Liste des utilisateurs</h3>
 	<ul>
 		<?php foreach ($errors as $value): ?> 
 			<li>
@@ -12,16 +12,19 @@
 			</li>
 		<?php endforeach ?>
 	</ul>
-	<ul>
 		<?php foreach ($list_users as $datas) : ?>
-		<li>
-			<?php echo htmlspecialchars($datas['pseudo']);?>
+		<li class="span4 box_users">
+			<div class="box_name_box_users">
+				<img src="/ressources/images/list_users.png">
+				<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars($datas['firstname']." ".$datas['lastname']);?></a>
+			</div>
 			<form method="post" action="/users">
-				<input type="hidden" name="id_friend" value="<?php echo $datas['id'];?>" />
-				<input name="add" id="add" type="submit" value="Ajouter" class="btn btn-primary"/>
-				<input name="delete" id="delete" type="submit" value="Supprimer" class="btn btn-primary"/>
+				<input class="id_member" type="hidden" name="id_member" value="<?php echo $id_friends_1;?>" />
+				<input class="id_friends_2" type="hidden" name="id_friends_2" value="<?php echo $id_friends_2;?>" />
+				<input class="id_friend_button" type="hidden" name="id_friend_button" value="<?php echo $datas['id'];?>" />
+				<input class="add_friend_button btn btn-primary" name="add_friend_button" type="submit" value="Ajouter"/>
+				<input class="delete_friend_button btn" name="delete_friend_button" type="submit" value="Supprimer"/>
 			</form>
 		</li>
 		<?php endforeach ?>					
-	</ul>
 </div>

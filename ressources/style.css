@@ -111,6 +111,22 @@ textarea {
 	transition: background-color 0.2s linear;
 }
 
+.box_friend_request {
+	padding : 5px 2px 5px 5px;
+	margin : 0px 30px 0px -20px;
+	list-style-type:none;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.box_friend_request:hover {
+	background-color: white;
+	border: 1px solid #e3e3e3;
+	-webkit-transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
+}
+
 .big_title {
 	margin: center;
 	text-align: center;
@@ -134,9 +150,12 @@ textarea {
 }
 
 .text_menu_top {
-	height: 100%;
-	padding-top: 15px;
+	padding: 15px;
 	font-family: 'Nunito-Regular', sans-serif;
+}
+
+.logout_menu {
+	margin-left: 60px;
 }
 
 .nav li a:hover {
@@ -161,16 +180,32 @@ textarea {
 	text-transform: uppercase;
 }
 
+.box_users {
+	list-style-type:none;
+	border : 1px solid #e3e3e3;
+	margin : 5px 0px 5px 2px;
+	padding: 3px 5px 3px 5px;
+	background-color: #f5f5f5;
+	width : 290px;
+	height: 130px;
+}
+
+.box_name_box_users {
+	height: 70px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
 .img_menu_top {
 	padding-top: 5px;
 }
 
-.a_display_for_pseudo {
+.a_display_for_name {
 	color: black;
 	text-decoration: none;
 }
 
-.a_display_for_pseudo:hover {
+.a_display_for_name:hover {
 	color: black;
 	text-decoration: underline;
 }

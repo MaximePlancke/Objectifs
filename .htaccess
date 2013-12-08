@@ -27,6 +27,15 @@ RewriteRule ^account/logout$   ?page=log_out [L]
 # Page delete_account :
 RewriteRule ^account/delete$   ?page=delete_account [L]
 
+# Page friend_request :
+RewriteRule ^account/friends/([0-9]*)$   ?page=friends&id=$1 [L]
+
+# Page messages :
+RewriteRule ^account/messages/([0-9]*)$   ?page=messages&id=$1 [L]
+
+# Page advice request :
+RewriteRule ^account/request/advices/([0-9]*)$   ?page=advices_request&id=$1 [L]
+
 # Page profil :
 RewriteRule ^user/profile/([0-9]*)$   ?page=profile&id=$1 [L]
 

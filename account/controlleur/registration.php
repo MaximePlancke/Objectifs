@@ -1,18 +1,20 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$name 		= isset($_POST['name_utilisateur']) ? $_POST['name_utilisateur'] : null;
+	$firstname 		= isset($_POST['firstname']) ? $_POST['firstname'] : null;
+	$lastname 		= isset($_POST['lastname']) ? $_POST['lastname'] : null;
 	$password 	= isset($_POST['password_utilisateur']) ? $_POST['password_utilisateur'] : null;
 	$password2 	= isset($_POST['password_utilisateur2']) ? $_POST['password_utilisateur2'] : null;
 	$email 		= isset($_POST['email_utilisateur']) ? $_POST['email_utilisateur'] : null;
 
 	$user = new User();
-	$user->setPseudo($name);
+	$user->setFirstname($firstname);
+	$user->setLastname($lastname);
 	$user->setPassword($password);
 	$user->setEmail($email);
 	$user->setDb($bdd);
 
-	if ($name && $password && $password2 && $email){
+	if ($firstname && $lastname && $password && $password2 && $email){
 		$check_unique = $user->checkUniqueRegistration();
 		if ($check_unique) {
 			array_push($errors, $check_unique);

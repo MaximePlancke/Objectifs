@@ -24,7 +24,7 @@ $advices_objective->setDb($bdd);
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	//delete objetive
-	if ($id_objective AND isset($_POST['delete_objective'])) {
+	if ($id_objective AND isset($_POST['delete_objective_x'])) {
 		if ($id_member != $_SESSION['id']) {
 			array_push($errors, "Vous n'avez pas les droits pour cette action");
 		}else{
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	}
 
 	//obective done
-	if ($id_objective AND isset($_POST['done_objective'])) {
+	if ($id_objective AND isset($_POST['done_objective_x'])) {
 		if ($id_member != $_SESSION['id']) {
 			array_push($errors, "Vous n'avez pas les droits pour cette action");
 		}else{
@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 		if ($id_member_give_advice AND $id_objective AND $advice_content) {
 			$add_advice->add();
-			array_push($errors, "Votre conseil a bien été ajouté");
+			array_push($errors, "Votre conseil sera visible une fois accepté par la personne ayant crée l'objectif");
 		} else {
 			array_push($errors, "Vous n'êtes pas connecté, Veuillez vous connecter.");
 		}

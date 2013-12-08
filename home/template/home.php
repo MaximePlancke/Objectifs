@@ -7,6 +7,6 @@
 	<br/><br/><br/><br/>
 	<h1 class="big_title">Bienvenue sur OBShare</h1>
 	<br/>
-	<h2 class="big_title">Version Beta 1.1</h2>
+	<h2 class="big_title">Version Beta 1.2</h2>
 </div>
 

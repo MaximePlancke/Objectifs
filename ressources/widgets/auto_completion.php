@@ -1,7 +1,7 @@
 <?php 
 try
     {
-        $bdd = new PDO('mysql:host=localhost;dbname=site_objectifs', 'root', 'root');
+        $bdd = new PDO('mysql:host=mysql51-105.perso;dbname=maximeplob', 'maximeplob', 'mA4NMM82E6RV');
     }
     catch (Exception $e)
     {
@@ -14,14 +14,15 @@ if(isset($_GET['term'])) {
 
 $array = array();
 
-$request = $bdd->prepare('SELECT pseudo , id FROM membres WHERE pseudo LIKE :pseudo');
+$request = $bdd->prepare('SELECT firstname, lastname, id FROM membres WHERE firstname LIKE :firstname OR lastname LIKE :lastname');
 $request->execute(array(
-	'pseudo' => '%'.$term.'%',
+	'firstname' => '%'.$term.'%',
+    'lastname' => '%'.$term.'%',
 	));
 $donnees = $request->fetchAll();
 foreach ($donnees as $value) {
 	array_push($array, array(
-		'label' => $value['pseudo'],
+		'label' => $value['firstname']." ".$value['lastname'],
 		'id' => $value['id']));
 }
 echo json_encode($array); // il n'y a plus qu'à convertir en JSON
