@@ -1,23 +1,19 @@
 <?php 
 	$id_member_session = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
-	$user_menu = new User();
-	$user_menu->setDb($bdd);
+	$user_menu = new User($bdd);
 	$user_menu->setId($id_member_session);
 	$user_name_session = $user_menu->read();
 
-	$objective_menu = new Objective();
+	$objective_menu = new Objective($bdd);
 	$objective_menu->setIdMember($id_member_session);  
-	$objective_menu->setDb($bdd);
 	$count_objective_menu = (int)($objective_menu->countDone());
 
-	$friend_menu = new Friend();
-	$friend_menu->setDb($bdd);
+	$friend_menu = new Friend($bdd);
 	$friend_menu->setIdFriend2($id_member_session);
 	$count_new_friend_menu = $friend_menu->alertNewFriendRequest();
 
-	$advice_menu = new User();
-	$advice_menu->setDb($bdd);
+	$advice_menu = new User($bdd);
 	$advice_menu->setId($id_member_session);
 	$count_new_advice_menu = $advice_menu->alertNewAdviceRequest();
 
@@ -27,7 +23,7 @@
 		<ul class="nav nav_top">
 			<li>
 				<div class="span1 img_menu_top">
-					<a href="">
+					<a href="/">
 						<img src="/ressources/images/home2.png">
 					</a>
 				</div>

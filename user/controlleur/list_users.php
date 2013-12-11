@@ -3,16 +3,14 @@
 $id_friends_1 = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 $id_friends_2 = isset($_POST['id_friend_button']) ? $_POST['id_friend_button'] : null;
 	
-$user = new User();
-$user->setDb($bdd);
+$user = new User($bdd);
 $user->setId($user_id);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-	$friend = new Friend();
+	$friend = new Friend($bdd);
 	$friend->setIdFriend1($id_friends_1);
 	$friend->setIdFriend2($id_friends_2);
-	$friend->setDb($bdd);
 
 	if (isset($_POST['add_friend_button'])) {
 		//Control (already friends)

@@ -1,25 +1,19 @@
 <?php
 
-$id_member = isset($_GET['id']) ? $_GET['id'] : null;
+$id_member 	  = isset($_GET['id']) ? $_GET['id'] : null;
 $id_objective = isset($_POST['id_objective']) ? $_POST['id_objective'] : null;
-$id_advice = isset($_POST['id_advice']) ? $_POST['id_advice'] : null;
+$id_advice    = isset($_POST['id_advice']) ? $_POST['id_advice'] : null;
 
-$user = new User();
+$user = new User($bdd);
 $user->setId($id_member);
-$user->setDb($bdd);
-// get User
-$user_name = $user->read();
 
-$objective = new Objective();
-$objective->setDb($bdd);
+$objective = new Objective($bdd);
 $objective->setIdMember($id_member);
 $objective->setId($id_objective);
 
-$steps_objective = new StepsObjective();
-$steps_objective->setDb($bdd);
+$steps_objective = new StepsObjective($bdd);
 
-$advices_objective = new Advice();
-$advices_objective->setDb($bdd);
+$advices_objective = new Advice($bdd);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -48,8 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		$advice_content = isset($_POST['new_advice']) ? $_POST['new_advice'] : null;
 		$id_member_give_advice = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
-		$add_advice = new Advice();
-		$add_advice->setDb($bdd);
+		$add_advice = new Advice($bdd);
 		$add_advice->setIdMemberGiveAdvice($id_member_give_advice);
 		$add_advice->setAdviceContent($advice_content);
 		$add_advice->setIdObjective($id_objective);
@@ -61,15 +54,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 			array_push($errors, "Vous n'êtes pas connecté, Veuillez vous connecter.");
 		}
 	}
-
 }
-
+// get User
+$user_name = $user->read();
 // Get objective.
-$objectives = $objective->read(0);
-
+$current_objectives = $objective->read(0);
+// Get steps from objective
 $steps_objectives = $steps_objective->read();
-
 // Get advices from objective selected.
 $advices_objectives = $advices_objective->read();
-
 ?>

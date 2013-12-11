@@ -71,12 +71,13 @@ $(function() {
     //update steps to done
     $('.form_modif_steps').click(function(event) {
     	var done = $(event.target).val();
+        var id_member = $(this).children('.id_member').val();
     	var id = $(this).children('.step_id').val();
         $.ajaxSetup({async: false});
     	$.ajax({
             type: 'POST',
-            url: '/ressources/request_ajax/modif_steps.php',
-            data: { id :id , done :done},
+            url: '/API/modif_steps.php',
+            data: { id :id , done :done , id_member :id_member},
         });
         $.ajaxSetup({async: true});
 	});
@@ -92,6 +93,7 @@ $(function() {
 
     //modif advice
     $('.form_modif_advices').click(function(event) {
+        var $this = $(this);
         var target_event = $(event.target);
         var target_event = $(target_event).attr('value');
         var id_member_give_advice = $(this).children('.id_member_give_advice').attr('value');
@@ -100,10 +102,10 @@ $(function() {
         if (target_event) {
             $.ajax({
                 type: 'POST',
-                url: '/ressources/request_ajax/modif_advices.php',
+                url: '/API/modif_advices.php',
                 data: { id_member :id_member , id_advice :id_advice , id_member_give_advice :id_member_give_advice , target_event :target_event},
-                success: function(){
-                    $('.form_modif_advices_'+id_advice).parent().fadeOut();
+                success: function(data){
+                    $this.parent().html(data).delay(2000).fadeOut(200);
                 },
                 error: function(){
                     location.reload();

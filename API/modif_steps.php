@@ -6,20 +6,20 @@ function loadClass($class) {
 }
 spl_autoload_register('loadClass');
 
+$id_member = isset($_POST['id_member']) ? $_POST['id_member'] : null;
 $id_step = isset($_POST['id']) ? $_POST['id'] : null;
 $done = isset($_POST['done']) ? $_POST['done'] : null;
 
-$steps_objective = new StepsObjective();
-$steps_objective->setDb($bdd);
+$steps_objective = new StepsObjective($bdd);
 $steps_objective->setId($id_step);
-$steps_objective->updateStatus($done);
+
 
 if (isset($done)) {
 	if ($id_member != $_SESSION['id']) {
-		array_push($errors, "Vous n'avez pas les droits pour cette action");
+		echo "Vous n'avez pas les droits pour cette action";
 	}else{
-		$objective->updateStatus(1);
-		array_push($success, "Votre objectif a été déplacé dans la section objectifs terminés");
+		$steps_objective->updateStatus($done);
+		echo "Votre objectif a été déplacé dans la section objectifs terminés";
 	}
 }
 

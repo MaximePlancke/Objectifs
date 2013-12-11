@@ -13,8 +13,7 @@ $target_event = isset($_POST['target_event']) ? $_POST['target_event'] : null;
 
 if($id_advice AND $target_event == 'delete_advice') {
 	if ($id_member == $_SESSION['id'] OR $id_member_give_advice == $_SESSION['id']) {
-		$advices_objective = new Advice();
-		$advices_objective->setDb($bdd);
+		$advices_objective = new Advice($bdd);
 		$advices_objective->setId($id_advice);
 		$advices_objective->delete();
 		echo("Conseil supprimé");
@@ -24,8 +23,7 @@ if($id_advice AND $target_event == 'delete_advice') {
 }
 
 if($id_advice AND $target_event == 'accept_advice') {
-	$advices_objective = new Advice();
-	$advices_objective->setDb($bdd);
+	$advices_objective = new Advice($bdd);
 	$advices_objective->setId($id_advice);
 	$advices_objective->confirm_add();
 	echo("Conseil accepté");

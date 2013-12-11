@@ -2,15 +2,6 @@
 
 class FriendManager
 {
-	private $_bdd;
-	
-	public function __construct($bdd) {
-		$this->setDb($bdd);
-	}
-
-	public function setDb(PDO $bdd) {
-		$this->_bdd = $bdd;
-	}
 
 	public function confirm_add() {
 		$request = $this->_bdd->prepare('UPDATE friends SET accepted = 1 WHERE id_friends_2 = :id_friends_1 AND id_friends_1 = :id_friends_2');

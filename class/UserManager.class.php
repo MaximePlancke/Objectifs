@@ -2,15 +2,6 @@
 
 class UserManager
 {
-	private $_bdd;
-
-	public function __construct($bdd) {
-		$this->setDb($bdd);
-	}
-
-	public function setDb(PDO $bdd) {
-		$this->_bdd = $bdd;
-	}
 
 	public function add() {
 		$request = $this->_bdd->prepare('INSERT INTO membres(firstname, lastname, password, email, date_inscription) VALUES(:firstname, :lastname, :password, :email, NOW())');

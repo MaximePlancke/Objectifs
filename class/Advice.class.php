@@ -2,14 +2,16 @@
 
 class Advice extends AdviceManager
 {
+  protected $_bdd;
 	private $_id;
 	private $_idMemberGiveAdvice;
 	private $_idObjective;
 	private $_adviceContent;
 	private $_dateCreation;
 	
-	function __construct(array $datas = array())
+	function __construct(PDO $bdd, array $datas = array())
 	{
+    $this->_bdd = $bdd;
 		$this->hydrate($datas);
 	}
 

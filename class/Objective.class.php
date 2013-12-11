@@ -2,6 +2,7 @@
 
 class Objective extends ObjectiveManager
 {
+	protected $_bdd;
 	private $_id;
 	private $_idMember;
 	private $_nameObjective;
@@ -10,7 +11,8 @@ class Objective extends ObjectiveManager
 	private $_nbSteps;
 	private $_done;
 	
-	public function __construct(array $datas = array()) {
+	public function __construct(PDO $bdd, array $datas = array()) {
+		$this->_bdd = $bdd;
 		$this->hydrate($datas);
 	}
 

@@ -2,16 +2,6 @@
 
 class StepsObjectiveManager
 {
-	private $_bdd;
-	
-	public function __construct($bdd) {
-		$this->setDb($bdd);
-	}
-
-	public function setDb(PDO $bdd) {
-		$this->_bdd = $bdd;
-	}
-
 	public function add($nb_steps) {
 		$get_steps_content = $this->getStepsContent();
 		for ($i=0; $i < $nb_steps; $i++) {

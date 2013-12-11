@@ -2,13 +2,15 @@
 
 class StepsObjective extends StepsObjectiveManager
 {
+	protected $_bdd;
 	private $_id;
 	private $_idObjective;
 	private $_stepsContent;
 	private $_done;
 	private $_dateCreation;
 	
-	public function __construct(array $datas = array()) {
+	public function __construct(PDO $bdd, array $datas = array()) {
+		$this->_bdd = $bdd;
 		$this->hydrate($datas);
 	}
 

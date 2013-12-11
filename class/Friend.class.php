@@ -2,15 +2,16 @@
 
 class Friend extends FriendManager
 {
-
+  protected $_bdd;
 	private $_id;
 	private $_idFriend1;
 	private $_idFriend2;
 	private $_accepted;
 	private $_dateFriend;
 	
-	function __construct(array $datas = array())
+	function __construct(PDO $bdd, array $datas = array())
 	{
+    $this->_bdd = $bdd;
 		$this->hydrate($datas);
 	}
 

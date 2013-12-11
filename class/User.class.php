@@ -3,6 +3,7 @@
 class User extends UserManager
 {
 
+	protected $_bdd;
 	private $_id;
 	private $_firstname;
 	private $_lastname;
@@ -10,8 +11,10 @@ class User extends UserManager
 	private $_email;
 	private $_dateInscription;
 	
-	public function __construct(array $datas = array()) {	
+	public function __construct(PDO $bdd, array $datas = array()) {	
 		$this->hydrate($datas);
+		$this->_bdd = $bdd;
+
 	}
 
 	public function hydrate(array $datas = array()) {

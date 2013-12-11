@@ -6,13 +6,13 @@ function loadClass($class) {
 }
 spl_autoload_register('loadClass');
 
-$errors = array();
+$errors  = array();
 $success = array();
 $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
 require($_SERVER['DOCUMENT_ROOT'].'/routing.php');
 
-$URi = $_SERVER["REQUEST_URI"]; 
+$URi   = $_SERVER["REQUEST_URI"]; 
 $motif = "'/index\.php'"; 
 if (preg_match($motif,$URi)) { 
 	header("Status: 301 Moved Permanently"); 

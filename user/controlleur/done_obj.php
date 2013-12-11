@@ -1,24 +1,18 @@
-<?php
+ <?php
 
-$id_member = $_GET["id"];
+$id_member    = isset($_GET['id']) ? $_GET['id'] : null;
 $id_objective = isset($_POST['id_objective']) ? $_POST['id_objective'] : null;
 
-$user = new User();
+$user = new User($bdd);
 $user->setId($id_member);
-$user->setDb($bdd);
-// get User
-$user_name = $user->read();
 
-$objective = new Objective();
+$objective = new Objective($bdd);
 $objective->setIdMember($id_member);
 $objective->setId($id_objective);
-$objective->setDb($bdd);
 
-$steps_objective = new StepsObjective();
-$steps_objective->setDb($bdd);
+$steps_objective = new StepsObjective($bdd);
 
-$advices_objective = new Advice();
-$advices_objective->setDb($bdd);
+$advices_objective = new Advice($bdd);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -41,13 +35,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 }
-
+// get User
+$user_name = $user->read();
 // Get objective.
-$objectives = $objective->read(1);
-
+$done_objectives = $objective->read(1);
+// Get steps from objective
 $steps_objectives = $steps_objective->read();
-
 // Get advices from objective selected.
 $advices_objectives = $advices_objective->read();
-
 ?>
