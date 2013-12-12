@@ -3,6 +3,10 @@
 $page = isset($_GET['page']) ? $_GET['page'] : 'home' ; 
 $template = null;
 
+if (!$user_id AND $page != 'home' AND $page != 'registration' ) {
+  $page = 'log_in';
+}
+
 $config_routing = array(
   	'log_in' => array(
     	'module' => 'account',
