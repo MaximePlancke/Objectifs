@@ -27,6 +27,16 @@ class ObjectiveManager
 		$request->closeCursor();
 	}
 
+	public function readAll() {
+		$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres ORDER BY id DESC');
+		$request->execute(array(
+			));
+		$objectives = $request->fetchAll();
+		$request->closeCursor();
+		$objectives = $this->categoryName($objectives);
+		return $objectives;
+	}
+
 	public function read($done) {
 		$request = $this->_bdd->prepare('SELECT * FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
 		$request->execute(array(
@@ -35,25 +45,7 @@ class ObjectiveManager
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
-		foreach ($objectives as &$value) {
-			switch ($value['category']) {
-				case 1:
-					$value['category'] = "Personnel";
-					break;
-				case 2:
-					$value['category'] = "Professionnel";
-					break;
-				case 3:
-					$value['category'] = "Sportif";
-					break;
-				case 4:
-					$value['category'] = "Fun";
-					break;
-				default:
-					$value['category'] = "Aucune";
-					break;
-			}
-		}
+		$objectives = $this->categoryName($objectives);
 		return $objectives;
 	}
 
@@ -65,25 +57,7 @@ class ObjectiveManager
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
-		foreach ($objectives as &$value) {
-			switch ($value['category']) {
-				case 1:
-					$value['category'] = "Personnel";
-					break;
-				case 2:
-					$value['category'] = "Professionnel";
-					break;
-				case 3:
-					$value['category'] = "Sportif";
-					break;
-				case 4:
-					$value['category'] = "Fun";
-					break;
-				default:
-					$value['category'] = "Aucune";
-					break;
-			}
-		}
+		$objectives = $this->categoryName($objectives);
 		return $objectives;
 	}
 
@@ -118,6 +92,29 @@ class ObjectiveManager
 			$count = ($countDone/$countTotal)*100;
 			return $count;	
 		}
+	}
+
+	public function categoryName($objectives) {
+		foreach ($objectives as &$value) {
+			switch ($value['category']) {
+				case 1:
+					$value['category'] = "Personnel";
+					break;
+				case 2:
+					$value['category'] = "Professionnel";
+					break;
+				case 3:
+					$value['category'] = "Sportif";
+					break;
+				case 4:
+					$value['category'] = "Fun";
+					break;
+				default:
+					$value['category'] = "Aucune";
+					break;
+			}
+		}
+		return $objectives;
 	}
 }
 ?>

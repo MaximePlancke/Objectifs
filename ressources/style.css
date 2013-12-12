@@ -120,6 +120,11 @@ textarea {
 	transition: background-color 0.2s linear;
 }
 
+.explore_search_div {	
+	border-bottom: 1px solid #e3e3e3;
+	padding : 10px 2px 5px 5px;
+}
+
 .big_title {
 	margin: center;
 	text-align: center;

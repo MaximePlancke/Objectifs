@@ -6,9 +6,9 @@ function loadClass($class) {
 }
 spl_autoload_register('loadClass');
 
-$id_member = isset($_POST['id_member']) ? $_POST['id_member'] : null;
-$id_step = isset($_POST['id']) ? $_POST['id'] : null;
-$done = isset($_POST['done']) ? $_POST['done'] : null;
+$id_member 	= isset($_POST['id_member']) ? $_POST['id_member'] : null;
+$id_step 	= isset($_POST['id']) ? $_POST['id'] : null;
+$done 		= isset($_POST['done']) ? $_POST['done'] : null;
 
 $steps_objective = new StepsObjective($bdd);
 $steps_objective->setId($id_step);

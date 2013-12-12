@@ -18,11 +18,12 @@
 				<li class="box_friend_request">
 					<img src="/ressources/images/list_users.png">
 					<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars($datas['firstname']." ".$datas['lastname']);?></a>
-					<form class="form_inline" method="post" action="#">
-						<input type="hidden" name="id_friend_button" value="<?php echo $datas['id'];?>" />
-						<input type="image" name="friend_request_ok" title="Accepter" value="friend_request_ok" src="/ressources/images/obj_done.png"/>
-						<input type="image" name="delete_friend_button" title="Refuser" value="delete_friend_button" src="/ressources/images/obj_delete.png"/>
-					</form>
+					<div class="form_inline form_modify_friend">
+						<div class="id_member form_inline" type="hidden" value="<?php echo $id_member;?>"></div>
+						<div class="id_friend_button form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
+						<img type="image" title="Accepter" value="friend_request_ok" src="/ressources/images/obj_done.png"/>
+						<img type="image" title="Refuser" value="delete_friend_button" src="/ressources/images/obj_delete.png"/>
+					</div>
 				</li>
 			<?php endforeach; ?>
 		</ul>
@@ -33,10 +34,11 @@
 				<li class="box_friend_request">
 					<img src="/ressources/images/list_users.png">
 					<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars($datas['firstname']." ".$datas['lastname']);?></a>
-					<form class="form_inline" method="post" action="#">
-						<input type="hidden" name="id_friend_button" value="<?php echo $datas['id'];?>" />
-						<input type="image" name="delete_friend_button" title="Supprimer" value="delete_friend_button" src="/ressources/images/obj_delete.png"/>
-					</form>
+					<div class="form_inline form_modify_friend">
+						<div class="id_member form_inline" type="hidden" value="<?php echo $id_member;?>"></div>
+						<div class="id_friend_button form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
+						<img type="image" title="Supprimer" value="delete_friend_button" src="/ressources/images/obj_delete.png"/>
+					</div>
 				</li>
 			<?php endforeach; ?>
 		</ul>

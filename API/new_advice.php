@@ -6,7 +6,7 @@ function loadClass($class) {
 }
 spl_autoload_register('loadClass');
 
-$add_advice_content 		= isset($_POST['add_advice_content']) ? $_POST['add_advice_content'] : null;
+$add_advice_content 	= isset($_POST['add_advice_content']) ? $_POST['add_advice_content'] : null;
 $id_member_give_advice 	= isset($_SESSION['id']) ? $_SESSION['id'] : null;
 $id_objective			= isset($_POST['id_objective']) ? $_POST['id_objective'] : null;
 

@@ -134,4 +134,48 @@ $(function() {
         });
     });
 
+    $('.form_modify_friend').click(function(event) {
+        var $this = $(this);
+        var target_event = $(event.target);
+        var target_event = $(target_event).attr('value');
+        var id_member = $(this).children('.id_member').attr('value');
+        var id_friend_button = $(this).children('.id_friend_button').attr('value');
+        if (target_event) {
+            $.ajax({
+                type: 'POST',
+                url: '/API/management_friends.php',
+                data: { id_member :id_member , id_friend_button :id_friend_button , target_event :target_event},
+                success: function(data){
+                    $this.parent().html(data).delay(2500).fadeOut(200);
+                },
+                error: function(){
+                    location.reload();
+                }
+            });
+        };
+    });
+
+    //Filter category explore
+    $('.filter_class').change(function() {
+        var filter_friend_id = parseInt($('#explore_filter_friend').val());
+        var filter_done_id = parseInt($('#explore_filter_done').val());
+        var filter_category_id = parseInt($('#explore_filter_category').val());
+        var objective_result = new Array();
+            $.ajax({
+                type: 'POST',
+                url: '/API/explore_filter.php',
+                data: { filter_category_id :filter_category_id , filter_friend_id :filter_friend_id, filter_done_id :filter_done_id},
+                success: function(data){
+                    $('.all_objectives_content').empty();
+                    objective_result = JSON.parse(data);
+                    alert(objective_result);
+                    $('.all_objectives_content').html(data);
+
+                },
+                error: function(){
+                    location.reload();
+                }
+        });
+    });
+
 });

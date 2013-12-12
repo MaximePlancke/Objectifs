@@ -43,6 +43,11 @@ $config_routing = array(
       'action' => 'advices_request',
       'url' => 'account/advices_request'
     ),
+    'explore' => array(
+      'module' => 'common',
+      'action' => 'explore',
+      'url' => 'common/explore'
+    ),
     'profile' => array(
       'module' => 'user',
       'action' => 'profile',

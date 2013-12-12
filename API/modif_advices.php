@@ -6,10 +6,10 @@ function loadClass($class) {
 }
 spl_autoload_register('loadClass');
 
-$id_member = isset($_POST['id_member']) ? $_POST['id_member'] : null;
-$id_advice = isset($_POST['id_advice']) ? $_POST['id_advice'] : null;
-$id_member_give_advice = isset($_POST['id_member_give_advice']) ? $_POST['id_member_give_advice'] : null;
-$target_event = isset($_POST['target_event']) ? $_POST['target_event'] : null;
+$id_member 				= isset($_POST['id_member']) ? $_POST['id_member'] : null;
+$id_advice 				= isset($_POST['id_advice']) ? $_POST['id_advice'] : null;
+$id_member_give_advice 	= isset($_POST['id_member_give_advice']) ? $_POST['id_member_give_advice'] : null;
+$target_event 			= isset($_POST['target_event']) ? $_POST['target_event'] : null;
 
 if($id_advice AND $target_event == 'delete_advice') {
 	if ($id_member == $_SESSION['id'] OR $id_member_give_advice == $_SESSION['id']) {

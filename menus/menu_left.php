@@ -1,6 +1,6 @@
 <div id="menu_left">
 		<ul class="nav">
-			<li class="menu_responsive"><a href="/">Explorez !</a></li>
+			<li class="menu_responsive"><a href="/common/explore">Explorez !</a></li>
 		</ul>
 		<h4>Objectifs</h4>
 		<ul class="nav">
