@@ -105,13 +105,33 @@ $(function() {
                 url: '/API/modif_advices.php',
                 data: { id_member :id_member , id_advice :id_advice , id_member_give_advice :id_member_give_advice , target_event :target_event},
                 success: function(data){
-                    $this.parent().html(data).delay(2000).fadeOut(200);
+                    $this.parent().html(data).delay(2500).fadeOut(200);
                 },
                 error: function(){
                     location.reload();
                 }
             });
         };
+    });
+
+    $('.success_add_advice').hide();
+    //add advice
+    $('.add_advice_submit').click(function(event) {
+        var $this = $(this);
+        var id_objective = $(this).siblings('.id_objective').attr('value');
+        var add_advice_content = $(this).siblings('.add_advice_content').attr('value');
+        $.ajax({
+            type: 'POST',
+            url: '/API/new_advice.php',
+            data: { add_advice_content :add_advice_content , id_objective :id_objective},
+            success: function(data){
+                $this.siblings('.success_add_advice').show().html(data).css('background-color','#dff0d8').delay(3000).fadeOut(300);
+                $this.siblings('.add_advice_content').attr('value',"Ajouter un conseil");
+            },
+            error: function(){
+                location.reload();
+            }
+        });
     });
 
 });

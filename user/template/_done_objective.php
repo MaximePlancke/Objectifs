@@ -4,7 +4,7 @@
 			<li class="box_content">
 				<h4>
 					<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
-					<?php if ($id_member == $_SESSION['id']) : ?>
+					<?php if ($id_member == $user_id) : ?>
 					<form class="form_inline" method="post" action="#">
 						<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
 						<input type="image" name="obj_modif" title="Déplacer vers Objectifs en cours" value="obj_modif" src="/ressources/images/obj_modif.png"/>

@@ -73,11 +73,12 @@
 							</ul>
 						</div>
 						<?php //Add advice ?>
-						<form class="add_advice_form" method="post" action="#">
-							<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
-							<textarea id="new_advice" name="new_advice" rows=2 class="span12" onFocus="this.value=''" required>Ajouter un conseil</textarea>
-							<input type="submit" value="Valider le conseil" class="btn"/></p>
-						</form>
+						<div class="add_advice_form">
+							<div class="success_add_advice"></div>
+							<div class="id_objective" type="hidden" value="<?php echo $datas['id'];?>"></div>
+							<textarea class="add_advice_content span12" name="new_advice" rows=2 class="span12" onFocus="this.value=''" required>Ajouter un conseil</textarea>
+							<input class="add_advice_submit" type="submit" value="Valider le conseil" class="btn"/>
+						</div>
 						<h6>Catégorie : <?php echo $datas['category'] ?> | Ajouté le : <?php echo $datas['date_creation'] ?></h6>
 					</div>
 				</li>

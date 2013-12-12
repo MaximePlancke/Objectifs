@@ -47,24 +47,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 
-	//add new advice
-	// if (isset($_POST['new_advice'])) {
-	// 	$advice_content = isset($_POST['new_advice']) ? $_POST['new_advice'] : null;
-	// 	$id_member_give_advice = isset($_SESSION['id']) ? $_SESSION['id'] : null;
-
-	// 	$add_advice = new Advice($bdd);
-	// 	$add_advice->setIdMemberGiveAdvice($id_member_give_advice);
-	// 	$add_advice->setAdviceContent($advice_content);
-	// 	$add_advice->setIdObjective($id_objective);
-
-	// 	if ($id_member_give_advice AND $id_objective AND $advice_content) {
-	// 		$add_advice->add();
-	// 		array_push($errors, "Votre conseil sera visible une fois accepté par la personne ayant crée l'objectif");
-	// 	} else {
-	// 		array_push($errors, "Vous n'êtes pas connecté, Veuillez vous connecter.");
-	// 	}
-	// }
-
 }
 // get User
 $user_name = $user->read();
