@@ -83,17 +83,18 @@ $(function() {
 	});
 
     //hidden part where you can modify advices
-    $('.delete_advice').hide();
+    $('.form_modif_advices').hide();
     $('.box_advice').hover(function() {
-        $(this).children('.form_modif_advices').children('.delete_advice').show();
+        $(this).children('.form_modif_advices').show();
     },
     function () {
-        $(this).children('.form_modif_advices').children('.delete_advice').hide();
+        $(this).children('.form_modif_advices').hide();
     });
 
     //modif advice
     $('.form_modif_advices').click(function(event) {
         var $this = $(this);
+        var $target_event = $(event.target);
         var target_event = $(event.target);
         var target_event = $(target_event).attr('value');
         var id_member_give_advice = $(this).children('.id_member_give_advice').attr('value');
@@ -105,7 +106,15 @@ $(function() {
                 url: '/API/modif_advices.php',
                 data: { id_member :id_member , id_advice :id_advice , id_member_give_advice :id_member_give_advice , target_event :target_event},
                 success: function(data){
-                    $this.parent().html(data).delay(2500).fadeOut(200);
+                    if (target_event == "accept_advice" || target_event == "delete_advice") {
+                        $this.parent().html(data).delay(2500).fadeOut(200);
+                    } else if (target_event == "like_advice") {
+                        $this.next().children('.box_count_like').html('Vous aimez');
+                        $target_event.fadeOut(200);
+                    } else if (target_event == "unlike_advice") {
+                        $this.next().children('.box_count_like').html('Vous n\'aimez plus');
+                        $target_event.fadeOut(200);
+                    };
                 },
                 error: function(){
                     location.reload();
@@ -114,8 +123,8 @@ $(function() {
         };
     });
 
-    $('.success_add_advice').hide();
     //add advice
+    $('.success_add_advice').hide();
     $('.add_advice_submit').click(function(event) {
         var $this = $(this);
         var id_objective = $(this).siblings('.id_objective').attr('value');
@@ -134,6 +143,7 @@ $(function() {
         });
     });
 
+    //modif friends
     $('.form_modify_friend').click(function(event) {
         var $this = $(this);
         var target_event = $(event.target);

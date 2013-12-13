@@ -11,7 +11,6 @@ $objective->setIdMember($id_member);
 $objective->setId($id_objective);
 
 $steps_objective = new StepsObjective($bdd);
-
 $advices_objective = new Advice($bdd);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -26,12 +25,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 
+	//objective not done anymore
 	if ($id_objective AND isset($_POST['obj_modif_x'])) {
 		if ($id_member != $_SESSION['id']) {
-				array_push($errors, "Vous n'avez pas les droits pour cette action");
-			}else{
-				$objective->updateStatus(0);
-				array_push($success, "Votre objectif a été déplacé dans la section objectifs en cours");
+			array_push($errors, "Vous n'avez pas les droits pour cette action");
+		}else{
+			$objective->updateStatus(0);
+			array_push($success, "Votre objectif a été déplacé dans la section objectifs en cours");
 		}
 	}
 }
@@ -42,5 +42,5 @@ $done_objectives = $objective->read(1);
 // Get steps from objective
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
-$advices_objectives = $advices_objective->read();
+$advices_objectives = $advices_objective->read($user_id);
 ?>

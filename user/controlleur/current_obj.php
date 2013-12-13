@@ -11,7 +11,6 @@ $objective->setIdMember($id_member);
 $objective->setId($id_objective);
 
 $steps_objective = new StepsObjective($bdd);
-
 $advices_objective = new Advice($bdd);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -43,5 +42,6 @@ $current_objectives = $objective->read(0);
 // Get steps from objective
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
-$advices_objectives = $advices_objective->read();
+$advices_objectives = $advices_objective->read($user_id);
+
 ?>

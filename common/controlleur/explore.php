@@ -15,5 +15,5 @@ $current_objectives = $objective->readAll();
 // Get steps from objective
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
-$advices_objectives = $advices_objective->read();
+$advices_objectives = $advices_objective->read($user_id);
 ?>

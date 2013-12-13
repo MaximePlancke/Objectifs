@@ -22,6 +22,10 @@ textarea {
 	text-align:center;
 }
 
+.grey_text {
+	color : grey;
+}
+
 .all_objectives_content {
 	margin-top: 10px;
 }

@@ -21,12 +21,18 @@ class AdviceManager
 		$request->closeCursor();
 	}
 
-	public function read() {
-		$request = $this->_bdd->prepare('SELECT a.*, m.firstname, m.lastname  FROM advices AS a INNER JOIN membres AS m 
+	public function read($user_id) {
+		$request = $this->_bdd->prepare('SELECT a.*, m.firstname, m.lastname FROM advices AS a INNER JOIN membres AS m 
 			ON m.id = a.id_member_give_advice WHERE a.accepted = 1 ORDER BY id DESC');
 		$request->execute(array());
 		$advices_objective = $request->fetchAll();
 		$request->closeCursor();
+		foreach ($advices_objective as &$value) {
+			$value['like'] = $this->countLike($value);
+		}
+		foreach ($advices_objective as &$value) {
+			$value['already_like'] = $this->alreadyLike($value, $user_id);
+		}
 		return $advices_objective;
 	}
 
@@ -39,11 +45,37 @@ class AdviceManager
 		return $advices;
 	}
 
-
 	public function delete() {
 		$request = $this->_bdd->prepare('DELETE FROM advices WHERE id = ?');
 		$request->execute(array($this->getId()));
 		$request->closeCursor();
+	}
+
+	//Count how many like
+	public function countLike($advices_objective) {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM member_like_advice WHERE id_advice = :id_advice');
+		$request->execute(
+			array(
+			'id_advice' => $advices_objective['id'],
+			));
+		$count = $request->fetch();
+		$count = $count[0];
+		$request->closeCursor(); 
+		return $count;	
+	}
+
+	//Count how many like
+	public function alreadyLike($advices_objective, $user_id) {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM member_like_advice WHERE id_advice = :id_advice AND id_member = :id_member');
+		$request->execute(
+			array(
+			'id_advice' => $advices_objective['id'],
+			'id_member' => $user_id,
+			));
+		$count = $request->fetch();
+		$count = $count[0];
+		$request->closeCursor(); 
+		return $count;	
 	}
 
 }

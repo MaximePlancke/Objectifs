@@ -18,7 +18,7 @@ if ($id_member == $_SESSION['id']) {
 	if ($target_event == 'friend_request_ok') {
 			//add friend link
 			$friend->confirm_add();
-			echo "Vous êtes maintenant ami avec";
+			echo "Vous êtes maintenant ami";
 	} elseif ($target_event == 'delete_friend_button') {
 		//delete friend link
 		$friend->delete();
