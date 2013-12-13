@@ -53,6 +53,11 @@ $config_routing = array(
       'action' => 'profile',
       'url' => 'user/profile'
     ),
+    'follow_objective' => array(
+      'module' => 'user',
+      'action' => 'follow_objective',
+      'url' => 'user/follow_objective'
+    ),
   	'current_obj' => array(
     	'module' => 'user',
     	'action' => 'current_obj',

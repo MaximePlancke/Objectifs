@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 // get User
 $user_name = $user->read();
 // Get objective.
-$done_objectives = $objective->read(1);
+$done_objectives = $objective->read(1, $user_id);
 // Get steps from objective
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.

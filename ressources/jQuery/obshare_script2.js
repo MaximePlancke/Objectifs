@@ -108,13 +108,10 @@ $(function() {
                 success: function(data){
                     if (target_event == "accept_advice" || target_event == "delete_advice") {
                         $this.parent().html(data).delay(2500).fadeOut(200);
-                    } else if (target_event == "like_advice") {
-                        $this.next().children('.box_count_like').html('Vous aimez');
+                    } else if (target_event == "like_advice" || target_event == "unlike_advice") {
+                        $this.next().children('.box_count_like').html(data);
                         $target_event.fadeOut(200);
-                    } else if (target_event == "unlike_advice") {
-                        $this.next().children('.box_count_like').html('Vous n\'aimez plus');
-                        $target_event.fadeOut(200);
-                    };
+                    }
                 },
                 error: function(){
                     location.reload();
@@ -163,6 +160,26 @@ $(function() {
                 }
             });
         };
+    });
+
+    //Follow or unfollow objective
+    $('.follow_objective').click(function(event) {
+        var $target_event = $(this);
+        var target_event = $(this);
+        var target_event = $(target_event).attr('value');
+        var id_objective = $(this).siblings('.id_objective').attr('value');
+        $.ajax({
+            type: 'POST',
+            url: '/API/follow_objective.php',
+            data: { id_objective :id_objective , target_event :target_event},
+            success: function(data){
+                $target_event.html('<i class="icon-white icon-ok"></i>');
+                $target_event.attr('class','btn btn-primary btn-small disabled');
+            },
+            error: function(){
+                location.reload();
+            }
+        });
     });
 
     //Filter category explore

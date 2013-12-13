@@ -50,12 +50,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 // get User
 $user_name = $user->read();
 // Get objective.
-$current_objectives = $objective->read5Last(0);
-$done_objectives = $objective->read5Last(1);
+$current_objectives = $objective->read5Last(0, $user_id);
+$done_objectives = $objective->read5Last(1, $user_id);
 // Get steps from objective
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
 $advices_objectives = $advices_objective->read($user_id);
 // Get 5 last advice from the profile
-$last_advices_user = $advices_objective->read5Last();
+$last_advices_user = $advices_objective->read5Last($user_id);
 ?>

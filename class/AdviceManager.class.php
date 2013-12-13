@@ -36,12 +36,18 @@ class AdviceManager
 		return $advices_objective;
 	}
 
-	public function read5Last() {
+	public function read5Last($user_id) {
 		$request = $this->_bdd->prepare('SELECT a.* , o.name_obj FROM advices AS a INNER JOIN objectifs AS o 
 			ON o.id = a.id_objective WHERE a.accepted = 1 ORDER BY a.id DESC LIMIT 5');
 		$request->execute(array());
 		$advices = $request->fetchAll();
 		$request->closeCursor();
+		foreach ($advices as &$value) {
+			$value['like'] = $this->countLike($value);
+		}
+		foreach ($advices as &$value) {
+			$value['already_like'] = $this->alreadyLike($value, $user_id);
+		}
 		return $advices;
 	}
 
@@ -64,7 +70,7 @@ class AdviceManager
 		return $count;	
 	}
 
-	//Count how many like
+	//Count advice already liked
 	public function alreadyLike($advices_objective, $user_id) {
 		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM member_like_advice WHERE id_advice = :id_advice AND id_member = :id_member');
 		$request->execute(

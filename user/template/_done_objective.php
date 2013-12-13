@@ -3,6 +3,12 @@
 		<?php foreach ($done_objectives as $datas): ?>
 			<li class="box_content">
 				<h4>
+					<?php if ($datas['already_follow'] == 0) : ?>
+						<button class="btn btn-primary btn-small follow_objective" title="Suivre" value="follow_objective"><i class="icon-white icon-ok"></i></button>
+					<?php else : ?>
+						<button class="btn btn-primary btn-small follow_objective" title="Ne plus suivre" value="unfollow_objective"><i class="icon-white icon-remove"></i></button>
+					<?php endif ?>
+					<div class="id_objective form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
 					<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
 					<?php if ($id_member == $user_id) : ?>
 					<form class="form_inline" method="post" action="#">
@@ -49,12 +55,19 @@
 										<img src="/ressources/images/advice_obj.png">
 										<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
 										<div class="form_inline form_modif_advices">
+											<?php //like advice section ?>
 											<?php if ($value['already_like'] == 0) : ?>
 												<img class="like_advice" title="J'aime" value="like_advice" src="/ressources/images/thumb_up.png"/>
 											<?php else : ?>
 												<img class="unlike_advice" title="Je n'aime plus" value="unlike_advice" src="/ressources/images/thumb_down.png"/>
 											<?php endif ?>
+											<?php if ($id_member == $user_id OR $value['id_member_give_advice'] == $user_id) : ?>
+												<?php //delete advice section ?>
+												<img class="delete_advice" title="Supprimer" value="delete_advice" src="/ressources/images/obj_delete.png"/>
+											<?php endif ?>
 											<div class="id_advice" type="hidden" value="<?php echo $value['id'];?>"></div>
+											<div class="id_member" type="hidden" value="<?php echo $user_id;?>"></div>
+											<div class="id_member_give_advice" type="hidden" value="<?php echo $value['id_member_give_advice'] ?>"></div>
 										</div>
 										<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['firstname']." ".$value['lastname'];?></a> le <?php echo $value['date_creation'];?> |  
 											<span class="box_count_like grey_text"><?php echo $value['like']; ?> J'aime</span>

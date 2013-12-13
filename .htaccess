@@ -42,6 +42,9 @@ RewriteRule ^common/explore$   ?page=explore [L]
 # Page profil :
 RewriteRule ^user/profile/([0-9]*)$   ?page=profile&id=$1 [L]
 
+# Page follow :
+RewriteRule ^follow/([0-9]*)$   ?page=follow_objective&id=$1 [L]
+
 # Page users :
 RewriteRule ^users$   /?page=list_users [L]
 

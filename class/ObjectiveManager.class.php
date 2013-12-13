@@ -27,17 +27,20 @@ class ObjectiveManager
 		$request->closeCursor();
 	}
 
-	public function readAll() {
+	public function readAll($user_id) {
 		$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres ORDER BY id DESC');
 		$request->execute(array(
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
 		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+		}
 		return $objectives;
 	}
 
-	public function read($done) {
+	public function read($done, $user_id) {
 		$request = $this->_bdd->prepare('SELECT * FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC');
 		$request->execute(array(
 			'id_membres' => $this->getIdMember(),
@@ -46,10 +49,13 @@ class ObjectiveManager
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
 		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+		}
 		return $objectives;
 	}
 
-	public function read5Last($done) {
+	public function read5Last($done, $user_id) {
 		$request = $this->_bdd->prepare('SELECT * FROM objectifs WHERE id_membres = :id_membres AND done = :done ORDER BY id DESC LIMIT 5');
 		$request->execute(array(
 			'id_membres' => $this->getIdMember(),
@@ -58,6 +64,24 @@ class ObjectiveManager
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
 		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+		}
+		return $objectives;
+	}
+
+	public function readFollow($user_id) {
+		$request = $this->_bdd->prepare('SELECT o.* ,m.firstname, m.lastname  FROM objectifs AS o, membres AS m, member_follow_objective AS mfo 
+			WHERE m.id = o.id_membres AND mfo.id_member = :id_membres AND o.id = mfo.id_objective ORDER BY mfo.id DESC');
+		$request->execute(array(
+			'id_membres' => $this->getIdMember(),
+			));
+		$objectives = $request->fetchAll();
+		$request->closeCursor();
+		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+		}
 		return $objectives;
 	}
 
@@ -115,6 +139,20 @@ class ObjectiveManager
 			}
 		}
 		return $objectives;
+	}
+
+	//Count advice already liked
+	public function alreadyFollow($objectives, $user_id) {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM member_follow_objective WHERE id_objective = :id_objective AND id_member = :id_member');
+		$request->execute(
+			array(
+			'id_objective' => $objectives['id'],
+			'id_member' => $user_id,
+			));
+		$count = $request->fetch();
+		$count = $count[0];
+		$request->closeCursor(); 	
+		return $count;
 	}
 }
 ?>

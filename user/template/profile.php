@@ -41,7 +41,18 @@
 							<li class="box_advice">
 								<img src="/ressources/images/advice_obj.png">
 								<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
-								<h6>Pour l'objectif : <?php echo $value['name_obj'];?></h6>
+								<div class="form_inline form_modif_advices">
+									<?php //like advice section ?>
+									<?php if ($value['already_like'] == 0) : ?>
+										<img class="like_advice" title="J'aime" value="like_advice" src="/ressources/images/thumb_up.png"/>
+									<?php else : ?>
+										<img class="unlike_advice" title="Je n'aime plus" value="unlike_advice" src="/ressources/images/thumb_down.png"/>
+									<?php endif ?>
+									<div class="id_advice" type="hidden" value="<?php echo $value['id'];?>"></div>
+								</div>
+								<h6>Pour l'objectif : <?php echo $value['name_obj'];?>
+									<br/><br/><p class="box_count_like grey_text"><?php echo $value['like']; ?> J'aime</p>
+								</h6>
 							</li>
 						<?php endif ?>
 					<?php endforeach; ?>

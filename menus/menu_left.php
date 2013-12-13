@@ -12,6 +12,7 @@
 		<ul class="nav">
 			<li class="menu_responsive"><a href="/users">Utilisateurs</a></li>
 			<li class="menu_responsive"><a href="/account/friends/<?php echo $id_member_session?>">Amis</a></li>
+			<li class="menu_responsive"><a href="/follow/<?php echo $id_member_session?>">Mes objectifs favoris</a></li>
 		</ul>
 		<h4>Mon Compte</h4>
 		<ul class="nav">

@@ -35,7 +35,7 @@ if($id_advice AND $target_event == 'like_advice' AND $user_id) {
 	$member_like_advice->setIdAdvice($id_advice);
 	$member_like_advice->setIdMember($user_id);
 	$member_like_advice->add();
-	echo("Vous aimez");
+	echo("C'est utile");
 }
 
 if($id_advice AND $target_event == 'unlike_advice' AND $user_id) {
@@ -43,7 +43,7 @@ if($id_advice AND $target_event == 'unlike_advice' AND $user_id) {
 	$member_like_advice->setIdAdvice($id_advice);
 	$member_like_advice->setIdMember($user_id);
 	$member_like_advice->delete();
-	echo("Vous n'aimez plus");
+	echo("Ce n'est plus utile");
 }
 
 ?>

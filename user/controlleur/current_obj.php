@@ -35,10 +35,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 }
-// get User
+// Get User
 $user_name = $user->read();
 // Get objective.
-$current_objectives = $objective->read(0);
+$current_objectives = $objective->read(0, $user_id);
 // Get steps from objective
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
