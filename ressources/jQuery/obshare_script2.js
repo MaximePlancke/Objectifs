@@ -14,33 +14,21 @@ $(function() {
 
 	//hidden part of objective
 	$('.hidden_part').hide();	
-
-		$('.box_click_display_objective').click(function(event) {
-			$(this).next().slideToggle();
-            if ($(this).parent('.box_content').css('background-color') =='rgba(0, 0, 0, 0)') {
-                $(this).parent('.box_content').css('background-color','#f5f5f5');
-                $(this).children('.center_text').html('Cacher les détails');
-                $(this).css('border-bottom','1px solid #e3e3e3');
-            }else {
-                $(this).parent('.box_content').css('background-color','rgba(0, 0, 0, 0)');
-                $(this).children('.center_text').html('Afficher les détails');
-                $(this).css('border-bottom','0px');
-            }
-		});
-
-        //hidden part of objective on profile page
-        $('.box_click_display_objective_profile').click(function(event) {
-            $(this).next().slideToggle();
-            if ($(this).parent('.box_content').css('background-color') =='rgba(0, 0, 0, 0)') {
-                $(this).parent('.box_content').css('background-color','#f5f5f5');
-                $(this).children('.center_img').attr('src' , '/ressources/images/hide_details.png');
-                $(this).css('border-bottom','1px solid #e3e3e3');
-            }else {
-                $(this).parent('.box_content').css('background-color','rgba(0, 0, 0, 0)');
-                $(this).children('.center_img').attr('src' , '/ressources/images/display_details.png');
-                $(this).css('border-bottom','0px');
-            }
-        });   
+    var display = false;
+    $('.box_click_display_objective_profile').click(function(event) {
+        $(this).next().slideToggle();
+        if (display == false) {
+            $(this).parent('.box_content').css('background-color','#f5f5f5');
+            $(this).children('.center_img').attr('src' , '/ressources/images/hide_details.png');
+            $(this).css('border-bottom','1px solid #e3e3e3');
+            display = true;
+        }else {
+            $(this).parent('.box_content').css('background-color','rgba(0, 0, 0, 0)');
+            $(this).children('.center_img').attr('src' , '/ressources/images/display_details.png');
+            $(this).css('border-bottom','0px');
+            display = false;
+        }
+    });   
 
 	//auto complete search bar tor
     $('#search_bar').autocomplete({
