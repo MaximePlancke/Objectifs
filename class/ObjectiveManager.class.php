@@ -27,17 +27,31 @@ class ObjectiveManager
 		$request->closeCursor();
 	}
 
-	public function readAll($user_id) {
-		$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres ORDER BY id DESC');
-		$request->execute(array(
-			));
-		$objectives = $request->fetchAll();
-		$request->closeCursor();
-		$objectives = $this->categoryName($objectives);
-		foreach ($objectives as &$value) {
-			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+	public function readAll($user_id, $filter) {
+		if ($filter == NULL) {
+			$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres ORDER BY id DESC');
+			$request->execute(
+				);
+			$objectives = $request->fetchAll();
+			$request->closeCursor();
+			$objectives = $this->categoryName($objectives);
+			foreach ($objectives as &$value) {
+				$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+			}
+			return $objectives;
+		} else {
+			$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres AND '.implode(' AND ', $filter['where']).' ORDER BY id DESC');
+			$request->execute(
+				$filter['argumentPDO']
+				);
+			$objectives = $request->fetchAll();
+			$request->closeCursor();
+			$objectives = $this->categoryName($objectives);
+			foreach ($objectives as &$value) {
+				$value['already_follow'] = $this->alreadyFollow($value, $user_id);
+			}
+			return $objectives;
 		}
-		return $objectives;
 	}
 
 	public function read($done, $user_id) {

@@ -161,7 +161,11 @@ $(function() {
             url: '/API/follow_objective.php',
             data: { id_objective :id_objective , target_event :target_event},
             success: function(data){
-                $target_event.html('<i class="icon-white icon-ok"></i>');
+                if ($target_event.attr('value') == 'unfollow_objective') {
+                    $target_event.html('<i class="icon-white icon-ok"></i>');
+                }else if ($target_event.attr('value') == 'follow_objective') {
+                    $target_event.html('<i class="icon-white icon-remove"></i>');
+                };
                 $target_event.attr('class','btn btn-primary btn-small disabled');
             },
             error: function(){
@@ -171,26 +175,26 @@ $(function() {
     });
 
     //Filter category explore
-    $('.filter_class').change(function() {
-        var filter_friend_id = parseInt($('#explore_filter_friend').val());
-        var filter_done_id = parseInt($('#explore_filter_done').val());
-        var filter_category_id = parseInt($('#explore_filter_category').val());
-        var objective_result = new Array();
-            $.ajax({
-                type: 'POST',
-                url: '/API/explore_filter.php',
-                data: { filter_category_id :filter_category_id , filter_friend_id :filter_friend_id, filter_done_id :filter_done_id},
-                success: function(data){
-                    $('.all_objectives_content').empty();
-                    objective_result = JSON.parse(data);
-                    alert(objective_result);
-                    $('.all_objectives_content').html(data);
+    // $('.filter_class').change(function() {
+    //     var filter_friend_id = parseInt($('#explore_filter_friend').val());
+    //     var filter_done_id = parseInt($('#explore_filter_done').val());
+    //     var filter_category_id = parseInt($('#explore_filter_category').val());
+    //     var objective_result = new Array();
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/API/explore_filter.php',
+    //             data: { filter_category_id :filter_category_id , filter_friend_id :filter_friend_id, filter_done_id :filter_done_id},
+    //             success: function(data){
+    //                 $('.all_objectives_content').empty();
+    //                 objective_result = JSON.parse(data);
+    //                 alert(objective_result);
+    //                 $('.all_objectives_content').html(data);
 
-                },
-                error: function(){
-                    location.reload();
-                }
-        });
-    });
+    //             },
+    //             error: function(){
+    //                 location.reload();
+    //             }
+    //     });
+    // });
 
 });

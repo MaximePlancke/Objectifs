@@ -7,14 +7,14 @@
 	spl_autoload_register('loadClass');
 
 	$filter = array();
-	$filter2 = array();
-	$filter3 = array();
 
 	$filter_done_id				= isset($_POST['filter_done_id']) ? $_POST['filter_done_id'] : null;
 	$filter_category_id 		= isset($_POST['filter_category_id']) ? $_POST['filter_category_id'] : null;
-	$filter_friend_id			= isset($_POST['filter_friend_id']) ? $_POST['filter_friend_id'] : null;
+	// $filter_friend_id			= isset($_POST['filter_friend_id']) ? $_POST['filter_friend_id'] : null;
 
 	$objective = new Objective($bdd);
+
+	var_dump($filter_done_id);
 
 	if ($filter_done_id != 3) {
 		$filter['where'][] = 'done=:done';
