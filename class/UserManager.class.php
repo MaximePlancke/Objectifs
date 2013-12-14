@@ -35,10 +35,6 @@ class UserManager
 		return $donnees;
 	}
 
-	public function update() {
-		
-	}
-
 	public function checkUniqueRegistration() {
 		$errors = NULL;
 		$request = $this->_bdd->prepare('SELECT id, email FROM membres WHERE email = :email');
@@ -117,8 +113,26 @@ class UserManager
 		$request = $this->_bdd->prepare('SELECT * FROM membres ORDER BY firstname');
 		$request->execute(array());
 		$donnees = $request->fetchAll();
+		foreach ($donnees as &$value) {
+			$value['already_friend'] = $this->alreadyFriend($value);
+		}
 		return $donnees;
 	}
 
+	public function alreadyFriend($value) {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM friends AS f, membres AS m 
+			WHERE m.id = :user_id
+			AND (f.id_friends_2 = :id_friends 
+			AND f.id_friends_1 = :user_id
+			OR (f.id_friends_1 = :id_friends 
+			AND f.id_friends_2 = :user_id ))');
+		$request->execute(array(
+			'user_id' => $this->getId(),
+			'id_friends' => $value['id'],
+			));
+		$count = $request->fetch();
+		$count = $count[0];
+		return $count;
+	}
 }
 ?>

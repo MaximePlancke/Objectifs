@@ -39,6 +39,15 @@ $(function() {
    		}
 	});
 
+    //auto complete search bar tor
+    $('#search_bar_objective').autocomplete({
+    source : '/ressources/widgets/auto_completion_objective.php',
+
+        select : function(event, ui){
+            $(location).attr('href',"/user/profile/"+ui.item.id);
+        }
+    });
+
     //hidden part where you can modify steps
 	$('.step_done').hide();
     $('.box_step').hover(function() {

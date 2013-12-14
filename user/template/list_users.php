@@ -22,8 +22,11 @@
 				<input class="id_member" type="hidden" name="id_member" value="<?php echo $id_friends_1;?>" />
 				<input class="id_friends_2" type="hidden" name="id_friends_2" value="<?php echo $id_friends_2;?>" />
 				<input class="id_friend_button" type="hidden" name="id_friend_button" value="<?php echo $datas['id'];?>" />
-				<input class="add_friend_button btn btn-primary" name="add_friend_button" type="submit" value="Ajouter"/>
-				<input class="delete_friend_button btn" name="delete_friend_button" type="submit" value="Supprimer"/>
+				<?php if ($datas['already_friend'] == 0) : ?>
+					<input class="add_friend_button btn btn-primary" name="add_friend_button" type="submit" value="Ajouter"/>
+				<?php else : ?>
+					<input class="delete_friend_button btn" name="delete_friend_button" type="submit" value="Supprimer"/>
+				<?php endif ?>
 			</form>
 		</li>
 		<?php endforeach ?>					

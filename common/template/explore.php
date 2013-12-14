@@ -1,28 +1,33 @@
 <div class="page_right_padding">
-	<form class="explore_search_div" method='POST' action="#">
-		<div class="row">
-<!-- 		<select class="filter_class offset2 span3" name="filter_friend_id" id="explore_filter_friend">
-			<option value="0">Tous</option> 
-			<option value="1">Amis</option> 
-			</select> -->
-			<select class="filter_class offset3 span3" name="filter_category_id" id="explore_filter_category">
+	<div>
+		<form class="explore_search_div" method='POST' action="#">
+			<div>
+	<!-- 		<select class="filter_class offset2 span3" name="filter_friend_id" id="explore_filter_friend">
 				<option value="0">Tous</option> 
-				<option value="1">Personnel</option> 
-				<option value="2">Professionnel</option>
-				<option value="3">Sportif</option>
-				<option value="4">Fun</option>
-			</select>
-			<select class="filter_class span3" name="filter_done_id" id="explore_filter_done">
-				<option value="3">Tous</option> 
-				<option value="0">Objectifs en cours</option> 
-				<option value="1">Objectifs terminés</option>
-			</select>
-		</div>
-		<div class="row">
-			<input type="submit" class="btn btn-small offset5" value="Recherche"/>
-		</div>
-		<br/>
-	</form>
+				<option value="1">Amis</option> 
+				</select> -->
+				<select class="filter_class offset3 span3" name="filter_category_id" id="explore_filter_category">
+					<option value="0">Tous</option> 
+					<option value="1">Personnel</option> 
+					<option value="2">Professionnel</option>
+					<option value="3">Sportif</option>
+					<option value="4">Fun</option>
+				</select>
+				<select class="filter_class span3" name="filter_done_id" id="explore_filter_done">
+					<option value="3">Tous</option> 
+					<option value="0">Objectifs en cours</option> 
+					<option value="1">Objectifs terminés</option>
+				</select>
+			</div>
+			<div class="row">
+				<input type="submit" class="btn btn-small offset5" value="Recherche"/>
+			</div>
+		</form>
+		<form method="post" class="form-search navbar-search span5">
+			<input id="search_bar_objective" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
+		</form>	
+	</div>
+	<br/><br/>
 	<div class="all_objectives_content">
 		<ul>
 			<?php foreach ($objectives as $datas): ?>
