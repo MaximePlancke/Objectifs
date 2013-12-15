@@ -46,9 +46,32 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 
+	$friend = new Friend($bdd);
+	$friend->setIdFriend1($user_id);
+	$friend->setIdFriend2($id_member);
+
+	if (isset($_POST['add_friend_button'])) {
+		//Control (already friends)
+		$count = $friend->checkAlreadyFriend();
+		//Control (add yourself)
+		if ($user_id == $id_member) {
+			array_push($errors, "Vous ne pouvez pas être ami avec vous même");
+		} elseif($count >= 1) {
+			// name already used 
+			array_push($errors, "Vous êtes déjà ami ou une demande a déjà été envoyé"); 
+		} else {
+			//add friend link
+			$friend->request_add();
+			array_push($success, "Une demande a été envoyé");
+			}
+	} elseif (isset($_POST['delete_friend_button'])) {
+		//delete friend link
+		$friend->delete();
+		array_push($success, "Vous venez de supprimer un ami");
+	} 
 }
 // get User
-$user_name = $user->read();
+$user_info = $user->read($user_id);
 // Get objective.
 $current_objectives = $objective->read5Last(0, $user_id);
 $done_objectives = $objective->read5Last(1, $user_id);

@@ -27,11 +27,16 @@ class UserManager
 		return $donnees;
 	}
 
-	public function read() {
+	public function read($user_id = NULL) {
 		$request = $this->_bdd->prepare('SELECT * FROM membres WHERE id = :id');
 		$request->execute(array(
 	    	'id' => $this->getId()));
 		$donnees = $request->fetch();
+		if ($user_id) {
+			$donnees['already_friend'] = $this->alreadyFriend($donnees, $user_id);
+			$donnees['already_friend_confirm'] = $this->alreadyFriendConfirm($donnees, $user_id);
+			var_dump($donnees['already_friend_confirm']);
+		}
 		return $donnees;
 	}
 
@@ -114,12 +119,13 @@ class UserManager
 		$request->execute(array());
 		$donnees = $request->fetchAll();
 		foreach ($donnees as &$value) {
-			$value['already_friend'] = $this->alreadyFriend($value);
+			$value['already_friend'] = $this->alreadyFriend($value, $value['id']);
+			$value['already_friend_confirm'] = $this->alreadyFriendConfirm($value, $value['id']);
 		}
 		return $donnees;
 	}
 
-	public function alreadyFriend($value) {
+	public function alreadyFriend($value, $user_id) {
 		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM friends AS f, membres AS m 
 			WHERE m.id = :user_id
 			AND (f.id_friends_2 = :id_friends 
@@ -128,7 +134,25 @@ class UserManager
 			AND f.id_friends_2 = :user_id ))');
 		$request->execute(array(
 			'user_id' => $this->getId(),
-			'id_friends' => $value['id'],
+			'id_friends' => $user_id,
+			));
+		$count = $request->fetch();
+		$count = $count[0];
+		return $count;
+	}
+
+	public function alreadyFriendConfirm($value, $user_id) {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM friends AS f, membres AS m 
+			WHERE m.id = :user_id
+			AND (f.id_friends_2 = :id_friends 
+			AND f.id_friends_1 = :user_id
+			AND f.accepted = 0
+			OR (f.id_friends_1 = :id_friends 
+			AND f.id_friends_2 = :user_id 
+			AND f.accepted = 0))');
+		$request->execute(array(
+			'user_id' => $this->getId(),
+			'id_friends' => $user_id,
 			));
 		$count = $request->fetch();
 		$count = $count[0];

@@ -1,5 +1,19 @@
 <div class="page_right_padding">
-	<h2><?php echo htmlspecialchars(stripslashes($user_name['firstname']." ".$user_name['lastname'])); ?></h2>	
+	<h2 class="form_inline"><?php echo htmlspecialchars(stripslashes($user_info['firstname']." ".$user_info['lastname'])); ?>
+		<form class="form_inline" method="post" action="#">
+			<?php if ($user_id != $id_member) : ?>
+				<?php if ($user_info['already_friend'] == 0) : ?>
+					<input class="add_friend_button btn btn-primary" name="add_friend_button" type="submit" value="Ajouter"/>
+				<?php else : ?>
+					<?php if ($user_info['already_friend_confirm'] == 0) : ?>
+						<input class="delete_friend_button btn" name="delete_friend_button" type="submit" value="Supprimer"/>
+					<?php else : ?>
+						<input class="btn disabled" type="button" value="En attente de confirmation"/>
+					<?php endif ?>
+				<?php endif ?>
+			<?php endif ?>	
+		</form>
+	</h2>	
 	<?php foreach ($errors as $value): ?>
 		<h5><?php echo $value; ?></h5><br/>
 	<?php endforeach ?>
