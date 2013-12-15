@@ -40,13 +40,13 @@ $(function() {
 	});
 
     //auto complete search bar tor
-    $('#search_bar_objective').autocomplete({
-    source : '/ressources/widgets/auto_completion_objective.php',
+    // $('#search_bar_objective').autocomplete({
+    // source : '/ressources/widgets/auto_completion_objective.php',
 
-        select : function(event, ui){
-            $(location).attr('href',"/user/profile/"+ui.item.id);
-        }
-    });
+    //     select : function(event, ui){
+    //         $(location).attr('href',"/user/profile/"+ui.item.id);
+    //     }
+    // });
 
     //hidden part where you can modify steps
 	$('.step_done').hide();
@@ -181,6 +181,14 @@ $(function() {
                 location.reload();
             }
         });
+    });
+
+    $('#popup_explanation').click(function(event) {
+        $.fn.custombox({
+        url: '/ressources/widgets/popup_explanation.php',
+        effect: 'blur'
+    });
+        event.preventDefault();
     });
 
     //Filter category explore

@@ -32,7 +32,7 @@
 			<?php if ($id_member_session) : ?>
 			<li>
 				<div class="span1 text_menu_top">
-					<a href="/user/profile/<?php echo $id_member_session?>"><?php echo ($user_name_session['firstname']); ?></a>
+					<a href="/user/profile/<?php echo $id_member_session?>"><?php echo htmlspecialchars(stripslashes($user_name_session['firstname'])); ?></a>
 				</div>
 				<div class="span2 text_menu_top">
 					<div class=" form_inline" >

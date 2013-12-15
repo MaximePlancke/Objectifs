@@ -10,6 +10,9 @@ $errors  = array();
 $success = array();
 $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
+//include my PHP fonctions 
+include($_SERVER['DOCUMENT_ROOT']."/ressources/my_php_fonctions.php");
+
 require($_SERVER['DOCUMENT_ROOT'].'/routing.php');
 
 $URi   = $_SERVER["REQUEST_URI"]; 
@@ -28,13 +31,11 @@ if (preg_match($motif,$URi)) {
 	<title>ObjectiveShare</title>
 	<?php //Open the window to the screen size?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/ressources/style.css">
+	<link rel="stylesheet" type="text/css" href="/ressources/css/style.css">
 	<?php //Integration CSS Bootstrap, Font-Awesome and Polices ?>
 	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
-	<?php //include my PHP fonctions ?>
-	<?php include($_SERVER['DOCUMENT_ROOT']."/ressources/my_php_fonctions.php"); ?>
 
 </head>
   <body>
@@ -53,6 +54,7 @@ if (preg_match($motif,$URi)) {
 	<!-- jQuery -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/ressources/jQuery/jquery.custombox.js"></script>
 	<script type="text/javascript" src="/ressources/javascript.js"></script>
 	<script type="text/javascript" src="/ressources/jQuery/obshare_script2.js"></script>
   </body>

@@ -16,7 +16,7 @@
 		<li class="span4 box_users">
 			<div class="box_name_box_users">
 				<img src="/ressources/images/list_users.png">
-				<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars($datas['firstname']." ".$datas['lastname']);?></a>
+				<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars(stripslashes($datas['firstname']." ".$datas['lastname']));?></a>
 			</div>
 			<form method="post" action="/users">
 				<input class="id_member" type="hidden" name="id_member" value="<?php echo $id_friends_1;?>" />

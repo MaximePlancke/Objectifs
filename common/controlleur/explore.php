@@ -34,4 +34,5 @@ $objectives = $objective->readAll($user_id, $filter);
 $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
 $advices_objectives = $advices_objective->read($user_id);
+
 ?>

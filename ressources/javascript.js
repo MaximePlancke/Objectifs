@@ -8,3 +8,4 @@ action_delete_account.addEventListener('click', function(e) {
 	 };
 }, false);
 };
+

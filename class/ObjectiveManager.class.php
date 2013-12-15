@@ -29,7 +29,7 @@ class ObjectiveManager
 
 	public function readAll($user_id, $filter) {
 		if ($filter == NULL) {
-			$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres ORDER BY id DESC');
+			$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o , membres AS m  WHERE m.id = o.id_membres ORDER BY o.id DESC');
 			$request->execute(
 				);
 			$objectives = $request->fetchAll();

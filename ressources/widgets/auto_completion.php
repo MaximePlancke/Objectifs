@@ -22,9 +22,11 @@ $request->execute(array(
 $donnees = $request->fetchAll();
 foreach ($donnees as $value) {
 	array_push($array, array(
-		'label' => $value['firstname']." ".$value['lastname'],
-		'id' => $value['id']
+		'label' => htmlspecialchars(stripslashes($value['firstname']." ".$value['lastname'])),
+		'id' => $value['id'],
+        'category' => "obj",
         ));
 }
+
 echo json_encode($array); // il n'y a plus qu'à convertir en JSON
 ?>

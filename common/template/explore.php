@@ -23,9 +23,9 @@
 				<input type="submit" class="btn btn-small offset5" value="Recherche"/>
 			</div>
 		</form>
-		<form method="post" class="form-search navbar-search span5">
+<!-- 		<form method="post" class="form-search navbar-search span5">
 			<input id="search_bar_objective" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
-		</form>	
+		</form>	 -->
 	</div>
 	<br/><br/>
 	<div class="all_objectives_content">
@@ -39,7 +39,7 @@
 							<button class="btn btn-primary btn-small follow_objective" title="Ne plus suivre" value="unfollow_objective"><i class="icon-white icon-remove"></i></button>
 						<?php endif ?>
 						<div class="id_objective form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
-						<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
+						<?php echo UrlToShortLink(htmlspecialchars(stripslashes($datas['name_obj']))); ?>
 					</h4>
 					<div class="box_click_display_objective_profile">
 						<img class="center_img offset6" src="/ressources/images/display_details.png">
@@ -70,7 +70,7 @@
 													echo '<img src="/ressources/images/current_step.png">';
 													break;
 											} ?>
-											<?php echo UrlToShortLink(htmlspecialchars($value['steps_content'])); ?>
+											<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['steps_content']))); ?>
 										</li>
 									<?php endif ?>
 								<?php endforeach ?>
@@ -84,7 +84,7 @@
 									<?php if ($value['id_objective'] == $datas['id']) : ?>
 										<li class="box_advice">
 											<img src="/ressources/images/advice_obj.png">
-											<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
+											<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['advice_content']))); ?>
 											<div class="form_inline form_modif_advices">
 												<?php //like advice section ?>
 												<?php if ($value['already_like'] == 0) : ?>

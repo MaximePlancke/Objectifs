@@ -1,17 +1,15 @@
 @font-face
 {
-    font-family: 'Monda';
-    src: url('fonts/Monda/Monda-Regular.ttf') format('truetype');
-}
-
-@font-face
-{
     font-family: 'Nunito-Regular';
-    src: url('fonts/Nunito/Nunito-Regular.ttf') format('truetype');
+    src: url('/ressources/fonts/Nunito/Nunito-Regular.ttf') format('truetype');
 }
 
 textarea {
 	resize : none;
+}
+
+.icon_explanation {
+	margin: 3% 40% 0% 42%;
 }
 
 .form_inline {
@@ -153,7 +151,6 @@ textarea {
 
 .text_menu_top {
 	padding: 15px;
-	font-family: 'Nunito-Regular', sans-serif;
 }
 
 .logout_menu {

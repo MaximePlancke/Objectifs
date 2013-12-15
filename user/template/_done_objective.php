@@ -9,7 +9,7 @@
 						<button class="btn btn-primary btn-small follow_objective" title="Ne plus suivre" value="unfollow_objective"><i class="icon-white icon-remove"></i></button>
 					<?php endif ?>
 					<div class="id_objective form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
-					<?php echo UrlToShortLink(htmlspecialchars($datas['name_obj'])); ?>
+					<?php echo UrlToShortLink(htmlspecialchars(stripslashes($datas['name_obj']))); ?>
 					<?php if ($id_member == $user_id) : ?>
 					<form class="form_inline" method="post" action="#">
 						<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
@@ -40,7 +40,7 @@
 												echo '<img src="/ressources/images/current_step.png">';
 												break;
 										} ?>
-									<?php echo UrlToShortLink(htmlspecialchars($value['steps_content'])); ?>
+									<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['steps_content']))); ?>
 									</li>
 								<?php endif ?>
 							<?php endforeach ?>
@@ -53,7 +53,7 @@
 								<?php if ($value['id_objective'] == $datas['id']) : ?>
 									<li class="box_advice">
 										<img src="/ressources/images/advice_obj.png">
-										<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
+										<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['advice_content']))); ?>
 										<div class="form_inline form_modif_advices">
 											<?php //like advice section ?>
 											<?php if ($value['already_like'] == 0) : ?>
@@ -69,7 +69,7 @@
 											<div class="id_member" type="hidden" value="<?php echo $user_id;?>"></div>
 											<div class="id_member_give_advice" type="hidden" value="<?php echo $value['id_member_give_advice'] ?>"></div>
 										</div>
-										<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo $value['firstname']." ".$value['lastname'];?></a> le <?php echo $value['date_creation'];?> |  
+										<h6>Ajouté par : <a href="/user/profile/<?php echo $value['id_member_give_advice']?>"><?php echo htmlspecialchars(stripslashes($value['firstname']." ".$value['lastname']));?></a> le <?php echo $value['date_creation'];?> |  
 											<span class="box_count_like grey_text"><?php echo $value['like']; ?> J'aime</span>
 										</h6>
 									</li>

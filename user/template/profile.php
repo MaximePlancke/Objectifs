@@ -1,5 +1,5 @@
 <div class="page_right_padding">
-	<h2><?php echo htmlspecialchars($user_name['firstname']." ".$user_name['lastname']); ?></h2>	
+	<h2><?php echo htmlspecialchars(stripslashes($user_name['firstname']." ".$user_name['lastname'])); ?></h2>	
 	<?php foreach ($errors as $value): ?>
 		<h5><?php echo $value; ?></h5><br/>
 	<?php endforeach ?>
@@ -40,7 +40,7 @@
 						<?php if ($value['id_member_give_advice'] == $id_member) : ?>
 							<li class="box_advice">
 								<img src="/ressources/images/advice_obj.png">
-								<?php echo UrlToShortLink(htmlspecialchars($value['advice_content'])); ?>
+								<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['advice_content']))); ?>
 								<div class="form_inline form_modif_advices">
 									<?php //like advice section ?>
 									<?php if ($value['already_like'] == 0) : ?>
