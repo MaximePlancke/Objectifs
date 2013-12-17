@@ -28,6 +28,17 @@ textarea {
 	margin-top: 10px;
 }
 
+.img_resize_128 {
+	height: 128px;
+	width: 128px;
+	border: 3px solid #e3e3e3;
+}
+
+.img_resize_48 {
+	height: 48px;
+	width: 48px;
+}
+
 .box_content {
 	border-bottom: 1px solid #e3e3e3;
 	padding : 5px 2px 5px 5px;
@@ -40,6 +51,13 @@ textarea {
 	border-bottom: 1px solid #e3e3e3;
 	padding : 10px 2px 5px 5px;
 	margin : 30px 30px 10px 0px;
+	list-style-type:none;
+}
+
+.box_content_profile_top {
+	border-bottom: 1px solid #e3e3e3;
+	padding : 10px 2px 5px 5px;
+	margin : 0px 30px 10px 0px;
 	list-style-type:none;
 }
 
@@ -182,9 +200,10 @@ textarea {
 .box_users {
 	list-style-type:none;
 	border : 1px solid #e3e3e3;
-	margin : 5px 0px 5px 2px;
+	margin : 5px 5px 5px 5px;
 	padding: 3px 5px 3px 5px;
 	background-color: #f5f5f5;
+	float: left;
 	width : 290px;
 	height: 130px;
 }
@@ -209,10 +228,6 @@ textarea {
 	text-decoration: underline;
 }
 
-#main_page {
-	height: 650px;
-}
-
 #menu_left {
 	padding: 20px 0px 10px 25px;
 	height: 100%;
@@ -223,15 +238,20 @@ textarea {
 	box-shadow: 1px 1px 12px #555;
 	overflow:auto;
 	font-size: 16px;
+	position: fixed;
 }
 
 #page_right {
-	height: 100%;
-	overflow: auto;
+	/*height: 100%;*/
+	/*min-height: 700px;*/
 }
 
-.page_right_padding {
-	padding: 20px 20px 10px 30px;
+section {
+		overflow: auto;
+}
+
+#page_right_padding {
+	padding: 20px 20px 10px 280px;
 }
 
 .login_registration_form {
@@ -245,19 +265,26 @@ textarea {
 	text-align: center;
 }
 
-.page_connexion_color {
+#page_connexion_color {
 	padding: 20px 20px 10px 30px;
 	background-color: #DF5A49;
 	color : white;
-	height: 100%;
 	padding-top: 50px;
 }
 
-footer {
+#footer_offline {
 	box-shadow: 1px 1px 12px #555;
 	background: black;
 	color: white;
 	padding: 10px 10px 10px 10px;
+	margin-top: 30px;
+	text-align: center;
+}
+
+#footer_online {
+	border-top: 3px solid #f5f5f5;
+	color: grey;
+	padding: 10px 10px 10px 280px;
 	margin-top: 30px;
 	text-align: center;
 }

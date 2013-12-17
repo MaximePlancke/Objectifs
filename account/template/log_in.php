@@ -1,4 +1,4 @@
-<div class="page_connexion_color">
+<div id="page_connexion_color">
 	<h1 class="big_title"><span style="color:black;">OB</span>Share</h1><br/>
 	<h1 class="big_title">Connection</h1><br/>
 	<form method="post" class="login_registration_form well form-inline" action="/account/login">

@@ -1,4 +1,4 @@
-<div class="page_right_padding">
+<div id="page_right_padding">
 <?php if ($id_member == $user_id) : ?>
 	<ul>
 		<?php foreach ($errors as $value): ?> 

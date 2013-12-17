@@ -1,4 +1,4 @@
-<div class="page_right_padding">
+<div id="page_right_padding">
 	<div>
 		<form class="explore_search_div" method='POST' action="#">
 			<div>

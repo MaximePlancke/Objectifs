@@ -10,6 +10,7 @@ class User extends UserManager
 	private $_password;
 	private $_email;
 	private $_dateInscription;
+	private $_avatar;
 	
 	public function __construct(PDO $bdd, array $datas = array()) {	
 		$this->hydrate($datas);
@@ -33,6 +34,7 @@ class User extends UserManager
 	public function getPassword(){ return $this->_password; }
 	public function getEmail(){ return $this->_email; }
 	public function getDateInscription(){ return $this->_dateInscription; }
+	public function getAvatar(){ return $this->_avatar;}
 
 	//SET
 	public function setId($id){
@@ -55,14 +57,9 @@ class User extends UserManager
 		$this->_password = $password;
 	}
 
-	public function setEmail($email){
+	public function setEmail($email){ 
+	    $this->_email = $email;
 
-		$regex = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';  
-	   	if(!preg_match($regex,$email)) {  
-	    	trigger_error("Email non valide"); 
-	    } else {
-	    	$this->_email = $email;
-	    } 
 	}
 
 	public function setDateInscription($dateInscription){
@@ -72,6 +69,10 @@ class User extends UserManager
 		}else {
 			$this->_dateInscription = $dateInscription;
 		}
+	}
+
+	public function setAvatar($avatar){
+		$this->_avatar = $avatar;
 	}
 }
 ?>

@@ -12,7 +12,7 @@
 
 	</head>
 	<body>
-		<div class="page_connexion_color">
+		<div id="page_connexion_color">
 			<h1 class="big_title"><span style="color:black;">OB</span>Share</h1><br/>
 			<h1 class="big_title">ERREUR 404</h1><br/>
 		</div>	

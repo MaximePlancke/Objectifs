@@ -4,12 +4,13 @@ class UserManager
 {
 
 	public function add() {
-		$request = $this->_bdd->prepare('INSERT INTO membres(firstname, lastname, password, email, date_inscription) VALUES(:firstname, :lastname, :password, :email, NOW())');
+		$request = $this->_bdd->prepare('INSERT INTO membres(firstname, lastname, password, email, date_inscription, avatar) VALUES(:firstname, :lastname, :password, :email, NOW(), :avatar)');
 		$request->execute(array(
 			'firstname' => $this->getFirstname(),
 			'lastname' => $this->getLastname(),
 			'password' => sha1($this->getPassword()),
-			'email' => $this->getEmail()));
+			'email' => $this->getEmail(),
+			'avatar' => $this->getAvatar()));
 	    $request->closeCursor();
 	}
 
@@ -35,7 +36,6 @@ class UserManager
 		if ($user_id) {
 			$donnees['already_friend'] = $this->alreadyFriend($donnees, $user_id);
 			$donnees['already_friend_confirm'] = $this->alreadyFriendConfirm($donnees, $user_id);
-			var_dump($donnees['already_friend_confirm']);
 		}
 		return $donnees;
 	}
@@ -60,7 +60,7 @@ class UserManager
 
 	public function listFriends() {
 		$request = $this->_bdd->prepare
-			('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, f.accepted, m.firstname, m.lastname, m.id 
+			('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, f.accepted, m.firstname, m.lastname, m.avatar, m.id 
 			FROM friends AS f, membres AS m 
 			WHERE f.id_friends_2 = m.id 
 			AND f.accepted = 1
@@ -79,7 +79,7 @@ class UserManager
 
 	public function listRequestFriends() {
 		$request = $this->_bdd->prepare
-			('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, f.accepted, m.firstname, m.lastname, m.id 
+			('SELECT f.id, m.id, f.id_friends_1, f.id_friends_2, f.accepted, m.firstname, m.lastname, m.avatar, m.id 
 			FROM friends AS f, membres AS m 
 			WHERE f.id_friends_1 = m.id 
 			AND f.accepted = 0

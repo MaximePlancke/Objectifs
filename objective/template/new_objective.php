@@ -1,4 +1,4 @@
-<div class="page_right_padding">
+<div id="page_right_padding">
 <h4 class="big_title">Nouvel Objectif</h4>
 	<form method="post" class="login_registration_form well form-inline" action="/objective/new">
 		<ul>

@@ -40,22 +40,24 @@ if (preg_match($motif,$URi)) {
 </head>
   <body>
 	<div id="container-fluid">
-		<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
-	<section id="main_page" class="row-fluid">
-		<?php if ($user_id): ?>
-			<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
-		<?php endif ?>
-		<div id="page_right">
- 			<?php  include($template); ?>
-		</div>
-	</section>
-	<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
+		<header>
+			<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_top.php"); ?>
+		</header>
+		<section class="row-fluid">
+			<?php if ($user_id): ?>
+				<?php include($_SERVER['DOCUMENT_ROOT']."/menus/menu_left.php"); ?>
+			<?php endif ?>
+			<div id="page_right">
+	 			<?php  include($template); ?>
+			</div>
+			<?php include($_SERVER['DOCUMENT_ROOT']."/menus/footer.php"); ?>
+		</section>
 	</div>
 	<!-- jQuery -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/ressources/jQuery/jquery.custombox.js"></script>
-	<script type="text/javascript" src="/ressources/javascript.js"></script>
 	<script type="text/javascript" src="/ressources/jQuery/obshare_script2.js"></script>
+	<script type="text/javascript" src="/ressources/javascript.js"></script>
   </body>
 </html>

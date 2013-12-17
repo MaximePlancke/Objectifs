@@ -1,4 +1,4 @@
-<div class="page_right_padding">
+<div id="page_right_padding">
 	<?php if ($id_member == $user_id) : ?>
 		<ul>
 			<?php foreach ($errors as $value): ?> 
@@ -16,7 +16,11 @@
 		<ul>
 			<?php foreach ($list_friends_request as $datas): ?>
 				<li class="box_friend_request">
-					<img src="/ressources/images/list_users.png">
+						<?php if ($datas['avatar']) : ?>
+							<img class="img_resize_48" src="<?php echo $datas['avatar'] ?>">
+						<?php else : ?>
+							<img class="img_resize_48" src="/ressources/images/list_users.png">
+						<?php endif ?>
 					<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars($datas['firstname']." ".$datas['lastname']);?></a>
 					<div class="form_inline form_modify_friend">
 						<div class="id_member form_inline" type="hidden" value="<?php echo $id_member;?>"></div>
@@ -32,7 +36,11 @@
 		<ul>
 			<?php foreach ($list_friends_accepted as $datas): ?>
 				<li class="box_friend_request">
-					<img src="/ressources/images/list_users.png">
+					<?php if ($datas['avatar']) : ?>
+						<img class="img_resize_48" src="<?php echo $datas['avatar'] ?>">
+					<?php else : ?>
+						<img class="img_resize_48" src="/ressources/images/list_users.png">
+					<?php endif ?>
 					<a class="a_display_for_name" href="/user/profile/<?php echo $datas['id']?>"><?php echo htmlspecialchars($datas['firstname']." ".$datas['lastname']);?></a>
 					<div class="form_inline form_modify_friend">
 						<div class="id_member form_inline" type="hidden" value="<?php echo $id_member;?>"></div>

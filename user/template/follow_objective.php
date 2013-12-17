@@ -1,4 +1,4 @@
-<div class="page_right_padding">
+<div id="page_right_padding">
 	<?php if ($id_member == $user_id) : ?>
 		<h3 class="form_inline">Objectifs favoris</h3>
 		<div class="all_objectives_content">

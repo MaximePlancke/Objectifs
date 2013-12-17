@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/ressources/css/jquery.custombox.css">
 <?php if ($_SESSION) : ?>
-	<div class="page_right_padding">
+	<div id="page_right_padding">
 <?php else : ?>
-<div class="page_connexion_color">
+<div id="page_connexion_color">
 <?php endif; ?>
 
 	<br/><br/><br/>

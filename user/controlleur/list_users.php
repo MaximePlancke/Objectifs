@@ -23,15 +23,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		} else {
 			//add friend link
 			$friend->request_add();
-			array_push($success, "Une demande a été envoyé");
 			}
 	} elseif (isset($_POST['delete_friend_button'])) {
 		//delete friend link
 		$friend->delete();
-		array_push($success, "Vous venez de supprimer un ami");
 	} 
 }
 
 $list_users = $user->listUsers();
-
 ?>
