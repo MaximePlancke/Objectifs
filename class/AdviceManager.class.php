@@ -36,10 +36,11 @@ class AdviceManager
 		return $advices_objective;
 	}
 
-	public function read5Last($user_id) {
-		$request = $this->_bdd->prepare('SELECT a.* , o.name_obj FROM advices AS a INNER JOIN objectifs AS o 
-			ON o.id = a.id_objective WHERE a.accepted = 1 ORDER BY a.id DESC LIMIT 5');
-		$request->execute(array());
+	public function read5Last($user_id, $id_member) {
+		$request = $this->_bdd->prepare('SELECT a.* , o.name_obj, o.id AS id_obj FROM advices AS a, objectifs AS o, membres AS m
+			WHERE o.id = a.id_objective AND a.id_member_give_advice = :id_member AND m.id = a.id_member_give_advice AND a.accepted = 1 ORDER BY a.id DESC LIMIT 5');
+		$request->execute(array(
+			'id_member' => $id_member));
 		$advices = $request->fetchAll();
 		$request->closeCursor();
 		foreach ($advices as &$value) {

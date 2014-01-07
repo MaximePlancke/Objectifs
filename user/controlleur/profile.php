@@ -78,5 +78,5 @@ $steps_objectives = $steps_objective->read();
 // Get advices from objective selected.
 $advices_objectives = $advices_objective->read($user_id);
 // Get 5 last advice from the profile
-$last_advices_user = $advices_objective->read5Last($user_id);
+$last_advices_user = $advices_objective->read5Last($user_id, $id_member);
 ?>

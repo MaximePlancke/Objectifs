@@ -124,6 +124,21 @@ textarea {
 	transition: background-color 0.2s linear;
 }
 
+.box_notifications {
+	padding : 5px 2px 5px 5px;
+	margin : 0px 30px 0px -20px;
+	list-style-type:none;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.box_notifications_new {
+	padding : 5px 2px 5px 5px;
+	margin : 0px 30px 0px -20px;
+	list-style-type:none;
+	border-bottom: 1px solid #e3e3e3;
+	background-color: #F7F2E9;
+}
+
 .box_friend_request {
 	padding : 5px 2px 5px 5px;
 	margin : 0px 30px 0px -20px;

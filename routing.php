@@ -38,10 +38,10 @@ $config_routing = array(
       'action' => 'messages',
       'url' => 'account/messages'
     ),
-    'advices_request' => array(
+    'request' => array(
       'module' => 'account',
-      'action' => 'advices_request',
-      'url' => 'account/advices_request'
+      'action' => 'request',
+      'url' => 'account/request'
     ),
     'explore' => array(
       'module' => 'common',
@@ -57,6 +57,11 @@ $config_routing = array(
       'module' => 'user',
       'action' => 'follow_objective',
       'url' => 'user/follow_objective'
+    ),
+    'objective_one' => array(
+      'module' => 'user',
+      'action' => 'objective_one',
+      'url' => 'user/objective_one'
     ),
   	'current_obj' => array(
     	'module' => 'user',

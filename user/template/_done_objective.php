@@ -10,8 +10,8 @@
 				<div class="id_objective form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
 				<?php echo UrlToShortLink(htmlspecialchars(stripslashes($datas['name_obj']))); ?>
 				<?php if ($id_member == $user_id) : ?>
-				<form class="form_inline" method="post" action="#">
-					<input type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
+				<form class="form_inline form_modif_objective" method="post" action="#">
+					<input class="id_objective" type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
 					<input type="image" name="obj_modif" title="Déplacer vers Objectifs en cours" value="obj_modif" src="/ressources/images/obj_modif.png"/>
 					<input type="image" name="delete_objective" title="Supprimer" value="delete_objective" src="/ressources/images/obj_delete.png"/>
 				</form>

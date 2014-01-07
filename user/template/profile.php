@@ -51,24 +51,28 @@
 		<div class="box_content">
 			<ul>
 				<?php foreach ($last_advices_user as $value): ?>		
-					<?php if ($value['id_member_give_advice'] == $id_member) : ?>
-						<li class="box_advice">
-							<img src="/ressources/images/advice_obj.png">
-							<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['advice_content']))); ?>
-							<div class="form_inline form_modif_advices">
-								<?php //like advice section ?>
-								<?php if ($value['already_like'] == 0) : ?>
-									<img class="like_advice" title="J'aime" value="like_advice" src="/ressources/images/thumb_up.png"/>
-								<?php else : ?>
-									<img class="unlike_advice" title="Je n'aime plus" value="unlike_advice" src="/ressources/images/thumb_down.png"/>
-								<?php endif ?>
-								<div class="id_advice" type="hidden" value="<?php echo $value['id'];?>"></div>
-							</div>
-							<h6>Pour l'objectif : <?php echo $value['name_obj'];?>
-								<br/><br/><p class="box_count_like grey_text"><?php echo $value['like']; ?> J'aime</p>
-							</h6>
-						</li>
-					<?php endif ?>
+					<li class="box_advice">
+						<img src="/ressources/images/advice_obj.png">
+						<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['advice_content']))); ?>
+						<div class="form_inline form_modif_advices">
+							<?php //like advice section ?>
+							<?php if ($value['already_like'] == 0) : ?>
+								<img class="like_advice" title="J'aime" value="like_advice" src="/ressources/images/thumb_up.png"/>
+							<?php else : ?>
+								<img class="unlike_advice" title="Je n'aime plus" value="unlike_advice" src="/ressources/images/thumb_down.png"/>
+							<?php endif ?>
+							<?php if ($id_member == $user_id) : ?>
+								<?php //delete advice section ?>
+								<img class="delete_advice" title="Supprimer" value="delete_advice" src="/ressources/images/obj_delete.png"/>
+							<?php endif ?>
+							<div class="id_advice" type="hidden" value="<?php echo $value['id'];?>"></div>
+							<div class="id_member" type="hidden" value="<?php echo $user_id;?>"></div>
+							<div class="id_member_give_advice" type="hidden" value="<?php echo $value['id_member_give_advice'] ?>"></div>
+						</div>
+						<h6>Pour l'objectif : <a href="/objective/<?php echo $value['id_obj']; ?>"><?php echo $value['name_obj'];?></a>
+							<br/><br/><p class="box_count_like grey_text"><?php echo $value['like']; ?> J'aime</p>
+						</h6>
+					</li>
 				<?php endforeach; ?>
 			</ul>
 		</div>

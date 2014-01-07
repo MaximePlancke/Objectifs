@@ -54,6 +54,7 @@ if (preg_match($motif,$URi)) {
 		</section>
 	</div>
 	<!-- jQuery -->
+	<!-- <script type="text/javascript" src="/ressources/bootstrap/js/bootstrap.js"></script> -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/ressources/jQuery/jquery.custombox.js"></script>

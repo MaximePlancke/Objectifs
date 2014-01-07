@@ -5,4 +5,6 @@ $user = new User($bdd);
 $user->setId($user_id);
 
 $list_advices_request = $user->listRequestAdvices();
+$list_notifications_objective = $user->listNotificationsObjective();
+
 ?>

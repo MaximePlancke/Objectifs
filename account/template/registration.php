@@ -25,9 +25,9 @@
 		<label for="email_utilisateur">Adresse Email</label><br/>
 		<input type="email" id="email_utilisateur" name="email_utilisateur" class=autofocus required/>
 		<br/><br/>
-		<label for="avatar_utilisateur">Avatar (2 MB Max)</label><br/>
+<!-- 		<label for="avatar_utilisateur">Avatar (2 MB Max)</label><br/>
 		<input type="file" id="avatar_utilisateur" name="avatar_utilisateur"/>
-		<br/><br/>
+		<br/><br/> -->
 		<input type="submit" value="Inscription" class="btn btn-primary"/></p>
 	</form>
 </div>

@@ -34,7 +34,9 @@ class ObjectiveManager
 				);
 			$objectives = $request->fetchAll();
 			$request->closeCursor();
-			$objectives = $this->categoryName($objectives);
+			foreach ($objectives as &$value) {
+				$value = $this->categoryName($value);
+			}
 			foreach ($objectives as &$value) {
 				$value['already_follow'] = $this->alreadyFollow($value, $user_id);
 			}
@@ -46,12 +48,26 @@ class ObjectiveManager
 				);
 			$objectives = $request->fetchAll();
 			$request->closeCursor();
-			$objectives = $this->categoryName($objectives);
+			foreach ($objectives as &$value) {
+				$value = $this->categoryName($value);
+			}
 			foreach ($objectives as &$value) {
 				$value['already_follow'] = $this->alreadyFollow($value, $user_id);
 			}
 			return $objectives;
 		}
+	}
+
+	public function readOne($user_id) {
+		$request = $this->_bdd->prepare('SELECT o.*, m.firstname, m.lastname FROM objectifs AS o, membres AS m WHERE m.id = o.id_membres AND o.id = :id');
+		$request->execute(array(
+			'id' => $this->getId(),
+			));
+		$objective = $request->fetch();
+		$request->closeCursor();
+		$objective = $this->categoryName($objective);
+		$objective['already_follow'] = $this->alreadyFollow($objective, $user_id);
+		return $objective;
 	}
 
 	public function read($done, $user_id) {
@@ -62,7 +78,9 @@ class ObjectiveManager
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
-		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value = $this->categoryName($value);
+		}
 		foreach ($objectives as &$value) {
 			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
 		}
@@ -77,7 +95,9 @@ class ObjectiveManager
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
-		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value = $this->categoryName($value);
+		}
 		foreach ($objectives as &$value) {
 			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
 		}
@@ -92,7 +112,9 @@ class ObjectiveManager
 			));
 		$objectives = $request->fetchAll();
 		$request->closeCursor();
-		$objectives = $this->categoryName($objectives);
+		foreach ($objectives as &$value) {
+			$value = $this->categoryName($value);
+		}
 		foreach ($objectives as &$value) {
 			$value['already_follow'] = $this->alreadyFollow($value, $user_id);
 		}
@@ -133,24 +155,22 @@ class ObjectiveManager
 	}
 
 	public function categoryName($objectives) {
-		foreach ($objectives as &$value) {
-			switch ($value['category']) {
-				case 1:
-					$value['category'] = "Personnel";
-					break;
-				case 2:
-					$value['category'] = "Professionnel";
-					break;
-				case 3:
-					$value['category'] = "Sportif";
-					break;
-				case 4:
-					$value['category'] = "Fun";
-					break;
-				default:
-					$value['category'] = "Aucune";
-					break;
-			}
+		switch ($objectives['category']) {
+			case 1:
+				$objectives['category'] = "Personnel";
+				break;
+			case 2:
+				$objectives['category'] = "Professionnel";
+				break;
+			case 3:
+				$objectives['category'] = "Sportif";
+				break;
+			case 4:
+				$objectives['category'] = "Fun";
+				break;
+			default:
+				$objectives['category'] = "Aucune";
+				break;
 		}
 		return $objectives;
 	}

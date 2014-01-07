@@ -4,13 +4,12 @@ class UserManager
 {
 
 	public function add() {
-		$request = $this->_bdd->prepare('INSERT INTO membres(firstname, lastname, password, email, date_inscription, avatar) VALUES(:firstname, :lastname, :password, :email, NOW(), :avatar)');
+		$request = $this->_bdd->prepare('INSERT INTO membres(firstname, lastname, password, email, date_inscription) VALUES(:firstname, :lastname, :password, :email, NOW())');
 		$request->execute(array(
 			'firstname' => $this->getFirstname(),
 			'lastname' => $this->getLastname(),
 			'password' => sha1($this->getPassword()),
-			'email' => $this->getEmail(),
-			'avatar' => $this->getAvatar()));
+			'email' => $this->getEmail()));
 	    $request->closeCursor();
 	}
 
@@ -114,6 +113,16 @@ class UserManager
 		return $count;
 	}
 
+	public function alertNewNotifications() {
+		$request = $this->_bdd->prepare('SELECT COUNT(*) FROM notifications_member AS nm , membres AS m WHERE m.id = nm.id_member AND nm.id_member = :id_member AND nm.seen = 0');
+		$request->execute(array(
+			'id_member' => $this->getId(),
+			));
+		$count = $request->fetch();
+		$count = $count[0];
+		return $count;
+	}
+
 	public function listUsers() {
 		$request = $this->_bdd->prepare('SELECT * FROM membres ORDER BY firstname');
 		$request->execute(array());
@@ -123,6 +132,17 @@ class UserManager
 			$value['already_friend_confirm'] = $this->alreadyFriendConfirm($value, $value['id']);
 		}
 		return $donnees;
+	}
+
+	public function listNotificationsObjective() {
+		$request = $this->_bdd->prepare('SELECT nm.*, o.id AS id_obj, o.name_obj, n.date_creation FROM notifications_member AS nm, membres AS m, objectifs AS o, notifications AS n
+			WHERE m.id = nm.id_member AND m.id = :id_member AND o.id = n.id_objective AND n.id = nm.id_notification ORDER BY n.id DESC');
+		$request->execute(array(
+			'id_member' => $this->getId(),
+			));
+		$notifications = $request->fetchAll();
+		$request->closeCursor();
+		return $notifications;
 	}
 
 	public function alreadyFriend($value, $user_id) {

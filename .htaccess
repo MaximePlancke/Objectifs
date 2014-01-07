@@ -34,7 +34,7 @@ RewriteRule ^account/friends/([0-9]*)$   ?page=friends&id=$1 [L]
 RewriteRule ^account/messages/([0-9]*)$   ?page=messages&id=$1 [L]
 
 # Page advice request :
-RewriteRule ^account/request/advices/([0-9]*)$   ?page=advices_request&id=$1 [L]
+RewriteRule ^account/request/([0-9]*)$   ?page=request&id=$1 [L]
 
 # Page explore :
 RewriteRule ^common/explore$   ?page=explore [L]
@@ -46,10 +46,13 @@ RewriteRule ^user/profile/([0-9]*)$   ?page=profile&id=$1 [L]
 RewriteRule ^follow/([0-9]*)$   ?page=follow_objective&id=$1 [L]
 
 # Page users :
-RewriteRule ^users$   /?page=list_users [L]
+RewriteRule ^users$   ?page=list_users [L]
 
 # Page new objective :
 RewriteRule ^objective/new$   ?page=new_objective [L]
+
+# Page objective one (page / id_objective) :
+RewriteRule ^objective/([0-9]*)$   ?page=objective_one&id_objective=$1 [L]
 
 # Page current objective (page / id_member) :
 RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]

@@ -13,9 +13,11 @@
 	$friend_menu->setIdFriend2($id_member_session);
 	$count_new_friend_menu = $friend_menu->alertNewFriendRequest();
 
-	$advice_menu = new User($bdd);
-	$advice_menu->setId($id_member_session);
-	$count_new_advice_menu = $advice_menu->alertNewAdviceRequest();
+	$notification_menu = new User($bdd);
+	$notification_menu->setId($id_member_session);
+	$count_new_advice_menu = $notification_menu->alertNewAdviceRequest();
+	$count_new_notifications = $notification_menu->alertNewNotifications();
+	
 ?>
 <div class="navbar navbar-fixed-top">
 	<ul class="nav nav_top">
@@ -40,10 +42,10 @@
 						<a href="/account/friends/<?php echo $id_member_session?>"><img title="Amis" src="/ressources/images/friend_menu_new.png"/></a>
 					<?php endif ?>	
 					<a href="/account/messages/<?php echo $id_member_session?>"><img title="Messages" src="/ressources/images/mail_menu.png"/></a>
-					<?php if ($count_new_advice_menu == 0) : ?>
-						<a href="/account/request/advices/<?php echo $id_member_session?>"><img title="Conseils" src="/ressources/images/advices_menu.png"/></a>
+					<?php if ($count_new_advice_menu == 0 AND $count_new_notifications == 0) : ?>
+						<a href="/account/request/<?php echo $id_member_session?>"><img title="Conseils" src="/ressources/images/advices_menu.png"/></a>
 					<?php else : ?>
-						<a href="/account/request/advices/<?php echo $id_member_session?>"><img title="Conseils" src="/ressources/images/advices_menu_new.png"/></a>
+						<a href="/account/request/<?php echo $id_member_session?>"><img title="Conseils" src="/ressources/images/advices_menu_new.png"/></a>
 					<?php endif ?>	
 				</div>
 			</div>
@@ -63,8 +65,8 @@
 			</div>
 		</li>
 		<li>
-			<div class="img_menu_top">
-				<a class="logout_menu" href="/account/logout"><img src="/ressources/images/logout.png"></a>
+			<div class="text_menu_top">
+				<a class="logout_menu" href="/account/logout"><img src="/ressources/images/settings.png"></a>
 			</div>
 		</li>
 		<?php else: ?>	
