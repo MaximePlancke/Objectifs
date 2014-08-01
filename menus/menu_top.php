@@ -1,51 +1,83 @@
 <?php 
+	$id_member_session = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
-$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
+	$user_menu = new User($bdd);
+	$user_menu->setId($id_member_session);
+	$user_name_session = $user_menu->read();
 
+	$objective_menu = new Objective($bdd);
+	$objective_menu->setIdMember($id_member_session);  
+	$count_objective_menu = (int)($objective_menu->countDone());
+
+	$friend_menu = new Friend($bdd);
+	$friend_menu->setIdFriend2($id_member_session);
+	$count_new_friend_menu = $friend_menu->alertNewFriendRequest();
+
+	$notification_menu = new User($bdd);
+	$notification_menu->setId($id_member_session);
+	$count_new_advice_menu = $notification_menu->alertNewAdviceRequest();
+	$count_new_notifications = $notification_menu->alertNewNotifications();
+	
 ?>
 <div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<ul class="nav nav_top">
-			<li>
-				<div class="span1">
-					<a href="/">
-						<img src="/ressources/images/home.png">
-					</a>
+	<ul class="nav nav_top">
+		<li>
+			<div class="span1 img_menu_top">
+				<a href="/">
+					<img src="/ressources/images/home2.png">
+				</a>
+			</div>
+		</li>
+		<?php //Display menu when the user is online ?>
+		<?php if ($id_member_session) : ?>
+		<li>
+			<div class="span1 text_menu_top">
+				<a href="/user/profile/<?php echo $id_member_session?>"><?php echo htmlspecialchars(stripslashes($user_name_session['firstname'])); ?></a>
+			</div>
+			<div class="span2 text_menu_top">
+				<div class=" form_inline" >
+					<?php if ($count_new_friend_menu == 0) : ?>
+						<a href="/account/friends/<?php echo $id_member_session?>"><img title="Amis" src="/ressources/images/friend_menu.png"/></a>
+					<?php else : ?>
+						<a href="/account/friends/<?php echo $id_member_session?>"><img title="Amis" src="/ressources/images/friend_menu_new.png"/></a>
+					<?php endif ?>	
+					<a href="/account/messages/<?php echo $id_member_session?>"><img title="Messages" src="/ressources/images/mail_menu.png"/></a>
+					<?php if ($count_new_advice_menu == 0 AND $count_new_notifications == 0) : ?>
+						<a href="/account/request/<?php echo $id_member_session?>"><img title="Conseils" src="/ressources/images/advices_menu.png"/></a>
+					<?php else : ?>
+						<a href="/account/request/<?php echo $id_member_session?>"><img title="Conseils" src="/ressources/images/advices_menu_new.png"/></a>
+					<?php endif ?>	
 				</div>
-			</li>
-
-			<?php //Menu when the user is online ?>
-			<?php if ($user_id) : ?>
+			</div>
+		</li>
+		<li>
+			<div class="img_menu_top">
+				<form method="post" class="form-search navbar-search">
+					<input id="search_bar" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
+				</form>	
+			</div>
+		</li>
+		<li>
+			<div id="progress" class="offset1 text_menu_top">
+				<h6 class="form_inline">Objectifs Atteints</h6>
+				<meter value="<?php echo $count_objective_menu;?>" min="0" max="100"></meter>
+				<h6 class="form_inline"><?php echo $count_objective_menu;?>%</h6>
+			</div>
+		</li>
+		<li>
+			<div class="text_menu_top">
+				<a class="logout_menu" href="/account/logout"><img src="/ressources/images/settings.png"></a>
+			</div>
+		</li>
+		<?php else: ?>	
 			<li>
 				<div class="span2 text_menu_top">
-					<?php echo ($_SESSION['pseudo']); ?>
+					<a href='/account/login'>Connexion</a>
 				</div>
-				<div class="span4 img_menu_top">
-					<form id="search" method="post" class="form-search navbar-search pull-left" action="/users">
-						<input class="search_data search-query" name="search" type="text" placeholder="Rechercher" autocomplete="off"/>
-					</form>	
+				<div class="span2 text_menu_top">
+					<a href='/account/registration'>Inscription</a>
 				</div>
 			</li>
-			<li>
-				<div id="progress" class="span4 text_menu_top">
-					<span>Objectifs Atteints</span>
-					<meter value="00" min="0" max="100"></meter>
-					<span>0%</span>
-				</div>
-			</li>
-			<li>
-				<div class="span1"><a href="/account/logout"><img class="img_menu_top" src="/ressources/images/logout.png"></a></div>
-			</li>
-			<?php else: ?>	
-				<li>
-					<div class="span2 text_menu_top">
-						<a class="" href='/account/login'>Connexion</a>
-					</div>
-					<div class="span2 text_menu_top">
-						<a class="" href='/account/registration'>Inscription</a>
-					</div>
-				</li>
-			<?php endif ?>
-		</ul>
-	</div>
+		<?php endif ?>
+	</ul>
 </div>

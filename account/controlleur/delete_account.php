@@ -3,11 +3,10 @@ $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 
 if ($user_id) {
 
-	$user = new User(array());
+	$user = new User($bdd);
 	$user->setId($user_id);
 
-	$manager = new UserManager($bdd);
-	$manager->delete($user);
+	$user->delete();
 	
 	$_SESSION = array();
 	session_destroy();

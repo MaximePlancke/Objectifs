@@ -3,6 +3,10 @@
 $page = isset($_GET['page']) ? $_GET['page'] : 'home' ; 
 $template = null;
 
+if (!$user_id AND $page != 'home' AND $page != 'registration' ) {
+  $page = 'log_in';
+}
+
 $config_routing = array(
   	'log_in' => array(
     	'module' => 'account',
@@ -24,6 +28,41 @@ $config_routing = array(
     	'action' => 'delete_account',
     	'url' => 'account/delete_account'
   	),
+    'friends' => array(
+      'module' => 'account',
+      'action' => 'friends',
+      'url' => 'account/friends'
+    ),
+    'messages' => array(
+      'module' => 'account',
+      'action' => 'messages',
+      'url' => 'account/messages'
+    ),
+    'request' => array(
+      'module' => 'account',
+      'action' => 'request',
+      'url' => 'account/request'
+    ),
+    'explore' => array(
+      'module' => 'common',
+      'action' => 'explore',
+      'url' => 'common/explore'
+    ),
+    'profile' => array(
+      'module' => 'user',
+      'action' => 'profile',
+      'url' => 'user/profile'
+    ),
+    'follow_objective' => array(
+      'module' => 'user',
+      'action' => 'follow_objective',
+      'url' => 'user/follow_objective'
+    ),
+    'objective_one' => array(
+      'module' => 'user',
+      'action' => 'objective_one',
+      'url' => 'user/objective_one'
+    ),
   	'current_obj' => array(
     	'module' => 'user',
     	'action' => 'current_obj',

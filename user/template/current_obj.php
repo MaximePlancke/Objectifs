@@ -1,23 +1,12 @@
-<div class="page_right_padding">
-	<h3>Objectifs en cours</h3>
-	<div>
-		<?php foreach ($errors as $value): ?>
+<div id="page_right_padding">
+	<h3 class="form_inline">Objectifs en cours de <a class="a_display_for_name" href="/user/profile/<?php echo $id_member?>"><?php echo htmlspecialchars(stripslashes($user_name['firstname']." ".$user_name['lastname'])); ?></a></h3>
+	<span> | </span>
+	<h5 class="form_inline"><a href="/user/profile/<?php echo $id_member?>">Profil de <?php echo htmlspecialchars(stripslashes($user_name['firstname'])); ?></a></h5>
+	<?php foreach ($errors as $value): ?>
 		<h5><?php echo $value; ?></h5><br/>
-		<?php endforeach ?>
-		<?php foreach ($success as $value): ?>
+	<?php endforeach ?>
+	<?php foreach ($success as $value): ?>
 		<h5><?php echo $value; ?></h5><br/>
-		<?php endforeach ?>
-		<ul>
-			<?php foreach ($objectives as $datas): ?>
-				<li>
-					<h4><?php echo $datas['name_obj']; ?></h4>
-					<h5>Nombre d'étapes: <?php echo $datas['nb_steps']; ?></h5> 
-					<h6><a href="/add/advice/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Donner un conseil</a></h6>
-					<h6><a href="/current/advices/<?php echo $id_member;?>/<?php echo $datas['id'];?>">Voir les conseils</a></h6>
-					<h6><a href="/current/objective/<?php echo $id_member;?>/<?php echo $datas['id'];?>/delete">Supprimer</a></h6>
-					<h6><a href="/current/objective/<?php echo $id_member;?>/<?php echo $datas['id'];?>/obj_done">Objectif terminé</a></h6>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
-</div>	
+	<?php endforeach ?>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/user/template/_current_objective.php"); ?>
+</div>
