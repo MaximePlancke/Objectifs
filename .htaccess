@@ -18,7 +18,7 @@ RewriteRule ^index\.html$   ?page=home [L]
 # Page connexion :
 RewriteRule ^account/login$   ?page=log_in [L]
 
-# Page inscription :
+# Page registration :
 RewriteRule ^account/registration$   ?page=registration [L]
 
 # Page logout :
@@ -27,31 +27,44 @@ RewriteRule ^account/logout$   ?page=log_out [L]
 # Page delete_account :
 RewriteRule ^account/delete$   ?page=delete_account [L]
 
-# Page amis :
-RewriteRule ^users$   /?page=list_users [L]
+# Page friend_request :
+RewriteRule ^account/friends/([0-9]*)$   ?page=friends&id=$1 [L]
 
-# Page nouvel objectif :
+# Page messages :
+RewriteRule ^account/messages/([0-9]*)$   ?page=messages&id=$1 [L]
+
+# Page advice request :
+RewriteRule ^account/request/([0-9]*)$   ?page=request&id=$1 [L]
+
+# Page explore :
+RewriteRule ^common/explore$   ?page=explore [L]
+
+# Page profil :
+RewriteRule ^user/profile/([0-9]*)$   ?page=profile&id=$1 [L]
+
+# Page follow :
+RewriteRule ^follow/([0-9]*)$   ?page=follow_objective&id=$1 [L]
+
+# Page users :
+RewriteRule ^users$   ?page=list_users [L]
+
+# Page new objective :
 RewriteRule ^objective/new$   ?page=new_objective [L]
 
-# Page objectif actuel (page / id_du_membre) :
+# Page objective one (page / id_objective) :
+RewriteRule ^objective/([0-9]*)$   ?page=objective_one&id_objective=$1 [L]
+
+# Page current objective (page / id_member) :
 RewriteRule ^current/objective/([0-9]*)$   ?page=current_obj&id=$1 [L]
 
-# Page objectif fini (page / id_du_membre) :
+# Page done objective (page / id_member) :
 RewriteRule ^done/objective/([0-9]*)$   ?page=done_obj&id=$1 [L]
 
-# Page ajout conseil (page / id_du_membre) :
-RewriteRule ^add/advice/([0-9]*)$   ?page=add_advice&id=$1 [L]
-
-# Page ajout conseil (page / id_du_membre) :
+# Page add advice (page / id_member / id_objective) :
 RewriteRule ^add/advice/([0-9]*)/([0-9]*)$   ?page=add_advice&id=$1&id_objective=$2 [L]
 
-# Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
-RewriteRule ^current/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=current_obj&id=$1&id_objective=$2&action=$3 [L]
-
-# Page modif des objectifs (page / id_du_membre / id_de_lobjectif / action) :
-RewriteRule ^done/objective/([0-9]*)/([0-9]*)/([a-z_]*)$   ?page=done_obj&id=$1&id_objective=$2&action=$3 [L]
-
-# Page direction vers page ajout conseil (page / id_du_membre / id_de_lobjectif) :
+# Page current advice (page / id_member / id_objective) :
 RewriteRule ^current/advices/([0-9]*)/([0-9]*)$   ?page=current_obj_advices&id=$1&id_objective=$2 [L]
 
 # ErrorDocument 404 /erreur404.php
+

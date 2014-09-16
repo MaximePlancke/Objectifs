@@ -1,22 +1,17 @@
 <?php 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-	$name = $_POST['name_utilisateur'];
-	$password_hache = sha1($_POST['password_utilisateur']);
+	$email 			= $_POST['email'];
+	$password_hache = sha1($_POST['password_user']);
 
-	$request = $bdd->prepare('SELECT id FROM membres WHERE pseudo = :pseudo AND password = :password');
-	$request->execute(array(
-	    'pseudo' => $name,
-	    'password' => $password_hache)
-	);
-	$user = $request->fetch();
-	$request->closeCursor();
-
-	if (!$user) {
+	$user = new User($bdd);
+	$user->setEmail($email);
+	$user->setPassword($password_hache);
+	$user_id = $user->readLogIn();
+	if (!$user_id['id']) {
 	    array_push($errors, 'Mauvais identifiant ou mot de passe !');
 	} else {
-	    $_SESSION['id'] = $user['id'];
-	    $_SESSION['pseudo'] = $name;
+	    $_SESSION['id'] = $user_id['id'];
 		header('Location: /');
 		exit();
 	}

@@ -9,7 +9,6 @@
 	<?php //Integration CSS Bootstrap, Font-Awesome and Polices ?>
 	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
 	</head>
 	<body>
