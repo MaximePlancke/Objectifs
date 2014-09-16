@@ -8,7 +8,9 @@
 					<button class="btn btn-primary btn-small follow_objective" title="Ne plus suivre" value="unfollow_objective"><i class="icon-white icon-remove"></i></button>
 				<?php endif ?>
 				<div class="id_objective form_inline" type="hidden" value="<?php echo $datas['id'];?>"></div>
+				<?php //Display name objective ?>
 				<?php echo UrlToShortLink(htmlspecialchars(stripslashes($datas['name_obj']))); ?>
+				<?php  // objective modify or delete objective ?>
 				<?php if ($id_member == $user_id) : ?>
 				<form class="form_inline form_modif_objective" method="post" action="#">
 					<input class="id_objective" type="hidden" name="id_objective" value="<?php echo $datas['id'];?>" />
@@ -17,6 +19,7 @@
 				</form>
 				<?php endif ?>
 			</h4>
+			<?php //Display details objectives ?>
 			<div class="box_click_display_objective_profile">
 				<img class="offset6 center_img" src="/ressources/images/display_details.png">
 			</div>
@@ -45,12 +48,14 @@
 						<?php endforeach ?>
 					</ul>
 				</div>
+				<?php //Advices ?>
 				<div class="box_content_advices">
 					<ul>
 						<h5 class="center_text">Conseils</h5>
 						<?php foreach ($advices_objectives as $value): ?>
 							<?php if ($value['id_objective'] == $datas['id']) : ?>
 								<li class="box_advice">
+									<?php // Display advices ?>
 									<img src="/ressources/images/advice_obj.png">
 									<?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['advice_content']))); ?>
 									<div class="form_inline form_modif_advices">
@@ -60,8 +65,8 @@
 										<?php else : ?>
 											<img class="unlike_advice" title="Je n'aime plus" value="unlike_advice" src="/ressources/images/thumb_down.png"/>
 										<?php endif ?>
+										<?php //delete advice section ?>
 										<?php if ($id_member == $user_id OR $value['id_member_give_advice'] == $user_id) : ?>
-											<?php //delete advice section ?>
 											<img class="delete_advice" title="Supprimer" value="delete_advice" src="/ressources/images/obj_delete.png"/>
 										<?php endif ?>
 										<div class="id_advice" type="hidden" value="<?php echo $value['id'];?>"></div>

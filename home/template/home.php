@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/ressources/css/jquery.custombox.css">
-<?php if ($_SESSION) : ?>
+<?php if ($user_id) : ?>
 	<div id="page_right_padding">
 <?php else : ?>
 <div id="page_connexion_color">

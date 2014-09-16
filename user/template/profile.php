@@ -47,6 +47,7 @@
 			<!-- <a href="/advices/<?php echo $id_member?>">Voir la liste compléte et les détails</a>	 -->
 		</div>
 	</div>
+	<?php // List advices ?>
 	<div class="all_objectives_content">
 		<div class="box_content">
 			<ul>
@@ -69,7 +70,7 @@
 							<div class="id_member" type="hidden" value="<?php echo $user_id;?>"></div>
 							<div class="id_member_give_advice" type="hidden" value="<?php echo $value['id_member_give_advice'] ?>"></div>
 						</div>
-						<h6>Pour l'objectif : <a href="/objective/<?php echo $value['id_obj']; ?>"><?php echo $value['name_obj'];?></a>
+						<h6>Pour l'objectif : <a href="/objective/<?php echo $value['id_obj']; ?>"><?php echo UrlToShortLink(htmlspecialchars(stripslashes($value['name_obj'])));?></a>
 							<br/><br/><p class="box_count_like grey_text"><?php echo $value['like']; ?> J'aime</p>
 						</h6>
 					</li>

@@ -197,7 +197,7 @@ $(function() {
         var id_objective = $(this).children(".id_objective").attr('value');
         $.ajax({
             type: 'POST',
-            async: false, // Mode synchrone
+            async: false,
             url: '/API/modif_objective.php',
             data: { id_objective :id_objective , target_event :target_event},
             success: function(){
@@ -208,12 +208,12 @@ $(function() {
         });
     });
 
+    // notification change color mouseover when done objective followed is seen
     $('.box_notifications_new').one("mouseover",function() {
         $(this).animate({backgroundColor: 'rgba(0, 0, 0, 0)'}, 'slow');
         var id_notification = $(this).children(".id_notification").attr('value');
         $.ajax({
             type: 'POST',
-            async: false, // Mode synchrone
             url: '/API/modif_notifications.php',
             data: { id_notification :id_notification},
             success: function(){

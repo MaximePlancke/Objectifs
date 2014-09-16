@@ -36,7 +36,6 @@ if (preg_match($motif,$URi)) {
 	<link href="/ressources/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
 	<link href="/ressources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
-
 </head>
   <body>
 	<div id="container-fluid">
